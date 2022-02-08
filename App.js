@@ -1,12 +1,18 @@
 import Home from './src/screens/Home';
-import React from 'react';
+import React, {useContext} from 'react';
 import 'react-native';
-import AppProvider from './src/AppContext/AppContext';
+import AppProvider, {AppContext} from './src/AppContext/AppContext';
+import {NavigationContainer} from '@react-navigation/native';
+import StackNavigation from './src/navigation/StackNavigation';
+
 
 export default function App() {
+  
   return (
-    <AppProvider>
-      <Home />
-    </AppProvider>
+    <NavigationContainer>
+      <AppProvider>
+        <StackNavigation />
+      </AppProvider>
+    </NavigationContainer>
   );
 }

@@ -4,11 +4,12 @@ import {AppContext} from '../AppContext/AppContext';
 import MoreNoticias from '../componentes/MoreNoticias';
 import Navbar from '../componentes/Navbar';
 import Noticias from '../componentes/Noticias';
+import MenuHamburguesa from '../componentes/MenuHamburguesa';
 
 //screen del home
 
 export default function Home() {
-  const {setListadoNoticiasPodcasts} = useContext(AppContext);
+  const {setListadoNoticiasPodcasts, menuHamburguesa} = useContext(AppContext);
 
   useEffect(() => {
     TraerNoticias();
@@ -26,11 +27,10 @@ export default function Home() {
   }, []);
 
   return (
-    <ScrollView style={{height:"100%", width:"100%", flex:1}}>
-    
-        <Navbar />
-        <Noticias />
-      
+    <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
+      {menuHamburguesa ? <MenuHamburguesa /> : null}
+      <Navbar />
+      <Noticias />
     </ScrollView>
   );
 }

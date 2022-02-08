@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {AppContext} from '../AppContext/AppContext';
 import {stylesNav} from '../theme/stylesNav';
+import MenuHamburguesa from './MenuHamburguesa';
 
 //screen del navbar
 
 export default function Navbar() {
+  const { setMenuHamburguesa} = useContext(AppContext);
+
   return (
     <View style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
         <View>
-          <Icon name="align-justify" size={25} color="black" />
+          <Icon
+            name="align-justify"
+            size={25}
+            color="black"
+            onPress={() => setMenuHamburguesa(true)}
+          />
         </View>
 
         <View style={stylesNav.contenedorTextoLogo}>
