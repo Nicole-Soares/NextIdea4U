@@ -110,7 +110,7 @@ export default function MenuHamburguesa() {
             alignSelf: 'center',
           }}>
           <Icon name="instagram" size={25} color="black" onPress={() => Linking.openURL('https://www.instagram.com/nextidea4u/')}/>
-          <Icon name="facebook" size={25} color="black" onPress={() => Linking.openURL("https://www.facebook.com/nextidea4u")}>
+          <Icon name="facebook" size={25} color="black" onPress={() => Linking.openURL("https://www.facebook.com/nextidea4u")}/>
           <Icon name="linkedin-square" size={25} color="black" onPress={() => Linking.openURL('https://www.linkedin.com/company/nextidea4u/')} />
           <Icon name="twitter" size={25} color="black"  onPress={() => Linking.openURL('https://twitter.com/nextidea4u')}/>
           <Icon name="youtube-play" size={25} color="black"  onPress={() => Linking.openURL('https://www.youtube.com/channel/UCgfn7CcOW8n0VOn-NPZLr4w')}/>

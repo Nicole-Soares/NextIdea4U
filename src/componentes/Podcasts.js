@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
+import {stylesPod} from '../theme/stylesPod';
 
 export default function Podcasts() {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
   return (
-    <View style={{flexDirection: 'row', flexWrap: 'wrap',alignSelf: 'center', margin:20}}>
+    <View style={stylesPod.segundoContenedorPadrePod}>
       {listadoNoticiasPodcasts
         ? listadoNoticiasPodcasts.podcasts.map(podcasts => {
             return (
@@ -16,19 +17,11 @@ export default function Podcasts() {
                   }}>
                   <Image
                     source={{uri: podcasts.img}}
-                    style={{height: 140, width: 140, borderRadius: 10}}
+                    style={stylesPod.imagenPod}
                   />
                 </View>
-                <View style={{marginBottom: 10, width: '85%'}}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 17,
-                      letterSpacing: 1,
-                      fontWeight: 'bold',
-                    }}>
-                    {podcasts.title}
-                  </Text>
+                <View style={stylesPod.segundoContenedorTituloPod}>
+                  <Text style={stylesPod.textoPod}>{podcasts.title}</Text>
                 </View>
               </View>
             );
