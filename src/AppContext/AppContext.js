@@ -6,6 +6,7 @@ export const AppContext = createContext({});
 export default function AppProvider({children}) {
   const [listadoNoticiasPodcasts, setListadoNoticiasPodcasts] = useState(null);
   const [menuHamburguesa, setMenuHamburguesa] = useState(false);
+  const [listadoPodcasts, setListadoPodcasts] = useState(null);
 
   return (
     <AppContext.Provider
@@ -14,6 +15,8 @@ export default function AppProvider({children}) {
         setListadoNoticiasPodcasts,
         menuHamburguesa,
         setMenuHamburguesa,
+        listadoPodcasts,
+        setListadoPodcasts,
       }}>
       {children}
     </AppContext.Provider>

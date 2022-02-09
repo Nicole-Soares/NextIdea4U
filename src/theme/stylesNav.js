@@ -15,6 +15,7 @@ export const stylesNav = StyleSheet.create({
     justifyContent: 'space-around',
     width: '50%',
     alignItems: 'center',
+    
   },
   contenedorTextoLogo: {
     flexDirection: 'row',
@@ -28,7 +29,8 @@ export const stylesNav = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     width: 40,
-    height: 50,
+    height: 40,
+    marginLeft:10
   },
   ContenedorPadreIconoLogin: {
     width: '50%',

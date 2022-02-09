@@ -8,7 +8,7 @@ import MenuHamburguesa from './MenuHamburguesa';
 //screen del navbar
 
 export default function Navbar() {
-  const { setMenuHamburguesa} = useContext(AppContext);
+  const {setMenuHamburguesa} = useContext(AppContext);
 
   return (
     <View style={stylesNav.contenedorPadre}>
@@ -19,13 +19,14 @@ export default function Navbar() {
             size={25}
             color="black"
             onPress={() => setMenuHamburguesa(true)}
+            style={{marginTop: 10}}
           />
         </View>
 
         <View style={stylesNav.contenedorTextoLogo}>
           <Text style={stylesNav.textoNombreApp}>nextidea</Text>
           <Image
-            source={require('../assets/icono/pp.jpg')}
+            source={require('../assets/icono/icono.png')}
             style={stylesNav.imagenLogo}
           />
         </View>

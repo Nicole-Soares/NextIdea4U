@@ -8,7 +8,7 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 
 //screen del home
 
-export default function Home() {
+export default function Home({navigation}) {
   const {setListadoNoticiasPodcasts, menuHamburguesa} = useContext(AppContext);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
-      {menuHamburguesa ? <MenuHamburguesa /> : null}
+      {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <Navbar />
       <Noticias />
     </ScrollView>
