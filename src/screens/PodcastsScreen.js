@@ -6,10 +6,12 @@ import {
   ScrollView,
   ImageBackground,
   TouchableOpacity,
+  Linking,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {AppContext} from '../AppContext/AppContext';
 import Navbar from '../componentes/Navbar';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 /*  <View style={{backgroundColor: '#0000C6'}}>
 <ScrollView>
@@ -56,7 +58,7 @@ import Navbar from '../componentes/Navbar';
 </ScrollView>
 </View> */
 
-export default function Podcasts() {
+export default function PodcastsScreen({navigation}) {
   const {listadoPodcasts, setListadoPodcasts} = useContext(AppContext);
 
   useEffect(() => {
@@ -77,25 +79,24 @@ export default function Podcasts() {
   }, []);
 
   return (
-    <View style={{width: '100%'}}>
+    <View style={{width: '100%', height: '100%'}}>
       <View style={{backgroundColor: 'white'}}>
-        <Navbar />
+        <Navbar navigation={navigation} />
       </View>
       <ScrollView>
         <ImageBackground
           source={require('../assets/icono/fondoPod.jpg')}
           style={{
-            height: 600,
+            height: 690,
             width: 1000,
             position: 'relative',
             left: -330,
-            flex: 1,
           }}>
           <LinearGradient
             style={{flex: 1}}
             colors={['transparent', '#005cff', '#212529']}
-            start={{x: 0.2, y: 1.4}}
-            end={{x: 1.1, y: 0.9}}></LinearGradient>
+            start={{x: 0.4, y: 1.4}}
+            end={{x: 1.01, y: 1.08}}></LinearGradient>
         </ImageBackground>
         <View
           style={{
@@ -133,15 +134,70 @@ export default function Podcasts() {
               Tambien disponible en:
             </Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <TouchableOpacity>
-              <Text>Spotify</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              width: '100%',
+              margin: 5,
+            }}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: 'black',
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                width: '20%',
+                height: 35,
+                alignItems: 'center',
+              }}
+              onPress={() =>
+                Linking.openURL(
+                  'https://open.spotify.com/show/3XyUugkQz4bTHKb96MqBem?si=55bae6b8e9104efd&nd=1',
+                )
+              }>
+              <Icon name="spotify" color="white" size={20} />
+              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+                Spotify
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text>Apple Podcasts</Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: 'black',
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                width: '35%',
+                alignItems: 'center',
+              }}
+              onPress={() =>
+                Linking.openURL(
+                  'https://podcasts.apple.com/us/podcast/podcasts-de-next-idea-4u/id1597339890',
+                )
+              }>
+              <Icon name="podcast" color="white" size={20} />
+              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+                Apple Podcasts
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text>Google Podcasts</Text>
+          </View>
+          <View style={{alignSelf: 'center', margin: 10}}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: 'black',
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                width: '40%',
+                height: 35,
+                alignItems: 'center',
+              }}
+              onPress={() =>
+                Linking.openURL(
+                  'https://podcasts.google.com/feed/aHR0cHM6Ly9teC5pdm9veC5jb20vZXMvcG9kY2FzdHMtbmV4dC1pZGVhLTR1X2ZnX2YxMTQxMTEyNF9maWx0cm9fMS54bWw',
+                )
+              }>
+              <Icon name="google" color="white" size={20} />
+              <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
+                Google Podcasts
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -156,7 +212,7 @@ export default function Podcasts() {
           {listadoPodcasts
             ? listadoPodcasts.featured.map(podcast => {
                 return (
-                  <View style={{width: '50%'}}>
+                  <View style={{width: '50%', marginBottom: 10}}>
                     <Image
                       source={{uri: podcast.img}}
                       style={{height: 170, width: 170, borderRadius: 10}}

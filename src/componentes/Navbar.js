@@ -1,3 +1,4 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React, {useContext} from 'react';
 import {View, Text, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -7,7 +8,7 @@ import MenuHamburguesa from './MenuHamburguesa';
 
 //screen del navbar
 
-export default function Navbar() {
+export default function Navbar({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
 
   return (
@@ -37,6 +38,7 @@ export default function Navbar() {
           size={20}
           color="black"
           style={{marginRight: 10}}
+          onPress={() => navigation.navigate('Registrarse')}
         />
       </View>
     </View>
