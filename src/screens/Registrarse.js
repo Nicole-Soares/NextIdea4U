@@ -1,25 +1,42 @@
-import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import DeviceInfo from 'react-native-device-info';
+import {stylesReg} from '../theme/stylesReg';
 
+//screen del registro
 export default function Registrarse({navigation}) {
+  const [errorRegistrar, setErrorRegistrar] = useState(false);
+  const [userPasswordRegistrar, setUserPasswordRegistrar] = useState('');
+  const [userEmailRegistrar, setUserEmailRegistrar] = useState('');
+
+  let deviceId = DeviceInfo.getUniqueId();
+
+  const Registrar = async () => {
+    if (userPasswordRegistrar === '' || userEmailRegistrar === '') {
+      setErrorRegistrar(true);
+    } else {
+      setErrorRegistrar(false);
+      try {
+        let llamada = await fetch(
+          `https://nextidea4u.com/api/login/register.php?email=${userEmailRegistrar}&device=${deviceId}&password=${userPasswordRegistrar}&player_id=${global.playerId}`,
+          {
+            method: 'POST',
+          },
+        );
+        let data = await llamada.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  console.log(global.playerId);
+  console.log(deviceId, 'device');
   return (
-    <View
-      style={{
-        backgroundColor: '#f5f4f8',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-      }}>
-      <View style={{backgroundColor: 'white', width: '90%', elevation: 5}}>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            margin: 10,
-          }}>
+    <View style={stylesReg.contenedorPadre}>
+      <View style={stylesReg.contenedorGris}>
+        <View style={stylesReg.contenedorSuperior}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Image
               source={require('../assets/icono/icono.png')}
@@ -27,96 +44,60 @@ export default function Registrarse({navigation}) {
             />
           </TouchableOpacity>
 
+          <Text style={stylesReg.textoCrearCuenta}>Crea una cuenta</Text>
           <Text
-            style={{
-              width: '40%',
-              color: 'black',
-              fontWeight: 'bold',
-              fontSize: 20,
-            }}>
-            Crea una cuenta
-          </Text>
-          <Text style={{color: 'black'}}>
+            style={{color: 'black'}}
+            onPress={() => navigation.navigate('Ingresar')}>
             ¿Ya tienes una cuenta? <Text style={{color: 'blue'}}>Ingresa</Text>
           </Text>
         </View>
-        <View style={{alignItems: 'center', width: '100%', margin: 10}}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#3b5999',
-              width: '70%',
-              borderRadius: 2,
-              height: 30,
-              margin: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}>
+        <View style={stylesReg.contenedorFacebook}>
+          <TouchableOpacity style={stylesReg.botonFace}>
             <Icon
               name="facebook"
               size={20}
               color="white"
               style={{width: '5%'}}
             />
-            <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
-              {' '}
-              Continúa con Facebook{' '}
-            </Text>
+            <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#fb5252',
-              width: '70%',
-              borderRadius: 2,
-              height: 30,
-              margin: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}>
+          <TouchableOpacity style={stylesReg.botonGoogle}>
             <Icon name="google" size={20} color="white" />
-            <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
-              Continúa con Google
-            </Text>
+            <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
           </TouchableOpacity>
         </View>
         <View style={{alignSelf: 'center'}}>
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
+          <Text style={stylesReg.textoRegistrarEmail}>
             Ó regístrate con tu email
           </Text>
         </View>
-        <View style={{width: '90%', alignSelf: 'center', margin: 10}}>
+        <View style={stylesReg.contenedorInputs}>
           <TextInput
             placeholder="Tu cuenta de email"
-            style={{
-              borderWidth: 1,
-              borderRadius: 5,
-              borderColor: '#8898aa',
-              margin: 5,
-            }}
+            style={stylesReg.inputEmail}
+            value={userEmailRegistrar}
+            onChangeText={e => setUserEmailRegistrar(e)}
           />
+          {errorRegistrar ? (
+            <Text style={{color: 'red'}}>
+              Por favor ingrese un email válido
+            </Text>
+          ) : null}
           <TextInput
             placeholder="Crea una contraseña de ingreso"
-            style={{
-              borderWidth: 1,
-              borderRadius: 5,
-              borderColor: '#8898aa',
-              margin: 5,
-            }}
+            style={stylesReg.inputPassword}
+            value={userPasswordRegistrar}
+            onChangeText={e => setUserPasswordRegistrar(e)}
           />
+          {errorRegistrar ? (
+            <Text style={{color: 'red'}}>Campo requerido</Text>
+          ) : null}
         </View>
-        <View style={{width: '90%', alignSelf: 'center', margin: 10}}>
+        <View style={stylesReg.contenedorRegistrarse}>
           <TouchableOpacity
-            style={{
-              borderRadius: 2,
-              backgroundColor: '#3368ce',
-              height: 30,
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{color: 'white', fontWeight: 'bold', textAlign: 'center'}}>
-              Registrarse
-            </Text>
+            style={stylesReg.botonReg}
+            onPress={() => Registrar()}>
+            <Text style={stylesReg.textoReg}>Registrarse</Text>
           </TouchableOpacity>
         </View>
       </View>

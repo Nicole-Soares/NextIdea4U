@@ -1,5 +1,5 @@
-import React from 'react';
 import {StyleSheet} from 'react-native';
+//estilos de los podcasts
 
 export const stylesPod = StyleSheet.create({
   contenedorPadrePod: {
@@ -21,8 +21,6 @@ export const stylesPod = StyleSheet.create({
     color: 'black',
   },
   segundoContenedorPadrePod: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     alignSelf: 'center',
     margin: 20,
   },

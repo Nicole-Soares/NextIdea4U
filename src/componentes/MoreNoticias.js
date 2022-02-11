@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
 
+//el resto de noticias del home
 export default function MoreNoticias() {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
   return (
@@ -9,7 +10,7 @@ export default function MoreNoticias() {
       {listadoNoticiasPodcasts
         ? listadoNoticiasPodcasts.more.map(noticia => {
             return (
-              <View style={{width: '90%', alignSelf: 'center', margin:20}}>
+              <View style={{width: '90%', alignSelf: 'center', margin: 20}}>
                 <Image
                   source={{uri: noticia.img}}
                   style={{width: '100%', height: 220, borderRadius: 10}}

@@ -3,6 +3,7 @@ import {View, Text, Image, TouchableOpacity, Linking} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 
+//menu Hamburguesa
 export default function MenuHamburguesa({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
 

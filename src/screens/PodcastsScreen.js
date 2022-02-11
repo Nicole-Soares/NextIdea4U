@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, {useEffect, useContext} from 'react';
 import {
   View,
@@ -12,6 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {AppContext} from '../AppContext/AppContext';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
+//screen de los podcasts
 
 /*  <View style={{backgroundColor: '#0000C6'}}>
 <ScrollView>

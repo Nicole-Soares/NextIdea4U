@@ -1,12 +1,12 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
 import Podcasts from './Podcasts';
 import MoreNoticias from './MoreNoticias';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {stylesNot} from '../theme/stylesNot';
 import {stylesPod} from '../theme/stylesPod';
 
+//noticias del home
 export default function Noticias() {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
   return (
@@ -41,17 +41,7 @@ export default function Noticias() {
           })
         : null}
       <View style={stylesPod.contenedorPadrePod}>
-        <View style={stylesPod.contenedorTituloPod}>
-          <Icon name="podcast" color="grey" size={20} />
-
-          <Text style={stylesPod.titulo}>
-            Podcasts
-          </Text>
-        </View>
-
-        <View>
-          <Podcasts />
-        </View>
+        <Podcasts />
       </View>
 
       <View>
