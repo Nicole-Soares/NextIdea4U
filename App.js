@@ -8,7 +8,6 @@ import OneSignal from 'react-native-onesignal';
 
 export default function App() {
   const setTokenUrl = 'https://nextidea4u.com/api/set-token.php';
-  
 
   useEffect(() => {
     (async () => {
@@ -22,9 +21,7 @@ export default function App() {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           body: 'token=' + deviceState.userId,
         })
-          .then(response => {
-            console.log(response.text());
-          })
+          .then(response => {})
           .catch(error => {
             console.log(error);
           });

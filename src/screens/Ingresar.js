@@ -24,7 +24,7 @@ export default function Ingresar({navigation}) {
           },
         );
         let data = await llamado.json();
-        console.log(data);
+      
       } catch (error) {
         console.log(error);
       }
@@ -159,8 +159,11 @@ export default function Ingresar({navigation}) {
               Iniciar sesión
             </Text>
           </TouchableOpacity>
+
           <View style={{margin: 5}}>
-            <Text style={{color: 'blue'}}>Olvidé mi contraseña</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Recuperar')}>
+              <Text style={{color: 'blue'}}>Olvidé mi contraseña</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

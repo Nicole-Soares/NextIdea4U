@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 
 //estilos de las noticias
 export const stylesNot = StyleSheet.create({
+  h2: {
+    color: 'red',
+  },
   contenedorPadreNot: {
     width: '90%',
     alignSelf: 'center',

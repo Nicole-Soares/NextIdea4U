@@ -25,14 +25,13 @@ export default function Registrarse({navigation}) {
           },
         );
         let data = await llamada.json();
-        console.log(data);
+      
       } catch (error) {
         console.log(error);
       }
     }
   };
-  console.log(global.playerId);
-  console.log(deviceId, 'device');
+
   return (
     <View style={stylesReg.contenedorPadre}>
       <View style={stylesReg.contenedorGris}>

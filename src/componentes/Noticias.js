@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
 import Podcasts from './Podcasts';
 import MoreNoticias from './MoreNoticias';
@@ -7,36 +7,43 @@ import {stylesNot} from '../theme/stylesNot';
 import {stylesPod} from '../theme/stylesPod';
 
 //noticias del home
-export default function Noticias() {
+export default function Noticias({navigation}) {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
+
+  console.log(listadoNoticiasPodcasts)
   return (
     <ScrollView>
       {listadoNoticiasPodcasts
         ? listadoNoticiasPodcasts.news.map((noticia, index) => {
             return (
-              <View style={stylesNot.contenedorPadreNot}>
-                <Image
-                  source={{uri: noticia.img}}
-                  style={stylesNot.imagenNot}
-                />
-                <View style={stylesNot.contenedorDatosNot}>
-                  <View style={{width: '40%'}}>
-                    <Text style={stylesNot.textoTituloNot}>
-                      {noticia.subtitulo}.
-                    </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('NoticiaScreen', {idNoticia: noticia.id})
+                }>
+                <View style={stylesNot.contenedorPadreNot}>
+                  <Image
+                    source={{uri: noticia.img}}
+                    style={stylesNot.imagenNot}
+                  />
+                  <View style={stylesNot.contenedorDatosNot}>
+                    <View style={{width: '40%'}}>
+                      <Text style={stylesNot.textoTituloNot}>
+                        {noticia.subtitulo}.
+                      </Text>
+                    </View>
+                    <View style={{width: '60%'}}>
+                      <Text style={stylesNot.tituloPrincipalNot}>
+                        {noticia.title}
+                      </Text>
+                    </View>
                   </View>
-                  <View style={{width: '60%'}}>
-                    <Text style={stylesNot.tituloPrincipalNot}>
-                      {noticia.title}
+                  <View>
+                    <Text style={stylesNot.textoDesNot}>
+                      {index === 0 ? <Text>{noticia.desc}</Text> : null}
                     </Text>
                   </View>
                 </View>
-                <View>
-                  <Text style={stylesNot.textoDesNot}>
-                    {index === 0 ? <Text>{noticia.desc}</Text> : null}
-                  </Text>
-                </View>
-              </View>
+              </TouchableOpacity>
             );
           })
         : null}

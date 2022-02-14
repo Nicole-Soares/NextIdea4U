@@ -30,7 +30,7 @@ export default function Home({navigation}) {
     <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
       {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <Navbar navigation={navigation} />
-      <Noticias />
+      <Noticias navigation={navigation}/>
     </ScrollView>
   );
 }
