@@ -1,4 +1,3 @@
-import React from 'react';
 import {StyleSheet} from 'react-native';
 
 // hoja de estilos del navbar
@@ -15,10 +14,10 @@ export const stylesNav = StyleSheet.create({
     justifyContent: 'space-around',
     width: '50%',
     alignItems: 'center',
-    
   },
   contenedorTextoLogo: {
     flexDirection: 'row',
+  
   },
   textoNombreApp: {
     fontSize: 30,
@@ -30,7 +29,7 @@ export const stylesNav = StyleSheet.create({
     borderRadius: 10,
     width: 40,
     height: 40,
-    marginLeft:10
+    marginLeft: 10,
   },
   ContenedorPadreIconoLogin: {
     width: '50%',

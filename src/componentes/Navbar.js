@@ -1,12 +1,12 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useContext} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesNav} from '../theme/stylesNav';
 import MenuHamburguesa from './MenuHamburguesa';
 
-//screen del navbar
+// navbar
 
 export default function Navbar({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
@@ -25,11 +25,13 @@ export default function Navbar({navigation}) {
         </View>
 
         <View style={stylesNav.contenedorTextoLogo}>
-          <Text style={stylesNav.textoNombreApp}>nextidea</Text>
-          <Image
-            source={require('../assets/icono/icono.png')}
-            style={stylesNav.imagenLogo}
-          />
+          <TouchableOpacity style={{flexDirection:"row"}} onPress={()=>navigation.navigate("Home")}>
+            <Text style={stylesNav.textoNombreApp}>nextidea</Text>
+            <Image
+              source={require('../assets/icono/icono.png')}
+              style={stylesNav.imagenLogo}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={stylesNav.ContenedorPadreIconoLogin}>

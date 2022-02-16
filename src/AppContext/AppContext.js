@@ -10,6 +10,8 @@ export default function AppProvider({children}) {
   const [listadoPodcasts, setListadoPodcasts] = useState(null);
   const [userPassword, setUserPassword] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [noticia, setNoticia] = useState(null);
+  const [podcasts, setPodcasts] = useState(null);
 
   return (
     <AppContext.Provider
@@ -24,6 +26,9 @@ export default function AppProvider({children}) {
         setUserPassword,
         userEmail,
         setUserEmail,
+        noticia,
+        setNoticia,
+        podcasts, setPodcasts
       }}>
       {children}
     </AppContext.Provider>

@@ -216,18 +216,26 @@ export default function PodcastsScreen({navigation}) {
             ? listadoPodcasts.featured.map(podcast => {
                 return (
                   <View style={{width: '50%', marginBottom: 10}}>
-                    <Image
-                      source={{uri: podcast.img}}
-                      style={{height: 170, width: 170, borderRadius: 10}}
-                    />
-                    <Text
-                      style={{
-                        fontSize: 17,
-                        color: 'black',
-                        fontWeight: 'bold',
-                      }}>
-                      {podcast.title}
-                    </Text>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('PodcastsDetallado', {
+                          idPodcasts: podcast.id,
+                        })
+                      }>
+                      <Image
+                        source={{uri: podcast.img}}
+                        style={{height: 170, width: 170, borderRadius: 10}}
+                      />
+                      <Text
+                        style={{
+                          fontSize: 17,
+                          color: 'black',
+                          fontWeight: 'bold',
+                          width: '80%',
+                        }}>
+                        {podcast.title}
+                      </Text>
+                    </TouchableOpacity>
                   </View>
                 );
               })

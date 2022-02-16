@@ -1,25 +1,23 @@
 import React, {useEffect, useContext} from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
-import {WebView} from 'react-native-webview';
-import noticiaFormatter from '../utils/noticiaFormatter';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
-import NoticiaRelacionada from '../componentes/NoticiaRelacionada';
+
 import {AppContext} from '../AppContext/AppContext';
 
-export default function NoticiaScreen(props) {
-  const {noticia, setNoticia} = useContext(AppContext);
+export default function PodcastsDetallado(props) {
+  const {podcasts, setPodcasts} = useContext(AppContext);
 
   useEffect(() => {
     const llamadoNoticias = async () => {
       try {
         let llamado = await fetch(
-          `https://nextidea4u.com/api/blog/get-blog.php?id=${props.route.params.idNoticia}`,
+          `https://nextidea4u.com/api/podcast/get-podcast.php?id=${props.route.params.idPodcast}`,
         );
         let respuesta = await llamado.json();
 
-        setNoticia(respuesta);
+        setPodcasts(respuesta);
       } catch (error) {
         console.log(error);
       }
@@ -27,9 +25,7 @@ export default function NoticiaScreen(props) {
     llamadoNoticias();
   }, []);
 
-  if (noticia) {
-    const data = noticia.news.descripcion;
-
+  if (podcasts) {
     return (
       <View
         style={{
@@ -46,17 +42,15 @@ export default function NoticiaScreen(props) {
                 fontSize: 30,
                 letterSpacing: 1,
               }}>
-              {noticia.news.titulo}
+              {podcasts.news.titulo}
             </Text>
-            <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
-              {noticia.news.subtitulo}.
-            </Text>
+
             <Text style={{color: 'black', fontSize: 15}}>
-              {noticia.news.descripcion_corta}
+              {podcasts.podcast.descripcion_corta}
             </Text>
             <View style={{width: '100%'}}>
               <Image
-                source={{uri: noticia.news.imagen}}
+                source={{uri: podcasts.podcast.imagen}}
                 style={{
                   height: 220,
                   width: '90%',
@@ -82,8 +76,8 @@ export default function NoticiaScreen(props) {
               Contactos de esta nota
             </Text>
             <View style={{width: '100%'}}>
-              {noticia ? (
-                noticia.participants.map(participante => {
+              {podcasts ? (
+                podcasts.participants.map(participante => {
                   return (
                     <LinearGradient
                       colors={['#212529', '#1d4da2']}
@@ -98,7 +92,7 @@ export default function NoticiaScreen(props) {
                           borderRadius: 40,
                           borderColor: 'white',
                           borderWidth: 3,
-                          margin:5
+                          margin: 5,
                         }}
                       />
                       <View style={{flexDirection: 'row', margin: 5}}>
@@ -140,7 +134,15 @@ export default function NoticiaScreen(props) {
             </View>
           </View>
           <View>
-            <Text>{noticia.news.etiquetas}</Text>
+            <TouchableOpacity>
+              <Text>Spotify</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>Apple Podcasts</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>Google Podcasts</Text>
+            </TouchableOpacity>
           </View>
           <View>
             <View
