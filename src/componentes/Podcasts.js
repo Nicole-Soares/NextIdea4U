@@ -1,12 +1,18 @@
 import React, {useContext} from 'react';
-import {View, Text, Image, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ActivityIndicator,
+  TouchableOpacity,
+} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesPod} from '../theme/stylesPod';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 //los podcasts del home
 
-export default function Podcasts() {
+export default function Podcasts({navigation}) {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
 
   return (
@@ -29,18 +35,27 @@ export default function Podcasts() {
               ? listadoNoticiasPodcasts.podcasts.map(podcasts => {
                   return (
                     <View style={{width: '50%'}}>
-                      <View
-                        style={{
-                          width: '40%',
-                        }}>
-                        <Image
-                          source={{uri: podcasts.img}}
-                          style={stylesPod.imagenPod}
-                        />
-                      </View>
-                      <View style={stylesPod.segundoContenedorTituloPod}>
-                        <Text style={stylesPod.textoPod}>{podcasts.title}</Text>
-                      </View>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('PodcastsDetallado', {
+                            idPodcasts: podcasts.id,
+                          })
+                        }>
+                        <View
+                          style={{
+                            width: '40%',
+                          }}>
+                          <Image
+                            source={{uri: podcasts.img}}
+                            style={stylesPod.imagenPod}
+                          />
+                        </View>
+                        <View style={stylesPod.segundoContenedorTituloPod}>
+                          <Text style={stylesPod.textoPod}>
+                            {podcasts.title}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
                     </View>
                   );
                 })

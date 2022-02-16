@@ -10,7 +10,6 @@ import {stylesPod} from '../theme/stylesPod';
 export default function Noticias({navigation}) {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
 
-  console.log(listadoNoticiasPodcasts)
   return (
     <ScrollView>
       {listadoNoticiasPodcasts
@@ -48,7 +47,7 @@ export default function Noticias({navigation}) {
           })
         : null}
       <View style={stylesPod.contenedorPadrePod}>
-        <Podcasts />
+        <Podcasts navigation={navigation}/>
       </View>
 
       <View>

@@ -2,9 +2,6 @@ import {StyleSheet} from 'react-native';
 
 //estilos de las noticias
 export const stylesNot = StyleSheet.create({
-  h2: {
-    color: 'red',
-  },
   contenedorPadreNot: {
     width: '90%',
     alignSelf: 'center',
@@ -16,20 +13,21 @@ export const stylesNot = StyleSheet.create({
     borderRadius: 10,
   },
   contenedorDatosNot: {
-    margin: 5,
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
   },
   textoTituloNot: {
-    fontSize: 15,
+    fontSize: 20,
     color: 'blue',
     fontWeight: 'bold',
+    width:"95%"
   },
   tituloPrincipalNot: {
-    fontSize: 15,
+    fontSize: 20,
     color: 'black',
     fontWeight: 'bold',
+    width: '100%',
   },
   textoDesNot: {
     color: 'black',

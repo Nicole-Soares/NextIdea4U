@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {WebView} from 'react-native-webview';
 import noticiaFormatter from '../utils/noticiaFormatter';
@@ -7,11 +7,24 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import NoticiaRelacionada from '../componentes/NoticiaRelacionada';
 import {AppContext} from '../AppContext/AppContext';
+import MenuHamburguesa from '../componentes/MenuHamburguesa';
 
 export default function NoticiaScreen(props) {
-  const {noticia, setNoticia} = useContext(AppContext);
+  const {noticia, setNoticia, menuHamburguesa, setMenuHamburguesa} =
+    useContext(AppContext);
+  const [webViewHeight, setWebViewHeight] = useState(null);
+
+  const onMessage = event => {
+    setWebViewHeight(Number(event.nativeEvent.data));
+  };
+  const injectedJavaScript = `
+    window.ReactNativeWebView.postMessage(
+      Math.max(document.body.offsetHeight, document.body.scrollHeight)
+    );
+    `;
 
   useEffect(() => {
+    setMenuHamburguesa(false);
     const llamadoNoticias = async () => {
       try {
         let llamado = await fetch(
@@ -35,23 +48,30 @@ export default function NoticiaScreen(props) {
         style={{
           height: '100%',
           width: '100%',
+          backgroundColor: 'white',
         }}>
-        <ScrollView>
+        {menuHamburguesa ? (
+          <MenuHamburguesa navigation={props.navigation} />
+        ) : null}
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+            height: webViewHeight,
+          }}>
           <Navbar navigation={props.navigation} />
-          <View style={{alignItems: 'center', margin: 5, width: '100%'}}>
+          <View style={{margin: 5, width: '100%'}}>
             <Text
               style={{
                 color: 'black',
                 fontWeight: 'bold',
                 fontSize: 30,
-                letterSpacing: 1,
               }}>
               {noticia.news.titulo}
             </Text>
             <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
               {noticia.news.subtitulo}.
             </Text>
-            <Text style={{color: 'black', fontSize: 15}}>
+            <Text style={{color: 'black', fontSize: 15, width: '90%'}}>
               {noticia.news.descripcion_corta}
             </Text>
             <View style={{width: '100%'}}>
@@ -65,8 +85,35 @@ export default function NoticiaScreen(props) {
                   alignSelf: 'center',
                 }}
               />
+
+              <WebView
+                scrollEnabled={false}
+                source={{
+                  html: data,
+                }}
+                onMessage={() => onMessage()}
+                injectedJavaScript={injectedJavaScript}
+                style={{borderWidth: 1, borderColor: 'black', height: 1600}}
+              />
             </View>
           </View>
+          {noticia.podcasts.length > 0 ? (
+            <View>
+              <Text
+                style={{
+                  fontWeight: 'bold',
+                  color: 'black',
+                  fontSize: 18,
+                  borderBottomWidth: 1,
+                  borderBottomColor: 'gray',
+                  width: '90%',
+                  alignSelf: 'center',
+                  fontSize: 17,
+                }}>
+                También puedes escuchar el podcast de la nota
+              </Text>
+            </View>
+          ) : null}
 
           <View>
             <Text
@@ -89,7 +136,7 @@ export default function NoticiaScreen(props) {
                       colors={['#212529', '#1d4da2']}
                       start={{x: 0.1, y: 0.9}}
                       end={{x: 0.7, y: 0.6}}
-                      style={{margin: 5}}>
+                      style={{margin: 5, borderRadius: 5}}>
                       <Image
                         source={{uri: participante.imagen}}
                         style={{
@@ -98,7 +145,7 @@ export default function NoticiaScreen(props) {
                           borderRadius: 40,
                           borderColor: 'white',
                           borderWidth: 3,
-                          margin:5
+                          margin: 5,
                         }}
                       />
                       <View style={{flexDirection: 'row', margin: 5}}>
@@ -142,19 +189,25 @@ export default function NoticiaScreen(props) {
           <View>
             <Text>{noticia.news.etiquetas}</Text>
           </View>
-          <View>
-            <View
+
+          <View
+            style={{
+              borderBottomColor: 'gray',
+              borderBottomWidth: 1,
+              width: '90%',
+              alignSelf: 'center',
+            }}>
+            <Text
               style={{
+                fontWeight: 'bold',
+                color: 'black',
+                fontSize: 20,
                 borderBottomColor: 'gray',
                 borderBottomWidth: 1,
-                width: '90%',
-                alignSelf: 'center',
               }}>
-              <Text style={{fontWeight: 'bold', color: 'black', fontSize: 20}}>
-                Te puede interesar
-              </Text>
-              <NoticiaRelacionada navigation={props.navigation} />
-            </View>
+              Te puede interesar
+            </Text>
+            <NoticiaRelacionada navigation={props.navigation} />
           </View>
         </ScrollView>
       </View>

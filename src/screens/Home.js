@@ -9,9 +9,11 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 //screen del home
 
 export default function Home({navigation}) {
-  const {setListadoNoticiasPodcasts, menuHamburguesa} = useContext(AppContext);
+  const {setListadoNoticiasPodcasts, menuHamburguesa, setMenuHamburguesa} =
+    useContext(AppContext);
 
   useEffect(() => {
+    setMenuHamburguesa(false);
     TraerNoticias();
     async function TraerNoticias() {
       try {
@@ -26,11 +28,13 @@ export default function Home({navigation}) {
     }
   }, []);
 
+
+
   return (
     <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
       {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <Navbar navigation={navigation} />
-      <Noticias navigation={navigation}/>
+      <Noticias navigation={navigation} />
     </ScrollView>
   );
 }

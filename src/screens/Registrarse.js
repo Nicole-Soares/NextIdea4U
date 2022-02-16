@@ -25,7 +25,7 @@ export default function Registrarse({navigation}) {
           },
         );
         let data = await llamada.json();
-      
+        console.log(data, "registrarse")
       } catch (error) {
         console.log(error);
       }

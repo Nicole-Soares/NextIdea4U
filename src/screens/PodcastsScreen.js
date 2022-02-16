@@ -14,6 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {AppContext} from '../AppContext/AppContext';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MenuHamburguesa from '../componentes/MenuHamburguesa';
 //screen de los podcasts
 
 /*  <View style={{backgroundColor: '#0000C6'}}>
@@ -62,9 +63,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 </View> */
 
 export default function PodcastsScreen({navigation}) {
-  const {listadoPodcasts, setListadoPodcasts} = useContext(AppContext);
+  const {listadoPodcasts, setListadoPodcasts, menuHamburguesa, setMenuHamburguesa} =
+    useContext(AppContext);
 
   useEffect(() => {
+    setMenuHamburguesa(false)
     TraerPodcasts();
     async function TraerPodcasts() {
       try {
@@ -83,6 +86,7 @@ export default function PodcastsScreen({navigation}) {
 
   return (
     <View style={{width: '100%', height: '100%'}}>
+      {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <View style={{backgroundColor: 'white'}}>
         <Navbar navigation={navigation} />
       </View>

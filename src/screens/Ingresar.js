@@ -11,6 +11,9 @@ export default function Ingresar({navigation}) {
   const [error, setError] = useState(false);
   let deviceId = DeviceInfo.getUniqueId();
 
+console.log(global.playerId)
+
+
   const Login = async () => {
     if (userEmail === '' || userPassword === '') {
       setError(true);
@@ -24,7 +27,7 @@ export default function Ingresar({navigation}) {
           },
         );
         let data = await llamado.json();
-      
+        console.log(data, "ingresar")
       } catch (error) {
         console.log(error);
       }

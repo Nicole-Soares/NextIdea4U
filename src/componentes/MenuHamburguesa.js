@@ -47,9 +47,11 @@ export default function MenuHamburguesa({navigation}) {
             Inicio
           </Text>
         </TouchableOpacity>
-        <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>
-          Noticias
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>
+            Noticias
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('PodcastsScreen')}>
           <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>
             Podcasts
@@ -70,7 +72,9 @@ export default function MenuHamburguesa({navigation}) {
             width: '80%',
             borderRadius: 5,
             height: 30,
-          }}>
+          }}
+          onPress={()=>navigation.navigate("Ingresar")}
+          >
           <Text
             style={{
               fontWeight: 'bold',
@@ -89,7 +93,9 @@ export default function MenuHamburguesa({navigation}) {
             borderRadius: 5,
             height: 30,
             backgroundColor: 'blue',
-          }}>
+          }}
+          onPress={()=>navigation.navigate("Registrarse")}
+          >
           <Text
             style={{
               fontWeight: 'bold',
