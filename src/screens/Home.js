@@ -28,8 +28,6 @@ export default function Home({navigation}) {
     }
   }, []);
 
-
-
   return (
     <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
       {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}

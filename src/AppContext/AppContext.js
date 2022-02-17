@@ -12,6 +12,8 @@ export default function AppProvider({children}) {
   const [userEmail, setUserEmail] = useState('');
   const [noticia, setNoticia] = useState(null);
   const [podcasts, setPodcasts] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   return (
     <AppContext.Provider
@@ -28,7 +30,11 @@ export default function AppProvider({children}) {
         setUserEmail,
         noticia,
         setNoticia,
-        podcasts, setPodcasts
+        podcasts,
+        setPodcasts,
+        loading,
+        setLoading,
+      
       }}>
       {children}
     </AppContext.Provider>

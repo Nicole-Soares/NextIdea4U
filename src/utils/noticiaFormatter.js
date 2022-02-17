@@ -1,8 +1,7 @@
 const noticiaFormatter = noticia => {
   return noticia
     .replace('<h2>', '<h2 style="font-size:65px">')
-    .replace('<p>', '<p style="font-size:70px">')
-    
+    .replace('<p><strong>', '<p<strong>style=font-size:50px">');
 };
 
 export default noticiaFormatter;

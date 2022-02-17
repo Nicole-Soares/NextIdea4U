@@ -39,4 +39,14 @@ export const stylesPod = StyleSheet.create({
     letterSpacing: 1,
     fontWeight: 'bold',
   },
+  tituloDelPodNot: {
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    width: '90%',
+    alignSelf: 'center',
+    
+  },
 });

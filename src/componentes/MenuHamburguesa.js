@@ -11,7 +11,7 @@ export default function MenuHamburguesa({navigation}) {
     <View
       style={{
         elevation: 100,
-        zIndex: 10,
+        zIndex: 100,
         backgroundColor: 'white',
         position: 'absolute',
         top: 0,
@@ -73,8 +73,7 @@ export default function MenuHamburguesa({navigation}) {
             borderRadius: 5,
             height: 30,
           }}
-          onPress={()=>navigation.navigate("Ingresar")}
-          >
+          onPress={() => navigation.navigate('Ingresar')}>
           <Text
             style={{
               fontWeight: 'bold',
@@ -94,8 +93,7 @@ export default function MenuHamburguesa({navigation}) {
             height: 30,
             backgroundColor: 'blue',
           }}
-          onPress={()=>navigation.navigate("Registrarse")}
-          >
+          onPress={() => navigation.navigate('Registrarse')}>
           <Text
             style={{
               fontWeight: 'bold',

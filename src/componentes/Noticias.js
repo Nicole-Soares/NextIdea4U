@@ -47,11 +47,11 @@ export default function Noticias({navigation}) {
           })
         : null}
       <View style={stylesPod.contenedorPadrePod}>
-        <Podcasts navigation={navigation}/>
+        <Podcasts navigation={navigation} />
       </View>
 
       <View>
-        <MoreNoticias />
+        <MoreNoticias navigation={navigation}/>
       </View>
     </ScrollView>
   );

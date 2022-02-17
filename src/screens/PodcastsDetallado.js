@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -12,9 +12,9 @@ import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {WebView} from 'react-native-webview';
-import NoticiaRelacionadoDelPod from '../componentes/NoticiaRelacionadaDelPod';
+
 import {AppContext} from '../AppContext/AppContext';
-import PodcastsRelacionados from '../componentes/PodcastsRelacionados';
+
 import {stylesPod} from '../theme/stylesPod';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 //screen podcasts abierto
@@ -22,9 +22,35 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 export default function PodcastsDetallado(props) {
   const {podcasts, setPodcasts, menuHamburguesa, setMenuHamburguesa} =
     useContext(AppContext);
+  const [webViewHeight, setWebViewHeight] = useState(null);
+
+  const INJECTED_JAVASCRIPT = `(function() {
+      let body = document.getElementsByTagName("BODY")[0];
+     body.style.fontSize = "30px";
+   })();`;
+  const INJECTED_JAVASCRIPTPOD = `(function() {
+    let body = document.getElementsByTagName("BODY")[0];
+   body.style.width = "90%";
+ })();`;
+
+  const onMessage = event => {
+    setWebViewHeight(Number(event.nativeEvent.data));
+  };
+
+  const llamadoPodcastsRelacionados = async idPodcasts => {
+    try {
+      let llamado = await fetch(
+        `https://nextidea4u.com/api/podcast/get-podcast.php?id=${idPodcasts}`,
+      );
+      let respuesta = await llamado.json();
+
+      setPodcasts(respuesta);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    setMenuHamburguesa(false);
     const llamadoNoticias = async () => {
       try {
         let llamado = await fetch(
@@ -41,15 +67,23 @@ export default function PodcastsDetallado(props) {
   }, []);
 
   if (podcasts) {
+    const data = podcasts.podcast.texto;
+    let indice = podcasts.podcast.fecha_alta.indexOf(' ');
+    let extraida = podcasts.podcast.fecha_alta.substring(0, indice);
+    let reemplazo = extraida.replace(/-/g, '/');
+
     return (
       <View
         style={{
           height: '100%',
           width: '100%',
+          backgroundColor: 'white',
         }}>
-        {menuHamburguesa ? <MenuHamburguesa navigation={props.navigation} /> : null}
+        {menuHamburguesa ? (
+          <MenuHamburguesa navigation={props.navigation} />
+        ) : null}
+        <Navbar navigation={props.navigation} />
         <ScrollView>
-          <Navbar navigation={props.navigation} />
           <View style={{margin: 10, width: '100%'}}>
             <Text
               style={{
@@ -64,7 +98,33 @@ export default function PodcastsDetallado(props) {
             <Text style={{color: 'black', fontSize: 17, width: '90%'}}>
               {podcasts.podcast.descripcion_corta}
             </Text>
-            <View style={{width: '100%'}}></View>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Icon
+                name="calendar"
+                siez={30}
+                color="gray"
+                style={{marginRight: 10}}
+              />
+              <Text>{reemplazo}</Text>
+            </View>
+            <WebView
+              scrollEnabled={false}
+              source={{
+                uri: podcasts.podcast.podcast,
+              }}
+              onMessage={() => onMessage()}
+              style={{height: 300, marginTop: 15}}
+              injectedJavaScript={INJECTED_JAVASCRIPTPOD}
+            />
+            <WebView
+              scrollEnabled={false}
+              source={{
+                html: data,
+              }}
+              onMessage={() => onMessage()}
+              style={{height: 400}}
+              injectedJavaScript={INJECTED_JAVASCRIPT}
+            />
           </View>
           <View>
             <Text
@@ -214,6 +274,10 @@ export default function PodcastsDetallado(props) {
                           }}>
                           {participante.apellido}
                         </Text>
+                        <Image
+                          source={{uri: participante.pais_bandera}}
+                          style={{height: 30, width: 30, marginLeft: 10}}
+                        />
                       </View>
                       <Text
                         style={{
@@ -246,7 +310,54 @@ export default function PodcastsDetallado(props) {
                 }}>
                 Noticias relacionadas al podcast
               </Text>
-              <NoticiaRelacionadoDelPod navigation={props.navigation} />
+              <View style={{width: '100%'}}>
+                {podcasts
+                  ? podcasts.news.map(noticiaRePod => {
+                      return (
+                        <View
+                          style={{
+                            alignSelf: 'center',
+                            width: '100%',
+                            margin: 5,
+                          }}>
+                          <TouchableOpacity
+                            onPress={() =>
+                              props.navigation.navigate('NoticiaScreen', {
+                                idNoticia: noticiaRePod.noticia_id,
+                              })
+                            }>
+                            <Image
+                              source={{uri: noticiaRePod.imagen}}
+                              style={{
+                                width: '95%',
+                                height: 200,
+                                borderRadius: 10,
+                                alignSelf: 'center',
+                                margin: 5,
+                              }}
+                            />
+                            <Text
+                              style={{
+                                color: 'blue',
+                                fontSize: 20,
+                                marginLeft: 10,
+                              }}>
+                              {noticiaRePod.subtitulo}.
+                            </Text>
+                            <Text
+                              style={{
+                                color: 'black',
+                                fontSize: 17,
+                                marginLeft: 10,
+                              }}>
+                              {noticiaRePod.titulo}
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      );
+                    })
+                  : null}
+              </View>
             </View>
             <View style={{width: '100%'}}>
               <Text
@@ -262,7 +373,51 @@ export default function PodcastsDetallado(props) {
                 Te puede interesar
               </Text>
               <View style={stylesPod.contenedorPadrePod}>
-                <PodcastsRelacionados navigation={props.navigation} />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    marginLeft: 10,
+                    marginTop: 10,
+                    width: '100%',
+                  }}>
+                  {podcasts
+                    ? podcasts.related.map(podcastsRe => {
+                        return (
+                          <View
+                            style={{
+                              width: '50%',
+                            }}>
+                            <TouchableOpacity
+                              onPress={() =>
+                                llamadoPodcastsRelacionados(
+                                  podcastsRe.podcast_id,
+                                )
+                              }
+                              style={{width: '100%'}}>
+                              <Image
+                                source={{uri: podcastsRe.imagen}}
+                                style={{
+                                  width: '90%',
+                                  height: 180,
+                                  borderRadius: 10,
+                                }}
+                              />
+                              <Text
+                                style={{
+                                  color: 'black',
+                                  fontSize: 15,
+                                  marginLeft: 10,
+                                  width: '90%',
+                                }}>
+                                {podcastsRe.titulo}
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
+                        );
+                      })
+                    : null}
+                </View>
               </View>
             </View>
           </View>
