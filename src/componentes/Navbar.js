@@ -25,7 +25,9 @@ export default function Navbar({navigation}) {
         </View>
 
         <View style={stylesNav.contenedorTextoLogo}>
-          <TouchableOpacity style={{flexDirection:"row"}} onPress={()=>navigation.navigate("Home")}>
+          <TouchableOpacity
+            style={{flexDirection: 'row'}}
+            onPress={() => navigation.navigate('Home')}>
             <Text style={stylesNav.textoNombreApp}>nextidea</Text>
             <Image
               source={require('../assets/icono/icono.png')}

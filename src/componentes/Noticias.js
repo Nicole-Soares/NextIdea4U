@@ -18,7 +18,8 @@ export default function Noticias({navigation}) {
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('NoticiaScreen', {idNoticia: noticia.id})
-                }>
+                }
+                key={noticia.id}>
                 <View style={stylesNot.contenedorPadreNot}>
                   <Image
                     source={{uri: noticia.img}}
@@ -51,7 +52,7 @@ export default function Noticias({navigation}) {
       </View>
 
       <View>
-        <MoreNoticias navigation={navigation}/>
+        <MoreNoticias navigation={navigation} />
       </View>
     </ScrollView>
   );

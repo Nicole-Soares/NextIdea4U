@@ -7,6 +7,7 @@ import Registrarse from '../screens/Registrarse';
 import Recuperar from '../screens/Recuper';
 import NoticiaScreen from '../screens/NoticiaScreen';
 import PodcastsDetallado from '../screens/PodcastsDetallado';
+import {NoticiasDelPodcasts} from '../componentes/NoticiasDelPodcasts';
 
 //screnn de  la navegacion
 const Stack = createNativeStackNavigator();
@@ -25,6 +26,10 @@ export default function StackNavigation() {
       <Stack.Screen name="Recuperar" component={Recuperar} />
       <Stack.Screen name="NoticiaScreen" component={NoticiaScreen} />
       <Stack.Screen name="PodcastsDetallado" component={PodcastsDetallado} />
+      <Stack.Screen
+        name="NoticiasDelPodcasts"
+        component={NoticiasDelPodcasts}
+      />
     </Stack.Navigator>
   );
 }

@@ -34,13 +34,14 @@ export default function Podcasts({navigation}) {
             {listadoNoticiasPodcasts
               ? listadoNoticiasPodcasts.podcasts.map(podcasts => {
                   return (
-                    <View style={{width: '50%'}}>
-                      <TouchableOpacity
-                        onPress={() =>
-                          navigation.navigate('PodcastsDetallado', {
-                            idPodcasts: podcasts.id,
-                          })
-                        }>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('PodcastsDetallado', {
+                          idPodcasts: podcasts.id,
+                        })
+                      }
+                      key={podcasts.id}>
+                      <View style={{width: '50%'}}>
                         <View
                           style={{
                             width: '40%',
@@ -55,8 +56,8 @@ export default function Podcasts({navigation}) {
                             {podcasts.title}
                           </Text>
                         </View>
-                      </TouchableOpacity>
-                    </View>
+                      </View>
+                    </TouchableOpacity>
                   );
                 })
               : null}

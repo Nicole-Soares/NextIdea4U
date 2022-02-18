@@ -3,16 +3,17 @@ import {View, Text, TouchableOpacity, Image, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
 import {AppContext} from '../AppContext/AppContext';
-
+import {
+  LoginManager,
+  GraphRequest,
+  GraphRequestManager,
+} from 'react-native-fbsdk-next';
 //screen del ingreso
 export default function Ingresar({navigation}) {
   const {userPassword, setUserPassword} = useContext(AppContext);
   const {userEmail, setUserEmail} = useContext(AppContext);
   const [error, setError] = useState(false);
   let deviceId = DeviceInfo.getUniqueId();
-
-console.log(global.playerId)
-
 
   const Login = async () => {
     if (userEmail === '' || userPassword === '') {
@@ -27,12 +28,88 @@ console.log(global.playerId)
           },
         );
         let data = await llamado.json();
-        console.log(data, "ingresar")
+        console.log(data, 'ingresar');
       } catch (error) {
         console.log(error);
       }
     }
   };
+
+  const fbLogin = ressCallBack => {
+    LoginManager.logOut();
+    return LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+      result => {
+        console.log('result :', result);
+        if (
+          result.declinedPermissions &&
+          result.declinedPermissions.includes('email')
+        ) {
+          ressCallBack({message: 'el email es requerido'});
+        }
+        if (result.isCancelled) {
+          console.log('error');
+        } else {
+          const infoRequest = new GraphRequest(
+            '/me?fileds=email, name, picture, friend',
+            null,
+            ressCallBack,
+          );
+        }
+
+        new GraphRequestManager().addRequest(infoRequest).start();
+      },
+
+      function (error) {
+        console.log('hay un error en el login', error);
+      },
+    );
+  };
+
+  const onFbLogin = async () => {
+    try {
+      await fbLogin(_responseInfoCallBack);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const _responseInfoCallBack = async (error, result) => {
+    if (error) {
+      console.log(error);
+      return;
+    } else {
+      const userData = result;
+      console.log(userData);
+    }
+  };
+
+  setIgToken = data => {
+    console.log('data', data);
+    this.setState({token: data.access_token});
+  };
+
+  /*   <TouchableOpacity
+  style={{
+    backgroundColor: '#3b5999',
+    width: '70%',
+    borderRadius: 2,
+    height: 30,
+    margin: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  }}>
+  <Icon
+    name="facebook"
+    size={20}
+    color="white"
+    style={{width: '5%'}}
+  />
+  <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
+    {' '}
+    Continúa con Facebook{' '}
+  </Text>
+</TouchableOpacity> */
 
   return (
     <View
@@ -84,7 +161,8 @@ console.log(global.playerId)
               flexDirection: 'row',
               justifyContent: 'space-around',
               alignItems: 'center',
-            }}>
+            }}
+            onPress={() => onFbLogin()}>
             <Icon
               name="facebook"
               size={20}
@@ -95,7 +173,8 @@ console.log(global.playerId)
               {' '}
               Continúa con Facebook{' '}
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity>{' '}
+          */
           <TouchableOpacity
             style={{
               backgroundColor: '#fb5252',

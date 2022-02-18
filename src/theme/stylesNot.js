@@ -68,7 +68,7 @@ export const stylesNot = StyleSheet.create({
     marginTop: 15,
     borderRadius: 5,
   },
-  textoContNot:{
+  textoContNot: {
     fontWeight: 'bold',
     color: 'black',
     fontSize: 18,
@@ -77,7 +77,7 @@ export const stylesNot = StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
   },
-  imgContacNot:{
+  imgContacNot: {
     height: 70,
     width: 70,
     borderRadius: 40,
@@ -85,40 +85,44 @@ export const stylesNot = StyleSheet.create({
     borderWidth: 3,
     margin: 5,
   },
-  participanteNombreNot:{
+  participanteNombreNot: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
   },
-  participanteApellidoNot:{
+  participanteApellidoNot: {
     color: 'white',
     marginLeft: 5,
     fontWeight: 'bold',
     fontSize: 20,
   },
-  imagenContactNot:{
-    height: 30, width: 30, marginLeft: 10
+  imagenContactNot: {
+    height: 30,
+    width: 30,
+    marginLeft: 10,
   },
-  profesionContactoNot:{
+  profesionContactoNot: {
     color: 'white',
     fontWeight: 'bold',
     margin: 5,
     fontSize: 15,
   },
-  biografiaNotDes:{
-    color: 'white', margin: 5, fontSize: 15
+  biografiaNotDes: {
+    color: 'white',
+    margin: 5,
+    fontSize: 15,
   },
-  contenedorOtrasNoticiasNot:{
+  contenedorOtrasNoticiasNot: {
     borderBottomColor: 'gray',
-              borderBottomWidth: 1,
-              width: '90%',
-              alignSelf: 'center',
+    borderBottomWidth: 1,
+    width: '90%',
+    alignSelf: 'center',
   },
-  textoOtrasNoticias:{
+  textoOtrasNoticias: {
     fontWeight: 'bold',
     color: 'black',
     fontSize: 20,
     borderBottomColor: 'gray',
     borderBottomWidth: 1,
-  }
+  },
 });

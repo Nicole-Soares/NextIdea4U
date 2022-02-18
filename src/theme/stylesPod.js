@@ -47,6 +47,5 @@ export const stylesPod = StyleSheet.create({
     borderBottomColor: 'gray',
     width: '90%',
     alignSelf: 'center',
-    
   },
 });

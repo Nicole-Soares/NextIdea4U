@@ -14,22 +14,24 @@ export const stylesReg = StyleSheet.create({
     width: '90%',
     elevation: 5,
   },
-  contenedorSuperior:{
+  contenedorSuperior: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     margin: 10,
   },
-  textoCrearCuenta:{
+  textoCrearCuenta: {
     width: '40%',
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
   },
-  contenedorFacebook:{
-    alignItems: 'center', width: '100%', margin: 10
+  contenedorFacebook: {
+    alignItems: 'center',
+    width: '100%',
+    margin: 10,
   },
-  botonFace:{
+  botonFace: {
     backgroundColor: '#3b5999',
     width: '70%',
     borderRadius: 2,
@@ -39,10 +41,12 @@ export const stylesReg = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  textoFace:{
-    color: 'white', fontWeight: 'bold', width: '60%'
+  textoFace: {
+    color: 'white',
+    fontWeight: 'bold',
+    width: '60%',
   },
-  botonGoogle:{
+  botonGoogle: {
     backgroundColor: '#fb5252',
     width: '70%',
     borderRadius: 2,
@@ -52,37 +56,47 @@ export const stylesReg = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  textoGoogle:{
-    color: 'white', fontWeight: 'bold', width: '60%'
+  textoGoogle: {
+    color: 'white',
+    fontWeight: 'bold',
+    width: '60%',
   },
-  textoRegistrarEmail:{
-    color: 'black', fontWeight: 'bold', fontSize: 15
+  textoRegistrarEmail: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 15,
   },
-  contenedorInputs:{
-    width: '90%', alignSelf: 'center', margin: 10
+  contenedorInputs: {
+    width: '90%',
+    alignSelf: 'center',
+    margin: 10,
   },
-  inputEmail:{
+  inputEmail: {
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
     margin: 5,
   },
-  inputPassword:{
+  inputPassword: {
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
     margin: 5,
   },
-  contenedorRegistrarse:{
-    width: '90%', alignSelf: 'center', margin: 10
+  contenedorRegistrarse: {
+    width: '90%',
+    alignSelf: 'center',
+    margin: 10,
   },
-  botonReg:{
+  botonReg: {
     borderRadius: 2,
     backgroundColor: '#3368ce',
     height: 30,
     justifyContent: 'center',
   },
-  textoReg:{
-    color: 'white', fontWeight: 'bold', textAlign: 'center'
-  }
+  textoReg: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });

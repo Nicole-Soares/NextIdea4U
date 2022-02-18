@@ -14,7 +14,6 @@ export default function AppProvider({children}) {
   const [podcasts, setPodcasts] = useState(null);
   const [loading, setLoading] = useState(false);
 
-
   return (
     <AppContext.Provider
       value={{
@@ -34,7 +33,6 @@ export default function AppProvider({children}) {
         setPodcasts,
         loading,
         setLoading,
-      
       }}>
       {children}
     </AppContext.Provider>

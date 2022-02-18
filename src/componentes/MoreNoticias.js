@@ -13,7 +13,8 @@ export default function MoreNoticias({navigation}) {
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('NoticiaScreen', {idNoticia: noticia.id})
-                }>
+                }
+                key={noticia.id}>
                 <View style={{width: '90%', alignSelf: 'center', margin: 20}}>
                   <Image
                     source={{uri: noticia.img}}

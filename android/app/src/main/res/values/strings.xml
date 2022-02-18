@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NextIdea4U</string>
+    <string name="facebook_app_id">623131291772057</string>
+    <string name="facebook_client_token">a81ba46d126f33d2d5c9d5814a11c1fb</string>
 </resources>

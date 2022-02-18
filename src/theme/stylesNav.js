@@ -17,7 +17,6 @@ export const stylesNav = StyleSheet.create({
   },
   contenedorTextoLogo: {
     flexDirection: 'row',
-  
   },
   textoNombreApp: {
     fontSize: 30,

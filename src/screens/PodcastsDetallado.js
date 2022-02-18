@@ -12,11 +12,11 @@ import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {WebView} from 'react-native-webview';
-
 import {AppContext} from '../AppContext/AppContext';
-
 import {stylesPod} from '../theme/stylesPod';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
+import {NoticiasDelPodcasts} from '../componentes/NoticiasDelPodcasts';
+
 //screen podcasts abierto
 
 export default function PodcastsDetallado(props) {
@@ -32,6 +32,7 @@ export default function PodcastsDetallado(props) {
     let body = document.getElementsByTagName("BODY")[0];
    body.style.width = "90%";
  })();`;
+  console.log(props);
 
   const onMessage = event => {
     setWebViewHeight(Number(event.nativeEvent.data));
@@ -244,7 +245,8 @@ export default function PodcastsDetallado(props) {
                       colors={['#212529', '#1d4da2']}
                       start={{x: 0.1, y: 0.9}}
                       end={{x: 0.7, y: 0.6}}
-                      style={{margin: 10}}>
+                      style={{margin: 10}}
+                      key={participante.id}>
                       <Image
                         source={{uri: participante.imagen}}
                         style={{
@@ -311,52 +313,7 @@ export default function PodcastsDetallado(props) {
                 Noticias relacionadas al podcast
               </Text>
               <View style={{width: '100%'}}>
-                {podcasts
-                  ? podcasts.news.map(noticiaRePod => {
-                      return (
-                        <View
-                          style={{
-                            alignSelf: 'center',
-                            width: '100%',
-                            margin: 5,
-                          }}>
-                          <TouchableOpacity
-                            onPress={() =>
-                              props.navigation.navigate('NoticiaScreen', {
-                                idNoticia: noticiaRePod.noticia_id,
-                              })
-                            }>
-                            <Image
-                              source={{uri: noticiaRePod.imagen}}
-                              style={{
-                                width: '95%',
-                                height: 200,
-                                borderRadius: 10,
-                                alignSelf: 'center',
-                                margin: 5,
-                              }}
-                            />
-                            <Text
-                              style={{
-                                color: 'blue',
-                                fontSize: 20,
-                                marginLeft: 10,
-                              }}>
-                              {noticiaRePod.subtitulo}.
-                            </Text>
-                            <Text
-                              style={{
-                                color: 'black',
-                                fontSize: 17,
-                                marginLeft: 10,
-                              }}>
-                              {noticiaRePod.titulo}
-                            </Text>
-                          </TouchableOpacity>
-                        </View>
-                      );
-                    })
-                  : null}
+              <NoticiasDelPodcasts/>
               </View>
             </View>
             <View style={{width: '100%'}}>
@@ -387,7 +344,8 @@ export default function PodcastsDetallado(props) {
                           <View
                             style={{
                               width: '50%',
-                            }}>
+                            }}
+                            key={podcastsRe.id}>
                             <TouchableOpacity
                               onPress={() =>
                                 llamadoPodcastsRelacionados(

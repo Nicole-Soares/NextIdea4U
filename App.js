@@ -1,4 +1,4 @@
-import Home from './src/screens/Home';
+import 'react-native-gesture-handler';
 import React, {useContext, useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import AppProvider, {AppContext} from './src/AppContext/AppContext';
@@ -34,12 +34,10 @@ export default function App() {
   }, []);
 
   return (
-
-      <NavigationContainer>
-        <AppProvider>
-          <StackNavigation />
-        </AppProvider>
-      </NavigationContainer>
-   
+    <NavigationContainer>
+      <AppProvider>
+        <StackNavigation />
+      </AppProvider>
+    </NavigationContainer>
   );
 }

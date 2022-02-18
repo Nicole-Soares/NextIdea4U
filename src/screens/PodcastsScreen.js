@@ -63,11 +63,15 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 </View> */
 
 export default function PodcastsScreen({navigation}) {
-  const {listadoPodcasts, setListadoPodcasts, menuHamburguesa, setMenuHamburguesa} =
-    useContext(AppContext);
+  const {
+    listadoPodcasts,
+    setListadoPodcasts,
+    menuHamburguesa,
+    setMenuHamburguesa,
+  } = useContext(AppContext);
 
   useEffect(() => {
-    setMenuHamburguesa(false)
+    setMenuHamburguesa(false);
     TraerPodcasts();
     async function TraerPodcasts() {
       try {
@@ -219,7 +223,9 @@ export default function PodcastsScreen({navigation}) {
           {listadoPodcasts
             ? listadoPodcasts.featured.map(podcast => {
                 return (
-                  <View style={{width: '50%', marginBottom: 10}}>
+                  <View
+                    style={{width: '50%', marginBottom: 10}}
+                    key={podcast.id}>
                     <TouchableOpacity
                       onPress={() =>
                         navigation.navigate('PodcastsDetallado', {
