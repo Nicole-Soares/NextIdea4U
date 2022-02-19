@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
@@ -7,6 +7,7 @@ import {
   LoginManager,
   GraphRequest,
   GraphRequestManager,
+  AccessToken,
 } from 'react-native-fbsdk-next';
 //screen del ingreso
 export default function Ingresar({navigation}) {
@@ -35,59 +36,6 @@ export default function Ingresar({navigation}) {
     }
   };
 
-  const fbLogin = ressCallBack => {
-    LoginManager.logOut();
-    return LoginManager.logInWithPermissions(['public_profile', 'email']).then(
-      result => {
-        console.log('result :', result);
-        if (
-          result.declinedPermissions &&
-          result.declinedPermissions.includes('email')
-        ) {
-          ressCallBack({message: 'el email es requerido'});
-        }
-        if (result.isCancelled) {
-          console.log('error');
-        } else {
-          const infoRequest = new GraphRequest(
-            '/me?fileds=email, name, picture, friend',
-            null,
-            ressCallBack,
-          );
-        }
-
-        new GraphRequestManager().addRequest(infoRequest).start();
-      },
-
-      function (error) {
-        console.log('hay un error en el login', error);
-      },
-    );
-  };
-
-  const onFbLogin = async () => {
-    try {
-      await fbLogin(_responseInfoCallBack);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-
-  const _responseInfoCallBack = async (error, result) => {
-    if (error) {
-      console.log(error);
-      return;
-    } else {
-      const userData = result;
-      console.log(userData);
-    }
-  };
-
-  setIgToken = data => {
-    console.log('data', data);
-    this.setState({token: data.access_token});
-  };
-
   /*   <TouchableOpacity
   style={{
     backgroundColor: '#3b5999',
@@ -110,6 +58,56 @@ export default function Ingresar({navigation}) {
     Continúa con Facebook{' '}
   </Text>
 </TouchableOpacity> */
+
+  const fbLogin = ressCallBack => {
+    LoginManager.logOut();
+    return LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+      result => {
+        console.log('result :', result);
+        if (
+          result.declinedPermissions &&
+          result.declinedPermissions.includes('email')
+        ) {
+          ressCallBack({message: 'el email es requerido'});
+        }
+        if (result.isCancelled) {
+          console.log('error');
+        } else {
+          const infoRequest = new GraphRequest(
+            '/me?email, name, picture, friend',
+            null,
+            ressCallBack,
+          );
+
+          new GraphRequestManager().addRequest(infoRequest).start();
+        }
+      },
+
+      function (error) {
+        console.log('hay un error en el login', error);
+      },
+    );
+  };
+
+  const onFbLogin = async () => {
+    try {
+      await fbLogin(_responseInfoCallBack);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  const _responseInfoCallBack = async (error, result) => {
+    if (error) {
+      console.log(error);
+      return;
+    } else {
+      const userData = result;
+      console.log(userData, 'data');
+    }
+  };
+
+ 
 
   return (
     <View
@@ -162,7 +160,7 @@ export default function Ingresar({navigation}) {
               justifyContent: 'space-around',
               alignItems: 'center',
             }}
-            onPress={() => onFbLogin()}>
+            onPress={onFbLogin}>
             <Icon
               name="facebook"
               size={20}
@@ -170,11 +168,9 @@ export default function Ingresar({navigation}) {
               style={{width: '5%'}}
             />
             <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
-              {' '}
-              Continúa con Facebook{' '}
+              Continúa con Facebook
             </Text>
-          </TouchableOpacity>{' '}
-          */
+          </TouchableOpacity>
           <TouchableOpacity
             style={{
               backgroundColor: '#fb5252',

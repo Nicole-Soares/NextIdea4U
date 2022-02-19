@@ -1,5 +1,6 @@
 package com.nextidea4u;
 
+
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;

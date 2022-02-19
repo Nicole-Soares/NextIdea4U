@@ -28,8 +28,6 @@ export default function Podcasts({navigation}) {
             style={{
               flexDirection: 'row',
               flexWrap: 'wrap',
-              alignSelf: 'center',
-              margin: 5,
             }}>
             {listadoNoticiasPodcasts
               ? listadoNoticiasPodcasts.podcasts.map(podcasts => {
@@ -41,10 +39,15 @@ export default function Podcasts({navigation}) {
                         })
                       }
                       key={podcasts.id}>
-                      <View style={{width: '50%'}}>
+                      <View
+                        style={{
+                          width: '50%',
+flexDirection: 'row',
+                          flexWrap: 'wrap',
+                        }}>
                         <View
                           style={{
-                            width: '40%',
+                            width: '100%',
                           }}>
                           <Image
                             source={{uri: podcasts.img}}

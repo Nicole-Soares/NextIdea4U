@@ -1,4 +1,5 @@
 package com.nextidea4u;
+
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 

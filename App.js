@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
-import React, {useContext, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {ScrollView} from 'react-native';
-import AppProvider, {AppContext} from './src/AppContext/AppContext';
+import AppProvider from './src/AppContext/AppContext';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation from './src/navigation/StackNavigation';
 import OneSignal from 'react-native-onesignal';

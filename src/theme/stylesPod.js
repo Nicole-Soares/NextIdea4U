@@ -22,7 +22,6 @@ export const stylesPod = StyleSheet.create({
   },
   segundoContenedorPadrePod: {
     alignSelf: 'center',
-    margin: 20,
   },
   imagenPod: {
     height: 140,
@@ -31,13 +30,15 @@ export const stylesPod = StyleSheet.create({
   },
   segundoContenedorTituloPod: {
     marginBottom: 10,
-    width: '85%',
+    width: '100%',
+   
   },
   textoPod: {
     color: 'black',
     fontSize: 17,
     letterSpacing: 1,
     fontWeight: 'bold',
+    width: 150,
   },
   tituloDelPodNot: {
     fontWeight: 'bold',

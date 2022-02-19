@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, {useEffect, useContext, useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -15,12 +15,10 @@ import {AppContext} from '../AppContext/AppContext';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 import {stylesNot} from '../theme/stylesNot';
 
-
 export default function NoticiaScreen(props) {
-  const {noticia, setNoticia, menuHamburguesa, setMenuHamburguesa} =
-    useContext(AppContext);
+  const {noticia, setNoticia, menuHamburguesa} = useContext(AppContext);
   const [webViewHeight, setWebViewHeight] = useState(null);
-
+  const scrollRef = useRef();
   const INJECTED_JAVASCRIPT = `(function() {
     let body = document.getElementsByTagName("BODY")[0];
    body.style.fontSize = "50px";
@@ -33,6 +31,14 @@ export default function NoticiaScreen(props) {
   };
 
   const llamadoNoticiasRelacionadas = async idNoticia => {
+    setTimeout(
+      () =>
+        scrollRef.current?.scrollTo({
+          y: 0,
+          animated: true,
+        }),
+      1000,
+    );
     try {
       let llamado = await fetch(
         `https://nextidea4u.com/api/blog/get-blog.php?id=${idNoticia}`,
@@ -62,6 +68,7 @@ export default function NoticiaScreen(props) {
   }, []);
 
   if (noticia) {
+    console.log(noticia, 'noticia');
     const data = noticia.news.descripcion;
     let indice = noticia.news.fecha_hora.indexOf(' ');
     let extraida = noticia.news.fecha_hora.substring(0, indice);
@@ -78,7 +85,8 @@ export default function NoticiaScreen(props) {
             flexGrow: 1,
             height: webViewHeight,
             margin: 5,
-          }}>
+          }}
+          ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
             <Text style={stylesNot.textoNotTitulo}>{noticia.news.titulo}</Text>
             <Text style={stylesNot.subtituloNot}>
@@ -114,13 +122,6 @@ export default function NoticiaScreen(props) {
               />
             </View>
           </View>
-          {noticia.podcasts.length > 0 ? (
-            <View>
-              <Text style={stylesNot.tituloDelPodNot}>
-                También puedes escuchar el podcast de la nota
-              </Text>
-            </View>
-          ) : null}
 
           <View>
             <Text style={stylesNot.textoContNot}>Contactos de esta nota</Text>
