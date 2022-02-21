@@ -15,7 +15,7 @@ export default function Recuperar({navigation}) {
         },
       );
       let respuesta = await llamado.json();
-      console.log(respuesta, 'recuperar');
+      
     } catch (error) {
       console.log(error);
     }

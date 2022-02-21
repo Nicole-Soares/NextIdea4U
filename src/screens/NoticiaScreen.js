@@ -21,12 +21,11 @@ export default function NoticiaScreen(props) {
   const scrollRef = useRef();
   const INJECTED_JAVASCRIPT = `(function() {
     let body = document.getElementsByTagName("BODY")[0];
-   body.style.fontSize = "50px";
+   body.style.fontSize = "45px";
    body.style.Width = "80%";
  })();`;
 
   const onMessage = event => {
-    console.log(event.nativeEvent.data, 'evento');
     setWebViewHeight(Number(event.nativeEvent.data));
   };
 
@@ -68,7 +67,7 @@ export default function NoticiaScreen(props) {
   }, []);
 
   if (noticia) {
-    console.log(noticia, 'noticia');
+    console.log(noticia.news, 'noticia');
     const data = noticia.news.descripcion;
     let indice = noticia.news.fecha_hora.indexOf(' ');
     let extraida = noticia.news.fecha_hora.substring(0, indice);
@@ -110,16 +109,17 @@ export default function NoticiaScreen(props) {
                 source={{uri: noticia.news.imagen}}
                 style={stylesNot.imagenNotAbierta}
               />
-
-              <WebView
-                scrollEnabled={false}
-                source={{
-                  html: data,
-                }}
-                onMessage={() => onMessage()}
-                style={{height: 5750}}
-                injectedJavaScript={INJECTED_JAVASCRIPT}
-              />
+              <View style={{height: 1000}}>
+                <WebView
+                  scrollEnabled={false}
+                  source={{
+                    html: data,
+                  }}
+                  onMessage={() => onMessage()}
+                  injectedJavaScript={INJECTED_JAVASCRIPT}
+                  androidHardwareAccelerationDisabled={true}
+                />
+              </View>
             </View>
           </View>
 
@@ -163,9 +163,6 @@ export default function NoticiaScreen(props) {
                 <Text style={{display: 'none'}}></Text>
               )}
             </View>
-          </View>
-          <View>
-            <Text>{noticia.news.etiquetas}</Text>
           </View>
 
           <View style={stylesNot.contenedorOtrasNoticiasNot}>

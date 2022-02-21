@@ -4,12 +4,16 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesNav} from '../theme/stylesNav';
-import MenuHamburguesa from './MenuHamburguesa';
 
 // navbar
 
 export default function Navbar({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
+
+  function menuHamburguesa() {
+    setMenuHamburguesa(true);
+    setTimeout(() => setMenuHamburguesa(false), 3000);
+  }
 
   return (
     <View style={stylesNav.contenedorPadre}>
@@ -19,7 +23,7 @@ export default function Navbar({navigation}) {
             name="align-justify"
             size={25}
             color="black"
-            onPress={() => setMenuHamburguesa(true)}
+            onPress={() => menuHamburguesa()}
             style={{marginTop: 10}}
           />
         </View>

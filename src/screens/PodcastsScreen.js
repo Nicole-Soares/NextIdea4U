@@ -71,7 +71,7 @@ export default function PodcastsScreen({navigation}) {
   } = useContext(AppContext);
 
   useEffect(() => {
-    setMenuHamburguesa(false);
+   
     TraerPodcasts();
     async function TraerPodcasts() {
       try {

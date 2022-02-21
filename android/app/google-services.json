@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "614993767543",
+    "project_id": "next4idea",
+    "storage_bucket": "next4idea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614993767543:android:3fed458c1cb543bf81aa72",
+        "android_client_info": {
+          "package_name": "com.nextidea4u"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614993767543-hhje6g00tsdb9mdhvuh2ktq0ghr2t586.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nextidea4u",
+            "certificate_hash": "9a45e8f45f3e448c5593ed832562157d66e9ddf4"
+          }
+        },
+        {
+          "client_id": "614993767543-fr4i364pdhvtqfkidfquofmeofq0scqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCen4P9AFm3a1PfPutQyxNbMyEWplgG05s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614993767543-fr4i364pdhvtqfkidfquofmeofq0scqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

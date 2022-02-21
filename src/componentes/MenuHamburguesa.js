@@ -28,7 +28,7 @@ export default function MenuHamburguesa({navigation}) {
         }}>
         <View>
           <Image
-            source={require('../assets/icono/pp.jpg')}
+            source={require('../assets/icono/icono.png')}
             style={{height: 90, width: 90}}
           />
         </View>

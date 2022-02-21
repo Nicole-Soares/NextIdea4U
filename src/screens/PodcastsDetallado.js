@@ -22,17 +22,13 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 export default function PodcastsDetallado(props) {
   const {podcasts, setPodcasts, menuHamburguesa, setMenuHamburguesa} =
     useContext(AppContext);
-  const [setWebViewHeight] = useState(null);
+  const [webViewHeight, setWebViewHeight] = useState(null);
   const scrollRef = useRef();
   console.log(props.navigation);
   const INJECTED_JAVASCRIPT = `(function() {
       let body = document.getElementsByTagName("BODY")[0];
-     body.style.fontSize = "30px";
+     body.style.fontSize = "40px";
    })();`;
-  const INJECTED_JAVASCRIPTPOD = `(function() {
-    let body = document.getElementsByTagName("BODY")[0];
-   body.style.width = "90%";
- })();`;
 
   const onMessage = event => {
     setWebViewHeight(Number(event.nativeEvent.data));
@@ -82,7 +78,7 @@ export default function PodcastsDetallado(props) {
     let reemplazo = extraida.replace(/-/g, '/');
 
     return (
-      <View>
+      <View style={{backgroundColor: 'white'}}>
         {menuHamburguesa ? (
           <MenuHamburguesa navigation={props.navigation} />
         ) : null}
@@ -113,6 +109,29 @@ export default function PodcastsDetallado(props) {
                   />
                   <Text>{reemplazo}</Text>
                 </View>
+              </View>
+              <View style={{height: 200, alignSelf: 'center', width: '90%'}}>
+                <WebView
+                  scrollEnabled={false}
+                  source={{
+                    uri: podcasts.podcast.podcast,
+                  }}
+                  onMessage={() => onMessage()}
+                  style={{height: 300, marginTop: 15}}
+                />
+              </View>
+
+              <View style={{height: 800}}>
+                <WebView
+                  scrollEnabled={false}
+                  source={{
+                    html: data,
+                  }}
+                  onMessage={() => onMessage()}
+                  style={{height: 1000}}
+                  injectedJavaScript={INJECTED_JAVASCRIPT}
+                  androidHardwareAccelerationDisabled={true}
+                />
               </View>
               <View style={{width: '100%'}}>
                 <Text

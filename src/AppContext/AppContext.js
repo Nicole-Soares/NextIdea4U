@@ -13,7 +13,14 @@ export default function AppProvider({children}) {
   const [noticia, setNoticia] = useState(null);
   const [podcasts, setPodcasts] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const [facebookEmail, setFacebookEmail] = useState(null);
+  const [facebookId, setFacebookId] = useState(null);
+  const [facebookCupleanos, setFacebookCumpleanos] = useState(null);
+  const [facebookNombre, setFacebookNombre] = useState(null);
+  const [facebookApellido, setFacebookApellido] = useState(null);
+  const [googleNombre, setGoogleNombre] = useState(null);
+  const [googleId, setGoogleId] = useState(null);
+  const [googleEmail, setGoogleEmail] = useState(null);
   return (
     <AppContext.Provider
       value={{
@@ -33,6 +40,22 @@ export default function AppProvider({children}) {
         setPodcasts,
         loading,
         setLoading,
+        facebookEmail,
+        setFacebookEmail,
+        facebookId,
+        setFacebookId,
+        facebookCupleanos,
+        setFacebookCumpleanos,
+        facebookNombre,
+        setFacebookNombre,
+        facebookApellido,
+        setFacebookApellido,
+        googleNombre,
+        setGoogleNombre,
+        googleId,
+        setGoogleId,
+        googleEmail,
+        setGoogleEmail,
       }}>
       {children}
     </AppContext.Provider>

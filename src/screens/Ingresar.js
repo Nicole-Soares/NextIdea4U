@@ -7,15 +7,41 @@ import {
   LoginManager,
   GraphRequest,
   GraphRequestManager,
-  AccessToken,
 } from 'react-native-fbsdk-next';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+
 //screen del ingreso
 export default function Ingresar({navigation}) {
-  const {userPassword, setUserPassword} = useContext(AppContext);
+  const {
+    userPassword,
+    setUserPassword,
+    facebookEmail,
+    setFacebookEmail,
+    facebookId,
+    setFacebookId,
+    facebookCupleanos,
+    setFacebookCumpleanos,
+    facebookNombre,
+    setFacebookNombre,
+    facebookApellido,
+    setFacebookApellido,
+    googleNombre,
+    setGoogleNombre,
+    googleId,
+    setGoogleId,
+    googleEmail,
+    setGoogleEmail,
+  } = useContext(AppContext);
   const {userEmail, setUserEmail} = useContext(AppContext);
   const [error, setError] = useState(false);
+  const [dataFacebook, setDataFacebook] = useState(null);
+  const [dataGoogle, setDataGoogle] = useState(null);
   let deviceId = DeviceInfo.getUniqueId();
 
+  //conectar con la api de ingreso
   const Login = async () => {
     if (userEmail === '' || userPassword === '') {
       setError(true);
@@ -36,32 +62,14 @@ export default function Ingresar({navigation}) {
     }
   };
 
-  /*   <TouchableOpacity
-  style={{
-    backgroundColor: '#3b5999',
-    width: '70%',
-    borderRadius: 2,
-    height: 30,
-    margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  }}>
-  <Icon
-    name="facebook"
-    size={20}
-    color="white"
-    style={{width: '5%'}}
-  />
-  <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
-    {' '}
-    Continúa con Facebook{' '}
-  </Text>
-</TouchableOpacity> */
-
+  //ingreso con facebook
   const fbLogin = ressCallBack => {
     LoginManager.logOut();
-    return LoginManager.logInWithPermissions(['public_profile', 'email']).then(
+    return LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+      'user_birthday',
+    ]).then(
       result => {
         console.log('result :', result);
         if (
@@ -74,7 +82,7 @@ export default function Ingresar({navigation}) {
           console.log('error');
         } else {
           const infoRequest = new GraphRequest(
-            '/me?email, name, picture, friend',
+            '/me?fields=email, first_name, last_name, picture, birthday',
             null,
             ressCallBack,
           );
@@ -90,6 +98,7 @@ export default function Ingresar({navigation}) {
   };
 
   const onFbLogin = async () => {
+    console.log('hola');
     try {
       await fbLogin(_responseInfoCallBack);
     } catch (error) {
@@ -102,13 +111,76 @@ export default function Ingresar({navigation}) {
       console.log(error);
       return;
     } else {
-      const userData = result;
-      console.log(userData, 'data');
+      setDataFacebook(result);
+      console.log(result, 'resultado');
     }
   };
 
+  //conectar con la api de facebook
+  useEffect(() => {
+    if (dataFacebook) {
+      setFacebookEmail(dataFacebook.email);
+      setFacebookId(dataFacebook.id);
+      setFacebookCumpleanos(dataFacebook.birthday);
+      setFacebookNombre(dataFacebook.first_name);
+      setFacebookApellido(dataFacebook.last_name);
+      async function ingresarFacebook() {
+        try {
+          let llamado = await fetch(
+            `https://nextidea4u.com/api/login/login-facebook.php?device=${deviceId}&email=${facebookEmail}&name=${facebookNombre}&last=${facebookApellido}&external=${facebookId}&birthday=${facebookCupleanos}&player_id=${global.playerId}`,
+          );
+          let data = await llamado.json();
+          console.log(data, 'data');
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      ingresarFacebook();
+    }
+  }, [dataFacebook]);
+
+  //ingreso con google
  
 
+  const googleLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      setDataGoogle(userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SING_IN_CANCELLED) {
+        //si el usuario cancela
+        console.log(error);
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log(error);
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log(error);
+      } else {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (dataGoogle) {
+      setGoogleEmail(dataGoogle.user.email);
+      setGoogleId(dataGoogle.user.id);
+      setGoogleNombre(dataGoogle.user.name);
+
+      async function ingresarGoogle() {
+        try {
+          let llamado = await fetch(
+            `https://nextidea4u.com/api/login/login-google.php?device=${deviceId}&email=${googleEmail}&name=${googleNombre}&external=${googleId}&player_id=${global.playerId}`,
+          );
+          let data = await llamado.json();
+          console.log(data, 'data');
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      ingresarGoogle();
+    }
+  }, [dataGoogle]);
   return (
     <View
       style={{
@@ -181,7 +253,8 @@ export default function Ingresar({navigation}) {
               flexDirection: 'row',
               justifyContent: 'space-around',
               alignItems: 'center',
-            }}>
+            }}
+            onPress={() => googleLogin()}>
             <Icon name="google" size={20} color="white" />
             <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
               Continúa con Google
