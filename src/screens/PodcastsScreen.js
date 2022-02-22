@@ -17,50 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 //screen de los podcasts
 
-/*  <View style={{backgroundColor: '#0000C6'}}>
-<ScrollView>
-<View
-  style={{
-    position: 'relative',
-    top: 0,
-    width: 0,
-    height: 0,
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderRightWidth: 170,
-    borderTopWidth: 170,
-    borderRightColor: 'transparent',
-    borderTopColor: '#0505EC',
-  }}></View>
-<View
-  style={{
-    position: 'relative',
-    bottom: 0,
-    width: 0,
-    marginTop: 60,
-    height: 0,
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderRightWidth: 170,
-    borderTopWidth: 170,
-    borderRightColor: 'transparent',
-    borderTopColor: '#0505EC',
-    transform: [{rotate: '270deg'}],
-  }}></View>
-<View
-  style={{
-    position: 'absolute',
 
-    justifyContent: 'center',
-    alignSelf: 'center',
-  }}>
-  <Image
-    source={require('../assets/icono/imgPod.png')}
-    style={{height: 400, width: 300}}
-  />
-</View>
-</ScrollView>
-</View> */
 
 export default function PodcastsScreen({navigation}) {
   const {
@@ -70,33 +27,31 @@ export default function PodcastsScreen({navigation}) {
     setMenuHamburguesa,
   } = useContext(AppContext);
 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      setMenuHamburguesa(false);
 
-  
-useEffect(() => {
-  const unsubscribe = navigation.addListener('focus', () => {
-    setMenuHamburguesa(false);
-  
-    TraerPodcasts();
-    async function TraerPodcasts() {
-      try {
-        let data = await fetch(
-          'https://nextidea4u.com/api/podcast/get-podcasts.php',
-        );
+      TraerPodcasts();
+      async function TraerPodcasts() {
+        try {
+          let data = await fetch(
+            'https://nextidea4u.com/api/podcast/get-podcasts.php',
+          );
 
-        let respuesta = await data.json();
+          let respuesta = await data.json();
 
-        setListadoPodcasts(respuesta);
-      } catch (error) {
-        console.error(error);
+          setListadoPodcasts(respuesta);
+        } catch (error) {
+          console.error(error);
+        }
       }
-    }
-    // The screen is focused
-    // Call any action
-  });
+      // The screen is focused
+      // Call any action
+    });
 
-  // Return the function to unsubscribe from the event so it gets removed on unmount
-  return unsubscribe;
-}, [navigation]);
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <View style={{width: '100%', height: '100%'}}>

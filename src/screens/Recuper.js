@@ -1,11 +1,12 @@
-import {NavigationContainerRefContext} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+//screen recuperar contraseña
 export default function Recuperar({navigation}) {
   const [userEmailRecuperar, setUserEmailRecuperar] = useState('');
 
+  //llamo a la api para recuperar contraseña
   const RecuperarContraseña = async () => {
     try {
       let llamado = await fetch(
@@ -15,7 +16,6 @@ export default function Recuperar({navigation}) {
         },
       );
       let respuesta = await llamado.json();
-      
     } catch (error) {
       console.log(error);
     }

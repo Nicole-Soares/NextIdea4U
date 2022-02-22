@@ -16,24 +16,25 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 import {stylesNot} from '../theme/stylesNot';
 import Share from 'react-native-share';
 
+// screen noticia abierta
+
 export default function NoticiaScreen(props) {
   const {noticia, setNoticia, menuHamburguesa} = useContext(AppContext);
   const [webViewHeight, setWebViewHeight] = useState(null);
   const scrollRef = useRef();
+
+  //inyecto js para los estilos del webview
   const INJECTED_JAVASCRIPT = `(function() {
     let body = document.getElementsByTagName("BODY")[0];
    body.style.fontSize = "38px";
   
-   window.ReactNativeWebView.postMessage(
-    Math.max(document.body.offsetHeight, document.body.scrollHeight)
-    
-    
-  );
+  
   let imagen = document.getElementsByTagName("img");
   image.style.width= "100px"
 
  })();`;
-  // compartir
+
+  // funcion para compartir
   const shareCustom = async () => {
     const shareOptions = {
       url: noticia.news.url,
@@ -45,9 +46,7 @@ export default function NoticiaScreen(props) {
     }
   };
 
-  const onMessage = event => {
-    setWebViewHeight(Number(event.nativeEvent.data));
-  };
+  // actualizo la noticia y mando la vista para arriba
 
   const llamadoNoticiasRelacionadas = async idNoticia => {
     setTimeout(
@@ -69,7 +68,7 @@ export default function NoticiaScreen(props) {
       console.log(error);
     }
   };
-
+  //traigo la data la primera vez
   useEffect(() => {
     const llamadoNoticias = async () => {
       try {
@@ -84,6 +83,7 @@ export default function NoticiaScreen(props) {
       }
     };
     llamadoNoticias();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (noticia) {

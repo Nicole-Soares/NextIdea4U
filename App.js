@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useEffect} from 'react';
-import {ScrollView} from 'react-native';
+import React, {useEffect} from 'react';
 import AppProvider from './src/AppContext/AppContext';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation from './src/navigation/StackNavigation';
@@ -9,6 +8,7 @@ import OneSignal from 'react-native-onesignal';
 export default function App() {
   const setTokenUrl = 'https://nextidea4u.com/api/set-token.php';
 
+  //sacar el device
   useEffect(() => {
     (async () => {
       OneSignal.setLogLevel(6, 0);

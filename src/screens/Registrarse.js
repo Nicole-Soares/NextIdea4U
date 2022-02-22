@@ -42,6 +42,7 @@ export default function Registrarse({navigation}) {
 
   let deviceId = DeviceInfo.getUniqueId();
 
+  //registro del usuario
   const Registrar = async () => {
     if (userPasswordRegistrar === '' || userEmailRegistrar === '') {
       setErrorRegistrar(true);
@@ -55,13 +56,13 @@ export default function Registrarse({navigation}) {
           },
         );
         let data = await llamada.json();
-     
       } catch (error) {
         console.log(error);
       }
     }
   };
 
+  //ingreso con face
   const fbLogin = ressCallBack => {
     LoginManager.logOut();
     return LoginManager.logInWithPermissions([
@@ -70,7 +71,6 @@ export default function Registrarse({navigation}) {
       'user_birthday',
     ]).then(
       result => {
-      
         if (
           result.declinedPermissions &&
           result.declinedPermissions.includes('email')
@@ -110,7 +110,6 @@ export default function Registrarse({navigation}) {
       return;
     } else {
       setDataFacebook(result);
-    
     }
   };
 
@@ -134,6 +133,7 @@ export default function Registrarse({navigation}) {
       }
       ingresarFacebook();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataFacebook]);
 
   //ingreso con google
@@ -156,7 +156,7 @@ export default function Registrarse({navigation}) {
       }
     }
   };
-
+  // llamo a la api para google
   useEffect(() => {
     if (dataGoogle) {
       setGoogleEmail(dataGoogle.user.email);
@@ -169,13 +169,13 @@ export default function Registrarse({navigation}) {
             `https://nextidea4u.com/api/login/login-google.php?device=${deviceId}&email=${googleEmail}&name=${googleNombre}&external=${googleId}&player_id=${global.playerId}`,
           );
           let data = await llamado.json();
-        
         } catch (error) {
           console.log(error);
         }
       }
       ingresarGoogle();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataGoogle]);
   return (
     <View style={stylesReg.contenedorPadre}>

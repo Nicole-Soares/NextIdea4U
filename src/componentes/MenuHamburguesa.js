@@ -29,7 +29,7 @@ export default function MenuHamburguesa({navigation}) {
         <View>
           <Image
             source={require('../assets/icono/icono.png')}
-            style={{height: 65, width: 60, marginLeft:10}}
+            style={{height: 65, width: 60, marginLeft: 10}}
           />
         </View>
         <View style={{justifyContent: 'center'}}>

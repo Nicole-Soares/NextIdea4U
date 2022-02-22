@@ -12,6 +12,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import {stylesIng} from '../theme/stylesIng';
 
 //screen del ingreso
 export default function Ingresar({navigation}) {
@@ -55,7 +56,6 @@ export default function Ingresar({navigation}) {
           },
         );
         let data = await llamado.json();
-        console.log(data, 'ingresar');
       } catch (error) {
         console.log(error);
       }
@@ -65,13 +65,13 @@ export default function Ingresar({navigation}) {
   //ingreso con facebook
   const fbLogin = ressCallBack => {
     LoginManager.logOut();
+    // los permisos de lo que necesito
     return LoginManager.logInWithPermissions([
       'public_profile',
       'email',
       'user_birthday',
     ]).then(
       result => {
-        console.log('result :', result);
         if (
           result.declinedPermissions &&
           result.declinedPermissions.includes('email')
@@ -81,6 +81,7 @@ export default function Ingresar({navigation}) {
         if (result.isCancelled) {
           console.log('error');
         } else {
+          //armo la request para pedir a face los datos
           const infoRequest = new GraphRequest(
             '/me?fields=email, first_name, last_name, picture, birthday',
             null,
@@ -98,7 +99,6 @@ export default function Ingresar({navigation}) {
   };
 
   const onFbLogin = async () => {
-    console.log('hola');
     try {
       await fbLogin(_responseInfoCallBack);
     } catch (error) {
@@ -112,7 +112,6 @@ export default function Ingresar({navigation}) {
       return;
     } else {
       setDataFacebook(result);
-      console.log(result, 'resultado');
     }
   };
 
@@ -137,10 +136,10 @@ export default function Ingresar({navigation}) {
       }
       ingresarFacebook();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataFacebook]);
 
   //ingreso con google
- 
 
   const googleLogin = async () => {
     try {
@@ -160,7 +159,7 @@ export default function Ingresar({navigation}) {
       }
     }
   };
-
+  // conectar con la api de google
   useEffect(() => {
     if (dataGoogle) {
       setGoogleEmail(dataGoogle.user.email);
@@ -180,23 +179,13 @@ export default function Ingresar({navigation}) {
       }
       ingresarGoogle();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataGoogle]);
+
   return (
-    <View
-      style={{
-        backgroundColor: '#f5f4f8',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-      }}>
-      <View style={{backgroundColor: 'white', width: '90%', elevation: 5}}>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            margin: 10,
-          }}>
+    <View style={stylesIng.contenedorPadre}>
+      <View style={stylesIng.contenedorHermano}>
+        <View style={stylesIng.contenedorArriba}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Image
               source={require('../assets/icono/icono.png')}
@@ -204,13 +193,7 @@ export default function Ingresar({navigation}) {
             />
           </TouchableOpacity>
 
-          <Text
-            style={{
-              width: '50%',
-              color: 'black',
-              fontWeight: 'bold',
-              fontSize: 20,
-            }}>
+          <Text style={stylesIng.estilosTextoRegistrate}>
             Ingresa a tu cuenta
           </Text>
           <Text
@@ -220,61 +203,30 @@ export default function Ingresar({navigation}) {
             <Text style={{color: 'blue'}}>Registrate</Text>
           </Text>
         </View>
-        <View style={{alignItems: 'center', width: '100%', margin: 10}}>
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#3b5999',
-              width: '70%',
-              borderRadius: 2,
-              height: 30,
-              margin: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
-            onPress={onFbLogin}>
+        <View style={stylesIng.contenedorBotonesRedesSociales}>
+          <TouchableOpacity style={stylesIng.botonFace} onPress={onFbLogin}>
             <Icon
               name="facebook"
               size={20}
               color="white"
               style={{width: '5%'}}
             />
-            <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
-              Continúa con Facebook
-            </Text>
+            <Text style={stylesIng.textoGoFa}>Continúa con Facebook</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              backgroundColor: '#fb5252',
-              width: '70%',
-              borderRadius: 2,
-              height: 30,
-              margin: 10,
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
+            style={stylesIng.botonGoogle}
             onPress={() => googleLogin()}>
             <Icon name="google" size={20} color="white" />
-            <Text style={{color: 'white', fontWeight: 'bold', width: '60%'}}>
-              Continúa con Google
-            </Text>
+            <Text style={stylesIng.textoGoFa}>Continúa con Google</Text>
           </TouchableOpacity>
         </View>
-        <View style={{alignSelf: 'center'}}>
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
-            Ó ingresa con tu email
-          </Text>
+        <View style={stylesIng.contenedorIngresarMail}>
+          <Text style={stylesIng.textoIngresa}>Ó ingresa con tu email</Text>
         </View>
-        <View style={{width: '90%', alignSelf: 'center', margin: 10}}>
+        <View style={stylesIng.contenedorInputs}>
           <TextInput
             placeholder="Email"
-            style={{
-              borderWidth: 1,
-              borderRadius: 5,
-              borderColor: '#8898aa',
-              margin: 5,
-            }}
+            style={stylesIng.estilosInputs}
             value={userEmail}
             onChangeText={e => setUserEmail(e)}
           />
@@ -285,30 +237,17 @@ export default function Ingresar({navigation}) {
           ) : null}
           <TextInput
             placeholder="Contraseña"
-            style={{
-              borderWidth: 1,
-              borderRadius: 5,
-              borderColor: '#8898aa',
-              margin: 5,
-            }}
+            style={stylesIng.estilosInputs}
             value={userPassword}
             onChangeText={e => setUserPassword(e)}
           />
           {error ? <Text style={{color: 'red'}}>Campo requerido</Text> : null}
         </View>
-        <View style={{width: '90%', alignSelf: 'center', margin: 10}}>
+        <View style={stylesIng.contenedorBotones}>
           <TouchableOpacity
-            style={{
-              borderRadius: 2,
-              backgroundColor: '#3368ce',
-              height: 30,
-              justifyContent: 'center',
-            }}
+            style={stylesIng.botonIniciar}
             onPress={() => Login()}>
-            <Text
-              style={{color: 'white', fontWeight: 'bold', textAlign: 'center'}}>
-              Iniciar sesión
-            </Text>
+            <Text style={stylesIng.textoIniciar}>Iniciar sesión</Text>
           </TouchableOpacity>
 
           <View style={{margin: 5}}>

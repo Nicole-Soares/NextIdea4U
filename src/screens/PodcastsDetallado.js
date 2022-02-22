@@ -34,6 +34,8 @@ export default function PodcastsDetallado(props) {
     );
    })();`;
 
+   //funcion para compartir
+
   const shareCustom = async () => {
     const shareOptions = {
       url: podcasts.podcast.url,
@@ -49,6 +51,7 @@ export default function PodcastsDetallado(props) {
     setWebViewHeight(Number(event.nativeEvent.data));
   };
 
+  // funcion para actualizar los podcasts y mandar la vista para arriba
   const llamadoPodcastsRelacionados = async idPodcasts => {
     setTimeout(
       () =>
@@ -69,7 +72,7 @@ export default function PodcastsDetallado(props) {
       console.log(error);
     }
   };
-
+//traigo los podcasts con la api
   useEffect(() => {
     const llamadoNoticias = async () => {
       try {
@@ -163,7 +166,7 @@ export default function PodcastsDetallado(props) {
                 <AutoHeightWebView
                   style={{
                     width: Dimensions.get('window').width - 15,
-                    height: Dimensions.get('window').height ,
+                    height: Dimensions.get('window').height,
                     marginTop: 35,
                   }}
                   customScript={`document.body.style.height= '1000px';`}
