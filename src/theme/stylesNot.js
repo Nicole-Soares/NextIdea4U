@@ -18,7 +18,7 @@ export const stylesNot = StyleSheet.create({
     justifyContent: 'space-between',
   },
   textoTituloNot: {
-    fontSize: 20,
+    fontSize: 19,
     color: 'blue',
     fontWeight: 'bold',
     width: '95%',

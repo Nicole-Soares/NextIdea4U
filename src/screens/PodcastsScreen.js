@@ -70,8 +70,12 @@ export default function PodcastsScreen({navigation}) {
     setMenuHamburguesa,
   } = useContext(AppContext);
 
-  useEffect(() => {
-   
+
+  
+useEffect(() => {
+  const unsubscribe = navigation.addListener('focus', () => {
+    setMenuHamburguesa(false);
+  
     TraerPodcasts();
     async function TraerPodcasts() {
       try {
@@ -86,7 +90,13 @@ export default function PodcastsScreen({navigation}) {
         console.error(error);
       }
     }
-  }, []);
+    // The screen is focused
+    // Call any action
+  });
+
+  // Return the function to unsubscribe from the event so it gets removed on unmount
+  return unsubscribe;
+}, [navigation]);
 
   return (
     <View style={{width: '100%', height: '100%'}}>

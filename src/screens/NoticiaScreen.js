@@ -14,6 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {AppContext} from '../AppContext/AppContext';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 import {stylesNot} from '../theme/stylesNot';
+import Share from 'react-native-share';
 
 export default function NoticiaScreen(props) {
   const {noticia, setNoticia, menuHamburguesa} = useContext(AppContext);
@@ -21,9 +22,28 @@ export default function NoticiaScreen(props) {
   const scrollRef = useRef();
   const INJECTED_JAVASCRIPT = `(function() {
     let body = document.getElementsByTagName("BODY")[0];
-   body.style.fontSize = "45px";
-   body.style.Width = "80%";
+   body.style.fontSize = "38px";
+  
+   window.ReactNativeWebView.postMessage(
+    Math.max(document.body.offsetHeight, document.body.scrollHeight)
+    
+    
+  );
+  let imagen = document.getElementsByTagName("img");
+  image.style.width= "100px"
+
  })();`;
+  // compartir
+  const shareCustom = async () => {
+    const shareOptions = {
+      url: noticia.news.url,
+    };
+    try {
+      const ShareResponse = await Share.open(shareOptions);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onMessage = event => {
     setWebViewHeight(Number(event.nativeEvent.data));
@@ -67,7 +87,6 @@ export default function NoticiaScreen(props) {
   }, []);
 
   if (noticia) {
-    console.log(noticia.news, 'noticia');
     const data = noticia.news.descripcion;
     let indice = noticia.news.fecha_hora.indexOf(' ');
     let extraida = noticia.news.fecha_hora.substring(0, indice);
@@ -109,19 +128,59 @@ export default function NoticiaScreen(props) {
                 source={{uri: noticia.news.imagen}}
                 style={stylesNot.imagenNotAbierta}
               />
-              <View style={{height: 1000}}>
+              <View style={{margin: 5}}>
+                <TouchableOpacity
+                  onPress={() => shareCustom(noticia.news.url)}
+                  style={{
+                    borderColor: 'black',
+                    borderRadius: 10,
+                    borderWidth: 2,
+                    width: '50%',
+                    flexDirection: 'row',
+                    margin: 5,
+                    justifyContent: 'space-around',
+                  }}>
+                  <Icon name="share" color="black" size={20} />
+                  <Text
+                    style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
+                    Compartir noticia
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{height: 3950, marginRight: 20}}>
                 <WebView
                   scrollEnabled={false}
                   source={{
                     html: data,
                   }}
-                  onMessage={() => onMessage()}
                   injectedJavaScript={INJECTED_JAVASCRIPT}
-                  androidHardwareAccelerationDisabled={true}
                 />
               </View>
             </View>
           </View>
+          {noticia.podcasts
+            ? noticia.podcasts.map(podcasts => (
+                <View style={{height: 300}}>
+                  <Text
+                    style={{
+                      fontSize: 17,
+                      color: 'black',
+                      fontWeight: 'bold',
+                      borderBottomColor: 'gray',
+                      borderBottomWidth: 1,
+                      margin: 5,
+                    }}>
+                    También puedes escuchar el podcast de la nota
+                  </Text>
+                  <WebView
+                    scrollEnabled={false}
+                    source={{
+                      uri: podcasts.podcast,
+                    }}
+                  />
+                </View>
+              ))
+            : null}
 
           <View>
             <Text style={stylesNot.textoContNot}>Contactos de esta nota</Text>

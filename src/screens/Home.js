@@ -11,23 +11,31 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 export default function Home({navigation}) {
   const {setListadoNoticiasPodcasts, menuHamburguesa, setMenuHamburguesa} =
     useContext(AppContext);
-   
-  
-  useEffect(() => {
-    
-    TraerNoticias();
-    async function TraerNoticias() {
-      try {
-        let data = await fetch('https://nextidea4u.com/api/home/get-items.php');
 
-        let respuesta = await data.json();
+useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      setMenuHamburguesa(false);
+      TraerNoticias();
+      async function TraerNoticias() {
+        try {
+          let data = await fetch(
+            'https://nextidea4u.com/api/home/get-items.php',
+          );
 
-        setListadoNoticiasPodcasts(respuesta);
-      } catch (error) {
-        console.error(error);
+          let respuesta = await data.json();
+
+          setListadoNoticiasPodcasts(respuesta);
+        } catch (error) {
+          console.error(error);
+        }
       }
-    }
-  }, []);
+      // The screen is focused
+      // Call any action
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <View style={{width: '100%', height: '100%'}}>

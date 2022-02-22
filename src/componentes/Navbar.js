@@ -12,7 +12,7 @@ export default function Navbar({navigation}) {
 
   function menuHamburguesa() {
     setMenuHamburguesa(true);
-    setTimeout(() => setMenuHamburguesa(false), 3000);
+   
   }
 
   return (

@@ -7,7 +7,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Linking,
-  document,
+  Dimensions,
 } from 'react-native';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -16,19 +16,34 @@ import {WebView} from 'react-native-webview';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesPod} from '../theme/stylesPod';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
+import Share from 'react-native-share';
+import AutoHeightWebView from 'react-native-autoheight-webview';
 
 //screen podcasts abierto
 
 export default function PodcastsDetallado(props) {
-  const {podcasts, setPodcasts, menuHamburguesa, setMenuHamburguesa} =
-    useContext(AppContext);
+  const {podcasts, setPodcasts, menuHamburguesa} = useContext(AppContext);
   const [webViewHeight, setWebViewHeight] = useState(null);
   const scrollRef = useRef();
-  console.log(props.navigation);
+
   const INJECTED_JAVASCRIPT = `(function() {
       let body = document.getElementsByTagName("BODY")[0];
-     body.style.fontSize = "40px";
+     body.style.fontSize = "38px";
+     window.ReactNativeWebView.postMessage(
+      Math.max(document.body.offsetHeight, document.body.scrollHeight)
+    );
    })();`;
+
+  const shareCustom = async () => {
+    const shareOptions = {
+      url: podcasts.podcast.url,
+    };
+    try {
+      const ShareResponse = await Share.open(shareOptions);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onMessage = event => {
     setWebViewHeight(Number(event.nativeEvent.data));
@@ -83,7 +98,12 @@ export default function PodcastsDetallado(props) {
           <MenuHamburguesa navigation={props.navigation} />
         ) : null}
         <Navbar navigation={props.navigation} />
-        <ScrollView ref={scrollRef}>
+        <ScrollView
+          ref={scrollRef}
+          contentContainerStyle={{
+            flexGrow: 1,
+            height: webViewHeight,
+          }}>
           {podcasts ? (
             <View>
               <View style={{margin: 10, width: '100%'}}>
@@ -120,17 +140,39 @@ export default function PodcastsDetallado(props) {
                   style={{height: 300, marginTop: 15}}
                 />
               </View>
-
-              <View style={{height: 800}}>
-                <WebView
-                  scrollEnabled={false}
+              <View style={{margin: 5}}>
+                <TouchableOpacity
+                  onPress={() => shareCustom()}
+                  style={{
+                    borderColor: 'black',
+                    borderRadius: 10,
+                    borderWidth: 2,
+                    width: '50%',
+                    flexDirection: 'row',
+                    margin: 5,
+                    justifyContent: 'space-around',
+                  }}>
+                  <Icon name="share" color="black" size={20} />
+                  <Text
+                    style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
+                    Compartir Podcast
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{height: 750, marginLeft: 10}}>
+                <AutoHeightWebView
+                  style={{
+                    width: Dimensions.get('window').width - 15,
+                    height: Dimensions.get('window').height ,
+                    marginTop: 35,
+                  }}
+                  customScript={`document.body.style.height= '1000px';`}
+                  customStyle={`* {font-size: 15px;}`}
                   source={{
                     html: data,
                   }}
-                  onMessage={() => onMessage()}
-                  style={{height: 1000}}
-                  injectedJavaScript={INJECTED_JAVASCRIPT}
-                  androidHardwareAccelerationDisabled={true}
+                  scalesPageToFit={true}
+                  viewportContent={'width=device-width, user-scalable=no'}
                 />
               </View>
               <View style={{width: '100%'}}>
