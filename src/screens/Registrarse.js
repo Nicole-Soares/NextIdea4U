@@ -233,6 +233,7 @@ export default function Registrarse({navigation}) {
           ) : null}
           <TextInput
             placeholder="Crea una contraseña de ingreso"
+            secureTextEntry={true}
             style={stylesReg.inputPassword}
             value={userPasswordRegistrar}
             onChangeText={e => setUserPasswordRegistrar(e)}

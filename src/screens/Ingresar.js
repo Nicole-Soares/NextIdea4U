@@ -237,6 +237,7 @@ export default function Ingresar({navigation}) {
           ) : null}
           <TextInput
             placeholder="Contraseña"
+            secureTextEntry={true}
             style={stylesIng.estilosInputs}
             value={userPassword}
             onChangeText={e => setUserPassword(e)}
