@@ -17,8 +17,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 //screen de los podcasts
 
-
-
 export default function PodcastsScreen({navigation}) {
   const {
     listadoPodcasts,
@@ -94,19 +92,19 @@ export default function PodcastsScreen({navigation}) {
             width: '100%',
           }}>
           <View style={{width: '100%', alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 30, fontWeight: 'bold'}}>
+            <Text style={{color: 'white', fontSize: 30, fontFamily:"Inter-Bold"}}>
               Podcasts de Next Idea 4U
             </Text>
           </View>
 
           <View style={{width: '90%', alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 17}}>
+            <Text style={{color: 'white', fontSize: 17, fontFamily:"Inter-Regular"}}>
               Disfrute de todo el contenido de nuestra plataforma en formato
               audio con nuestros podcasts.
             </Text>
           </View>
           <View style={{alignSelf: 'center'}}>
-            <Text style={{color: 'yellow', fontWeight: 'bold', fontSize: 15}}>
+            <Text style={{color: 'yellow', fontFamily:"Inter-Bold", fontSize: 15}}>
               Tambien disponible en:
             </Text>
           </View>
@@ -189,7 +187,7 @@ export default function PodcastsScreen({navigation}) {
             ? listadoPodcasts.featured.map(podcast => {
                 return (
                   <View
-                    style={{width: '50%', marginBottom: 10}}
+                    style={{width: '50%', marginBottom: 25}}
                     key={podcast.id}>
                     <TouchableOpacity
                       onPress={() =>
@@ -205,8 +203,10 @@ export default function PodcastsScreen({navigation}) {
                         style={{
                           fontSize: 17,
                           color: 'black',
-                          fontWeight: 'bold',
+
                           width: '80%',
+                          marginTop: 10,
+                          fontFamily: 'Inter-Bold',
                         }}>
                         {podcast.title}
                       </Text>

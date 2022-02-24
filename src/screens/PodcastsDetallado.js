@@ -34,7 +34,7 @@ export default function PodcastsDetallado(props) {
     );
    })();`;
 
-   //funcion para compartir
+  //funcion para compartir
 
   const shareCustom = async () => {
     const shareOptions = {
@@ -72,7 +72,7 @@ export default function PodcastsDetallado(props) {
       console.log(error);
     }
   };
-//traigo los podcasts con la api
+  //traigo los podcasts con la api
   useEffect(() => {
     const llamadoNoticias = async () => {
       try {
@@ -87,6 +87,7 @@ export default function PodcastsDetallado(props) {
       }
     };
     llamadoNoticias();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (podcasts) {
@@ -108,7 +109,13 @@ export default function PodcastsDetallado(props) {
             height: webViewHeight,
           }}>
           {podcasts ? (
-            <View>
+            <View style={{marginLeft: 5}}>
+              <Icon
+                name="podcast"
+                color="grey"
+                size={30}
+                style={{marginLeft: 10, marginTop: 10}}
+              />
               <View style={{margin: 10, width: '100%'}}>
                 <Text
                   style={{
@@ -179,22 +186,29 @@ export default function PodcastsDetallado(props) {
                 />
               </View>
               <View style={{width: '100%'}}>
-                <Text
+                <View
                   style={{
-                    color: 'black',
-                    fontWeight: 'bold',
-                    fontSize: 20,
-                    margin: 5,
                     borderBottomColor: 'gray',
                     borderBottomWidth: 1,
                     width: '90%',
+                    alignSelf: 'center',
                   }}>
-                  Tambien disponible en las plataformas:
-                </Text>
-                <View style={{flexDirection: 'row'}}>
+                  <Text
+                    style={{
+                      color: 'black',
+                      fontWeight: 'bold',
+                      fontSize: 20,
+                      width: '100%',
+                      marginBottom: 15,
+                    }}>
+                    Tambien disponible en las plataformas:
+                  </Text>
+                </View>
+                <View
+                  style={{flexDirection: 'row', marginLeft: 15, marginTop: 15}}>
                   <TouchableOpacity
                     style={{
-                      backgroundColor: 'blue',
+                      backgroundColor: '#005cff',
                       flexDirection: 'row',
                       margin: 5,
                       borderRadius: 3,
@@ -221,7 +235,7 @@ export default function PodcastsDetallado(props) {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{
-                      backgroundColor: 'blue',
+                      backgroundColor: '#005cff',
                       flexDirection: 'row',
                       margin: 5,
                       borderRadius: 3,
@@ -249,7 +263,7 @@ export default function PodcastsDetallado(props) {
                 </View>
                 <TouchableOpacity
                   style={{
-                    backgroundColor: 'blue',
+                    backgroundColor: '#005cff',
                     flexDirection: 'row',
                     margin: 5,
                     borderRadius: 3,
@@ -257,6 +271,7 @@ export default function PodcastsDetallado(props) {
                     alignItems: 'center',
                     width: 150,
                     height: 30,
+                    marginLeft: 20,
                   }}
                   onPress={() =>
                     Linking.openURL(
@@ -275,13 +290,30 @@ export default function PodcastsDetallado(props) {
                   </Text>
                 </TouchableOpacity>
               </View>
+              <View
+                style={{
+                  borderBottomColor: 'gray',
+                  borderBottomWidth: 1,
+                  width: '90%',
+                  alignSelf: 'center',
+                  marginTop: 10,
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'Inter-Bold',
+                    color: 'black',
+                    fontSize: 18,
+                  }}>
+                  Contactos de esta nota
+                </Text>
+              </View>
               {podcasts.participants.map(participante => {
                 return (
                   <LinearGradient
                     colors={['#212529', '#1d4da2']}
                     start={{x: 0.1, y: 0.9}}
                     end={{x: 0.7, y: 0.6}}
-                    style={{margin: 10}}
+                    style={{margin: 10, padding: 20}}
                     key={participante.id}>
                     <Image
                       source={{uri: participante.imagen}}
@@ -332,21 +364,28 @@ export default function PodcastsDetallado(props) {
                 );
               })}
 
-              <View style={{width: '100%'}}>
-                <Text
+              <View>
+                <View
                   style={{
-                    color: 'black',
-                    fontWeight: 'bold',
-                    fontSize: 20,
-                    margin: 5,
                     borderBottomColor: 'gray',
                     borderBottomWidth: 1,
                     width: '90%',
+                    alignSelf: 'center',
+                    marginTop: 15,
                   }}>
-                  Noticias relacionadas al podcast
-                </Text>
+                  <Text
+                    style={{
+                      color: 'black',
+                      fontFamily: 'Inter-Bold',
+                      fontSize: 20,
+                      marginBottom: 15,
+                      width: '100%',
+                    }}>
+                    Noticias relacionadas al podcast
+                  </Text>
+                </View>
 
-                <View style={{width: '100%'}}>
+                <View style={{width: '100%', marginTop: 10}}>
                   {podcasts.news.map(noticiaRePod => {
                     return (
                       <TouchableOpacity
@@ -375,18 +414,13 @@ export default function PodcastsDetallado(props) {
                           <Text
                             style={{
                               color: 'blue',
+                              fontFamily: 'Inter-Regular',
                               fontSize: 20,
-                              marginLeft: 10,
                             }}>
                             {noticiaRePod.subtitulo}.
-                          </Text>
-                          <Text
-                            style={{
-                              color: 'black',
-                              fontSize: 17,
-                              marginLeft: 10,
-                            }}>
-                            {noticiaRePod.titulo}
+                            <Text style={{color: 'black'}}>
+                              {noticiaRePod.titulo}
+                            </Text>
                           </Text>
                         </View>
                       </TouchableOpacity>
@@ -394,18 +428,24 @@ export default function PodcastsDetallado(props) {
                   })}
                 </View>
                 <View style={{width: '100%'}}>
-                  <Text
+                  <View
                     style={{
-                      fontWeight: 'bold',
-                      color: 'black',
-                      fontSize: 20,
-                      margin: 5,
                       borderBottomColor: 'gray',
                       borderBottomWidth: 1,
                       width: '90%',
+                      alignSelf: 'center',
                     }}>
-                    Te puede interesar
-                  </Text>
+                    <Text
+                      style={{
+                        fontWeight: 'bold',
+                        color: 'black',
+                        fontSize: 20,
+                        margin: 5,
+                      }}>
+                      Te puede interesar
+                    </Text>
+                  </View>
+
                   <View style={stylesPod.contenedorPadrePod}>
                     <View
                       style={{
@@ -434,7 +474,7 @@ export default function PodcastsDetallado(props) {
                                     source={{uri: podcastsRe.imagen}}
                                     style={{
                                       width: '90%',
-                                      height: 180,
+                                      height: 170,
                                       borderRadius: 10,
                                     }}
                                   />
@@ -442,8 +482,11 @@ export default function PodcastsDetallado(props) {
                                     style={{
                                       color: 'black',
                                       fontSize: 15,
-                                      marginLeft: 10,
+
                                       width: '90%',
+                                      marginTop: 5,
+                                      fontFamily: 'Inter-Bold',
+                                      marginBottom: 10,
                                     }}>
                                     {podcastsRe.titulo}
                                   </Text>

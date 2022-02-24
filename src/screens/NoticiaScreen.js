@@ -106,10 +106,17 @@ export default function NoticiaScreen(props) {
           }}
           ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
-            <Text style={stylesNot.textoNotTitulo}>{noticia.news.titulo}</Text>
-            <Text style={stylesNot.subtituloNot}>
-              {noticia.news.subtitulo}.
-            </Text>
+            <View style={{width: '100%'}}>
+              <Text
+                style={{
+                  color: 'blue',
+                  fontFamily: 'Inter-Bold',
+                  fontSize: 22,
+                }}>
+                {noticia.news.subtitulo}.
+                <Text style={{color: 'black'}}>{noticia.news.titulo}</Text>
+              </Text>
+            </View>
             <Text style={stylesNot.textoDesDesNot}>
               {noticia.news.descripcion_corta}
             </Text>
@@ -183,7 +190,17 @@ export default function NoticiaScreen(props) {
             : null}
 
           <View>
-            <Text style={stylesNot.textoContNot}>Contactos de esta nota</Text>
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderBottomColor: 'gray',
+                width: '90%',
+                alignSelf: 'center',
+                marginBottom: 15,
+              }}>
+              <Text style={stylesNot.textoContNot}>Contactos de esta nota</Text>
+            </View>
+
             <View style={{width: '100%'}}>
               {noticia ? (
                 noticia.participants.map(participante => {
@@ -225,7 +242,17 @@ export default function NoticiaScreen(props) {
           </View>
 
           <View style={stylesNot.contenedorOtrasNoticiasNot}>
-            <Text style={stylesNot.textoOtrasNoticias}>Te puede interesar</Text>
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderBottomColor: 'gray',
+                marginBottom: 15,
+              }}>
+              <Text style={stylesNot.textoOtrasNoticias}>
+                Te puede interesar
+              </Text>
+            </View>
+
             <View style={{width: '100%', height: '100%'}}>
               {noticia
                 ? noticia.related.map(noticiaRe => {
@@ -249,18 +276,14 @@ export default function NoticiaScreen(props) {
                           <Text
                             style={{
                               color: 'blue',
+                              fontFamily: 'Inter-Regular',
                               fontSize: 20,
-                              marginLeft: 10,
+                              marginLeft:15
                             }}>
                             {noticiaRe.subtitulo}.
-                          </Text>
-                          <Text
-                            style={{
-                              color: 'black',
-                              fontSize: 20,
-                              marginLeft: 10,
-                            }}>
-                            {noticiaRe.titulo}
+                            <Text style={{color: 'black'}}>
+                              {noticiaRe.titulo}
+                            </Text>
                           </Text>
                         </TouchableOpacity>
                       </View>

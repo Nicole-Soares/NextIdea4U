@@ -26,16 +26,18 @@ export default function Noticias({navigation}) {
                     style={stylesNot.imagenNot}
                   />
                   <View style={stylesNot.contenedorDatosNot}>
-                    <View style={{width: '40%'}}>
-                      <Text style={stylesNot.textoTituloNot}>
+                    {index === 0 ? (
+                      <Text style={{color: 'blue', fontFamily: 'Inter-Bold', fontSize:22}}>
                         {noticia.subtitulo}.
+                        <Text style={{color: 'black'}}>{noticia.title}</Text>
                       </Text>
-                    </View>
-                    <View style={{width: '60%'}}>
-                      <Text style={stylesNot.tituloPrincipalNot}>
-                        {noticia.title}
+                    ) : (
+                      <Text
+                        style={{color: 'blue', fontFamily: 'Inter-Regular', fontSize:22}}>
+                        {noticia.subtitulo}.
+                        <Text style={{color: 'black'}}>{noticia.title}</Text>
                       </Text>
-                    </View>
+                    )}
                   </View>
                   <View>
                     <Text style={stylesNot.textoDesNot}>

@@ -7,6 +7,27 @@ export default function MoreNoticias({navigation}) {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
   return (
     <View style={{height: '100%'}}>
+      {listadoNoticiasPodcasts ? (
+        <View
+          style={{
+            borderBottomColor: 'gray',
+            borderBottomWidth: 1,
+            width: '90%',
+            alignSelf: 'center',
+          }}>
+          <Text
+            style={{
+              color: 'black',
+              fontFamily: 'Inter-Bold',
+              fontSize: 20,
+              alignSelf: 'center',
+              width: '100%',
+              marginBottom: 10,
+            }}>
+            Más noticias
+          </Text>
+        </View>
+      ) : null}
       {listadoNoticiasPodcasts
         ? listadoNoticiasPodcasts.more.map(noticia => {
             return (
@@ -27,26 +48,15 @@ export default function MoreNoticias({navigation}) {
                       width: '100%',
                       justifyContent: 'space-between',
                     }}>
-                    <View style={{width: '40%'}}>
-                      <Text
+                    <Text
                         style={{
-                          fontSize: 20,
                           color: 'blue',
-                          fontWeight: 'bold',
+                          fontFamily: 'Inter-Regular',
+                          fontSize: 22,
                         }}>
                         {noticia.subtitulo}.
+                        <Text style={{color: 'black'}}>{noticia.title}</Text>
                       </Text>
-                    </View>
-                    <View style={{width: '60%'}}>
-                      <Text
-                        style={{
-                          fontSize: 20,
-                          color: 'black',
-                          fontWeight: 'bold',
-                        }}>
-                        {noticia.title}
-                      </Text>
-                    </View>
                   </View>
                 </View>
               </TouchableOpacity>

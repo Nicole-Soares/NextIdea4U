@@ -1,11 +1,23 @@
-import React, {useContext} from 'react';
-import {View, Text, Image, TouchableOpacity, Linking} from 'react-native';
+import {Link} from '@react-navigation/native';
+import React, {useContext, useRef, useEffect} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Linking,
+  Animated,
+  Dimensions,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 
 //menu Hamburguesa
 export default function MenuHamburguesa({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
+ 
+
+  
 
   return (
     <View
@@ -18,6 +30,7 @@ export default function MenuHamburguesa({navigation}) {
         left: 0,
         height: '100%',
         width: '90%',
+        paddingRight: 10,
       }}>
       <View
         style={{
@@ -29,7 +42,7 @@ export default function MenuHamburguesa({navigation}) {
         <View>
           <Image
             source={require('../assets/icono/icono.png')}
-            style={{height: 65, width: 60, marginLeft: 10}}
+            style={{height: 65, width: 60, marginLeft: 20}}
           />
         </View>
         <View style={{justifyContent: 'center'}}>
@@ -69,7 +82,7 @@ export default function MenuHamburguesa({navigation}) {
           style={{
             borderWidth: 1,
             borderColor: 'blue',
-            width: '80%',
+            width: '90%',
             borderRadius: 5,
             height: 30,
           }}
@@ -88,7 +101,7 @@ export default function MenuHamburguesa({navigation}) {
           style={{
             borderWidth: 1,
             borderColor: 'blue',
-            width: '80%',
+            width: '90%',
             borderRadius: 5,
             height: 30,
             backgroundColor: 'blue',
@@ -158,19 +171,33 @@ export default function MenuHamburguesa({navigation}) {
               )
             }
           />
-          <Icon
-            name="youtube"
-            size={25}
-            color="black"
+          <TouchableOpacity
             onPress={() =>
               Linking.openURL('https://www.tiktok.com/@nextidea4u')
-            }
-          />
+            }>
+            <Image
+              source={require('../assets/icono/tiktok.png')}
+              style={{height: 25, width: 20}}
+            />
+          </TouchableOpacity>
         </View>
       </View>
-      <View style={{marginTop: 20}}>
+      <View
+        style={{
+          marginTop: 20,
+          borderBottomColor: 'gray',
+          borderBottomWidth: 1,
+          width: '95%',
+          alignSelf: 'center',
+        }}>
         <View style={{alignItems: 'center', width: '30%', marginBottom: 20}}>
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
+          <Text
+            style={{
+              color: 'black',
+              fontWeight: 'bold',
+              fontSize: 15,
+              marginLeft: 10,
+            }}>
             Escuchanos
           </Text>
         </View>
@@ -180,6 +207,7 @@ export default function MenuHamburguesa({navigation}) {
             justifyContent: 'space-around',
             width: '90%',
             alignSelf: 'center',
+            marginBottom: 10,
           }}>
           <Icon
             name="spotify"
@@ -222,6 +250,43 @@ export default function MenuHamburguesa({navigation}) {
             }
           />
         </View>
+      </View>
+      <View style={{alignSelf: 'center', width: '88%', marginTop: 20}}>
+        <Text style={{fontFamily: 'Inter-Bold', color: 'black'}}>
+          NextIdea4U
+        </Text>
+        <Text
+          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          onPress={() =>
+            Linking.openURL('https://www.nextidea4u.com/pages/sobre-nosotros')
+          }>
+          Sobre nosotros
+        </Text>
+        <Text
+          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          onPress={() =>
+            Linking.openURL(
+              'https://www.nextidea4u.com/pages/terminos-y-condiciones',
+            )
+          }>
+          Términos y condiciones
+        </Text>
+        <Text
+          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          onPress={() =>
+            Linking.openURL(
+              'https://www.nextidea4u.com/pages/politica-de-privacidad',
+            )
+          }>
+          Polí­tica de privacidad
+        </Text>
+        <Text
+          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          onPress={() =>
+            Link.openURL('https://www.nextidea4u.com/pages/politica-de-cookies')
+          }>
+          Polí­tica de cookies
+        </Text>
       </View>
     </View>
   );

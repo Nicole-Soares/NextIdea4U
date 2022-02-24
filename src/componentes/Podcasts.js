@@ -16,11 +16,16 @@ export default function Podcasts({navigation}) {
   const {listadoNoticiasPodcasts} = useContext(AppContext);
 
   return (
-    <View>
+    <View style={{paddingLeft: 20}}>
       {listadoNoticiasPodcasts ? (
         <View style={stylesPod.segundoContenedorPadrePod}>
           <View style={stylesPod.contenedorTituloPod}>
-            <Icon name="podcast" color="grey" size={20} />
+            <Icon
+              name="podcast"
+              color="grey"
+              size={20}
+              style={{marginLeft: -10}}
+            />
 
             <Text style={stylesPod.titulo}>Podcasts</Text>
           </View>
@@ -42,7 +47,7 @@ export default function Podcasts({navigation}) {
                       <View
                         style={{
                           width: '50%',
-flexDirection: 'row',
+                          flexDirection: 'row',
                           flexWrap: 'wrap',
                         }}>
                         <View

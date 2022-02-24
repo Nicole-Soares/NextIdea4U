@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-firebase/app": "^14.5.0",
     "@react-native-google-signin/google-signin": "github:react-native-google-signin/google-signin",
+    "@react-navigation/drawer": "^6.3.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
     "react": "17.0.2",
