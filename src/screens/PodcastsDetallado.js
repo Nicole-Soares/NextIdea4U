@@ -34,7 +34,7 @@ export default function PodcastsDetallado(props) {
     );
    })();`;
 
-   //funcion para compartir
+  //funcion para compartir
 
   const shareCustom = async () => {
     const shareOptions = {
@@ -72,7 +72,7 @@ export default function PodcastsDetallado(props) {
       console.log(error);
     }
   };
-//traigo los podcasts con la api
+  //traigo los podcasts con la api
   useEffect(() => {
     const llamadoNoticias = async () => {
       try {
@@ -87,6 +87,7 @@ export default function PodcastsDetallado(props) {
       }
     };
     llamadoNoticias();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (podcasts) {

@@ -31,7 +31,6 @@ export const stylesPod = StyleSheet.create({
   segundoContenedorTituloPod: {
     marginBottom: 10,
     width: '100%',
-   
   },
   textoPod: {
     color: 'black',

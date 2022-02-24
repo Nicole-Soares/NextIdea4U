@@ -17,8 +17,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 //screen de los podcasts
 
-
-
 export default function PodcastsScreen({navigation}) {
   const {
     listadoPodcasts,

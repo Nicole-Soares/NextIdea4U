@@ -42,7 +42,7 @@ export default function Podcasts({navigation}) {
                       <View
                         style={{
                           width: '50%',
-flexDirection: 'row',
+                          flexDirection: 'row',
                           flexWrap: 'wrap',
                         }}>
                         <View

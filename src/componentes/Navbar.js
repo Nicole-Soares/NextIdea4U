@@ -10,8 +10,6 @@ import {stylesNav} from '../theme/stylesNav';
 export default function Navbar({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
 
-
-
   return (
     <View style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
@@ -20,7 +18,7 @@ export default function Navbar({navigation}) {
             name="align-justify"
             size={25}
             color="black"
-            onPress={() =>  setMenuHamburguesa(true)}
+            onPress={() => setMenuHamburguesa(true)}
             style={{marginTop: 10}}
           />
         </View>

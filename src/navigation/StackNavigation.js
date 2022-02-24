@@ -18,7 +18,7 @@ export default function StackNavigation() {
         headerShown: false,
       }}
       initialRouteName={'Home'}
-      options={{animation:'none'}}>
+      options={{animation: 'none'}}>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="PodcastsScreen" component={PodcastsScreen} />
       <Stack.Screen name="Registrarse" component={Registrarse} />
