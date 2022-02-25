@@ -14,25 +14,10 @@ export default function Navbar({navigation}) {
     <View style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
         <View>
-          <Icon
-            name="align-justify"
-            size={25}
-            color="black"
-            onPress={() => setMenuHamburguesa(true)}
-            style={{marginTop: 10}}
-          />
-        </View>
-
-        <View style={stylesNav.contenedorTextoLogo}>
-          <TouchableOpacity
-            style={{flexDirection: 'row'}}
-            onPress={() => navigation.navigate('Home')}>
-            <Text style={stylesNav.textoNombreApp}>nextidea</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => MostrarMenu()}>
+          <TouchableOpacity onPress={() => setMenuHamburguesa(true)}>
             <Image
               source={require('../assets/icono/menu.png')}
-              style={{height: 25, width: 30, marginLeft: -5}}
+              style={{height: 30, width: 25}}
             />
           </TouchableOpacity>
         </View>

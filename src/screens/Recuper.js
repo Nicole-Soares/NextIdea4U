@@ -53,17 +53,16 @@ export default function Recuperar({navigation}) {
           flexDirection: 'row',
           justifyContent: 'space-around',
           width: '60%',
-        
         }}>
         <TouchableOpacity
           style={{
-            backgroundColor: '005cff',
+            backgroundColor: '#005cff',
             borderRadius: 3,
             width: '70%',
             height: 30,
             justifyContent: 'center',
             alignItems: 'center',
-            marginLeft:20
+            marginLeft: 20,
           }}
           onPress={() => RecuperarContraseña()}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>Recuperar</Text>
@@ -71,7 +70,7 @@ export default function Recuperar({navigation}) {
         <TouchableOpacity
           style={{justifyContent: 'center', alignItems: 'center'}}
           onPress={() => navigation.navigate('Ingresar')}>
-          <Text style={{color: 'blue'}}>Volver</Text>
+          <Text style={{color: '#005cff'}}>Volver</Text>
         </TouchableOpacity>
       </View>
     </View>

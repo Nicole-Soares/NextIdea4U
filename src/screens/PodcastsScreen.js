@@ -92,19 +92,26 @@ export default function PodcastsScreen({navigation}) {
             width: '100%',
           }}>
           <View style={{width: '100%', alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 30, fontFamily:"Inter-Bold"}}>
+            <Text
+              style={{color: 'white', fontSize: 30, fontFamily: 'Inter-Bold'}}>
               Podcasts de Next Idea 4U
             </Text>
           </View>
 
           <View style={{width: '90%', alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 17, fontFamily:"Inter-Regular"}}>
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 17,
+                fontFamily: 'Inter-Regular',
+              }}>
               Disfrute de todo el contenido de nuestra plataforma en formato
               audio con nuestros podcasts.
             </Text>
           </View>
           <View style={{alignSelf: 'center'}}>
-            <Text style={{color: 'yellow', fontFamily:"Inter-Bold", fontSize: 15}}>
+            <Text
+              style={{color: 'yellow', fontFamily: 'Inter-Bold', fontSize: 15}}>
               Tambien disponible en:
             </Text>
           </View>
@@ -187,7 +194,7 @@ export default function PodcastsScreen({navigation}) {
             ? listadoPodcasts.featured.map(podcast => {
                 return (
                   <View
-                    style={{width: '50%', marginBottom: 25}}
+                    style={{width: '50%', marginBottom: 25, marginTop: 15}}
                     key={podcast.id}>
                     <TouchableOpacity
                       onPress={() =>
@@ -197,13 +204,18 @@ export default function PodcastsScreen({navigation}) {
                       }>
                       <Image
                         source={{uri: podcast.img}}
-                        style={{height: 170, width: 170, borderRadius: 10}}
+                        style={{
+                          height: 170,
+                          width: 170,
+                          borderRadius: 10,
+                          marginLeft: 10,
+                        }}
                       />
                       <Text
                         style={{
                           fontSize: 17,
                           color: 'black',
-
+                          marginLeft: 15,
                           width: '80%',
                           marginTop: 10,
                           fontFamily: 'Inter-Bold',

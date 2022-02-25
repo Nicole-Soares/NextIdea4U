@@ -95,6 +95,7 @@ export default function PodcastsDetallado(props) {
     let indice = podcasts.podcast.fecha_alta.indexOf(' ');
     let extraida = podcasts.podcast.fecha_alta.substring(0, indice);
     let reemplazo = extraida.replace(/-/g, '/');
+    let reversa = reemplazo.split('/').reverse().join('/');
 
     return (
       <View style={{backgroundColor: 'white'}}>
@@ -137,7 +138,7 @@ export default function PodcastsDetallado(props) {
                     color="gray"
                     style={{marginRight: 10}}
                   />
-                  <Text>{reemplazo}</Text>
+                  <Text>{reversa}</Text>
                 </View>
               </View>
               <View style={{height: 200, alignSelf: 'center', width: '90%'}}>
@@ -169,22 +170,22 @@ export default function PodcastsDetallado(props) {
                   </Text>
                 </TouchableOpacity>
               </View>
-              <View style={{height: 750, marginLeft: 10}}>
-                <AutoHeightWebView
-                  style={{
-                    width: Dimensions.get('window').width - 15,
-                    height: Dimensions.get('window').height,
-                    marginTop: 35,
-                  }}
-                  customScript={`document.body.style.height= '1000px';`}
-                  customStyle={`* {font-size: 15px;}`}
-                  source={{
-                    html: data,
-                  }}
-                  scalesPageToFit={true}
-                  viewportContent={'width=device-width, user-scalable=no'}
-                />
-              </View>
+
+              <AutoHeightWebView
+                style={{
+                  width: Dimensions.get('window').width - 10,
+                  height: Dimensions.get('window').height - 10,
+                  marginTop: 35,
+                }}
+                scalesPageToFit={false}
+                customStyle={`* {font-size: 15px;}`}
+                source={{
+                  html: data,
+                }}
+                viewportContent={'width=device-width, user-scalable=no'}
+                onSizeUpdated={size => console.log(size.height)}
+              />
+
               <View style={{width: '100%'}}>
                 <View
                   style={{
@@ -441,6 +442,7 @@ export default function PodcastsDetallado(props) {
                         color: 'black',
                         fontSize: 20,
                         margin: 5,
+                        marginTop: 15,
                       }}>
                       Te puede interesar
                     </Text>
@@ -482,7 +484,7 @@ export default function PodcastsDetallado(props) {
                                     style={{
                                       color: 'black',
                                       fontSize: 15,
-
+                                      marginLeft: 5,
                                       width: '90%',
                                       marginTop: 5,
                                       fontFamily: 'Inter-Bold',

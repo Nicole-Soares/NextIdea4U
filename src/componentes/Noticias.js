@@ -27,13 +27,22 @@ export default function Noticias({navigation}) {
                   />
                   <View style={stylesNot.contenedorDatosNot}>
                     {index === 0 ? (
-                      <Text style={{color: 'blue', fontFamily: 'Inter-Bold', fontSize:22}}>
+                      <Text
+                        style={{
+                          color: 'blue',
+                          fontFamily: 'Inter-Bold',
+                          fontSize: 22,
+                        }}>
                         {noticia.subtitulo}.
                         <Text style={{color: 'black'}}>{noticia.title}</Text>
                       </Text>
                     ) : (
                       <Text
-                        style={{color: 'blue', fontFamily: 'Inter-Regular', fontSize:22}}>
+                        style={{
+                          color: 'blue',
+                          fontFamily: 'Inter-Regular',
+                          fontSize: 22,
+                        }}>
                         {noticia.subtitulo}.
                         <Text style={{color: 'black'}}>{noticia.title}</Text>
                       </Text>

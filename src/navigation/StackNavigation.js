@@ -9,7 +9,6 @@ import NoticiaScreen from '../screens/NoticiaScreen';
 import PodcastsDetallado from '../screens/PodcastsDetallado';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 
-
 //screnn de  la navegacion
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +29,6 @@ export default function StackNavigation() {
       <Stack.Screen name="NoticiaScreen" component={NoticiaScreen} />
       <Stack.Screen name="PodcastsDetallado" component={PodcastsDetallado} />
       <Stack.Screen name="MenuHamburguesa" component={MenuHamburguesa} />
-  
     </Stack.Navigator>
   );
 }

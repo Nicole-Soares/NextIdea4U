@@ -4,7 +4,6 @@ import {StyleSheet} from 'react-native';
 export const stylesPod = StyleSheet.create({
   contenedorPadrePod: {
     width: '90%',
-
     borderRadius: 5,
     alignSelf: 'center',
     margin: 20,

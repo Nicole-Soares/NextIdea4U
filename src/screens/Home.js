@@ -12,7 +12,7 @@ export default function Home({navigation}) {
   const {setListadoNoticiasPodcasts, menuHamburguesa, setMenuHamburguesa} =
     useContext(AppContext);
 
-useEffect(() => {
+  useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       setMenuHamburguesa(false);
       TraerNoticias();
@@ -39,11 +39,11 @@ useEffect(() => {
 
   return (
     <View style={{width: '100%', height: '100%'}}>
-      {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <Navbar navigation={navigation} />
       <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
         <Noticias navigation={navigation} />
       </ScrollView>
+      {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
     </View>
   );
 }

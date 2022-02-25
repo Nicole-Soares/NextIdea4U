@@ -59,7 +59,7 @@ export const stylesNot = StyleSheet.create({
   },
   contenedorNotIconFecha: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignContent: 'center',
   },
   imagenNotAbierta: {
     height: 220,
@@ -119,6 +119,6 @@ export const stylesNot = StyleSheet.create({
     color: 'black',
     fontSize: 23,
     marginBottom: 15,
-    marginTop:15
+    marginTop: 15,
   },
 });

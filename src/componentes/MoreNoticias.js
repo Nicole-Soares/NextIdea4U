@@ -49,14 +49,14 @@ export default function MoreNoticias({navigation}) {
                       justifyContent: 'space-between',
                     }}>
                     <Text
-                        style={{
-                          color: 'blue',
-                          fontFamily: 'Inter-Regular',
-                          fontSize: 22,
-                        }}>
-                        {noticia.subtitulo}.
-                        <Text style={{color: 'black'}}>{noticia.title}</Text>
-                      </Text>
+                      style={{
+                        color: 'blue',
+                        fontFamily: 'Inter-Regular',
+                        fontSize: 22,
+                      }}>
+                      {noticia.subtitulo}.
+                      <Text style={{color: 'black'}}>{noticia.title}</Text>
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>

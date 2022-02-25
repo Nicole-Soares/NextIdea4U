@@ -6,6 +6,7 @@ import {
   ScrollView,
   ActivityIndicator,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
 import Navbar from '../componentes/Navbar';
@@ -15,7 +16,7 @@ import {AppContext} from '../AppContext/AppContext';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
 import {stylesNot} from '../theme/stylesNot';
 import Share from 'react-native-share';
-
+import AutoHeightWebView from 'react-native-autoheight-webview';
 // screen noticia abierta
 
 export default function NoticiaScreen(props) {
@@ -26,13 +27,16 @@ export default function NoticiaScreen(props) {
   //inyecto js para los estilos del webview
   const INJECTED_JAVASCRIPT = `(function() {
     let body = document.getElementsByTagName("BODY")[0];
-   body.style.fontSize = "38px";
-  
-  
-  let imagen = document.getElementsByTagName("img");
-  image.style.width= "100px"
+   body.style.fontSize = "55px"; body.style.width = "1500px"; body.style.width = "1500px"; body.img.style.width = "400px"; 
+ 
+
+ 
 
  })();`;
+
+  const onWebViewMessage = event => {
+    setWebViewHeight(Number(event.nativeEvent.data));
+  };
 
   // funcion para compartir
   const shareCustom = async () => {
@@ -91,6 +95,7 @@ export default function NoticiaScreen(props) {
     let indice = noticia.news.fecha_hora.indexOf(' ');
     let extraida = noticia.news.fecha_hora.substring(0, indice);
     let reemplazo = extraida.replace(/-/g, '/');
+    let reversa = reemplazo.split('/').reverse().join('/');
 
     return (
       <View style={stylesNot.contenedorNoticiaScreen}>
@@ -98,15 +103,9 @@ export default function NoticiaScreen(props) {
           <MenuHamburguesa navigation={props.navigation} />
         ) : null}
         <Navbar navigation={props.navigation} />
-        <ScrollView
-          contentContainerStyle={{
-            flexGrow: 1,
-            height: webViewHeight,
-            margin: 5,
-          }}
-          ref={scrollRef}>
+        <ScrollView ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
-            <View style={{width: '100%'}}>
+            <View style={{width: '100%', alignItems: 'center', marginLeft: 10}}>
               <Text
                 style={{
                   color: 'blue',
@@ -117,68 +116,99 @@ export default function NoticiaScreen(props) {
                 <Text style={{color: 'black'}}>{noticia.news.titulo}</Text>
               </Text>
             </View>
-            <Text style={stylesNot.textoDesDesNot}>
-              {noticia.news.descripcion_corta}
-            </Text>
+            <View style={{alignItems: 'center'}}>
+              <Text style={stylesNot.textoDesDesNot}>
+                {noticia.news.descripcion_corta}
+              </Text>
+            </View>
+
             <View style={stylesNot.contenedorNotIconFecha}>
               <Icon
                 name="calendar"
                 siez={30}
                 color="gray"
-                style={{marginRight: 10}}
+                style={{marginLeft: 20}}
               />
-              <Text>{reemplazo}</Text>
+              <Text style={{marginLeft: 10}}>{reversa}</Text>
             </View>
 
-            <View style={{width: '100%'}}>
+            <View style={{width: '100%', alignItems: 'center'}}>
               <Image
                 source={{uri: noticia.news.imagen}}
                 style={stylesNot.imagenNotAbierta}
               />
-              <View style={{margin: 5}}>
-                <TouchableOpacity
-                  onPress={() => shareCustom(noticia.news.url)}
-                  style={{
-                    borderColor: 'black',
-                    borderRadius: 10,
-                    borderWidth: 2,
-                    width: '50%',
-                    flexDirection: 'row',
-                    margin: 5,
-                    justifyContent: 'space-around',
-                  }}>
-                  <Icon name="share" color="black" size={20} />
-                  <Text
-                    style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
-                    Compartir noticia
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{height: 3950, marginRight: 20}}>
-                <WebView
-                  scrollEnabled={false}
-                  source={{
-                    html: data,
-                  }}
-                  injectedJavaScript={INJECTED_JAVASCRIPT}
-                />
-              </View>
+            </View>
+            <View style={{margin: 5, alignSelf: 'center'}}>
+              <TouchableOpacity
+                onPress={() => shareCustom(noticia.news.url)}
+                style={{
+                  borderColor: 'black',
+                  borderRadius: 10,
+                  borderWidth: 2,
+                  width: '50%',
+                  flexDirection: 'row',
+                  margin: 5,
+                  justifyContent: 'space-around',
+                }}>
+                <Icon name="share" color="black" size={20} />
+                <Text
+                  style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
+                  Compartir noticia
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                width: '100%',
+                marginTop: 10,
+                marginBottom: 25,
+                marginLeft: 5,
+              }}>
+              <AutoHeightWebView
+                style={{
+                  width: Dimensions.get('window').width - 10,
+                  marginTop: 15,
+                }}
+                scalesPageToFit={false}
+                customStyle={
+                  (`* {font-size: 15px;}`,
+                  `img { width: 350px !important; height: 250px !important; margin-left: 20}`)
+                }
+                source={{
+                  html: data,
+                }}
+                viewportContent={'width=device-width, user-scalable=no'}
+                onSizeUpdated={size => console.log(size.height)}
+              />
             </View>
           </View>
           {noticia.podcasts
             ? noticia.podcasts.map(podcasts => (
-                <View style={{height: 300}}>
-                  <Text
+                <View
+                  style={{
+                    height: 280,
+                  }}>
+                  <View
                     style={{
-                      fontSize: 17,
-                      color: 'black',
-                      fontWeight: 'bold',
                       borderBottomColor: 'gray',
                       borderBottomWidth: 1,
-                      margin: 5,
+                      marginBottom: 15,
+                      width: '90%',
+                      alignSelf: 'center',
                     }}>
-                    También puedes escuchar el podcast de la nota
-                  </Text>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'black',
+                        fontWeight: 'bold',
+                        width: '100%',
+
+                        marginTop: 15,
+                      }}>
+                      También puedes escuchar el podcast de la nota
+                    </Text>
+                  </View>
+
                   <WebView
                     scrollEnabled={false}
                     source={{
@@ -196,7 +226,8 @@ export default function NoticiaScreen(props) {
                 borderBottomColor: 'gray',
                 width: '90%',
                 alignSelf: 'center',
-                marginBottom: 15,
+                marginBottom: 10,
+                marginTop: -10,
               }}>
               <Text style={stylesNot.textoContNot}>Contactos de esta nota</Text>
             </View>
@@ -229,7 +260,7 @@ export default function NoticiaScreen(props) {
                       <Text style={stylesNot.profesionContactoNot}>
                         {participante.profesion}
                       </Text>
-                      <Text style={stylesNot.biografiaNotDes}>
+                      <Text numberOfLines={4} style={stylesNot.biografiaNotDes}>
                         {participante.biografia}
                       </Text>
                     </LinearGradient>
@@ -239,6 +270,9 @@ export default function NoticiaScreen(props) {
                 <Text style={{display: 'none'}}></Text>
               )}
             </View>
+            <Text style={{marginLeft: 10, marginTop: 10}}>
+              {noticia.news.etiquetas}
+            </Text>
           </View>
 
           <View style={stylesNot.contenedorOtrasNoticiasNot}>
@@ -278,7 +312,7 @@ export default function NoticiaScreen(props) {
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
-                              marginLeft:15
+                              marginLeft: 15,
                             }}>
                             {noticiaRe.subtitulo}.
                             <Text style={{color: 'black'}}>

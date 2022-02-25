@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Linking,
   Animated,
+  StyleSheet,
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,23 +16,27 @@ import {AppContext} from '../AppContext/AppContext';
 //menu Hamburguesa
 export default function MenuHamburguesa({navigation}) {
   const {setMenuHamburguesa} = useContext(AppContext);
- 
+  const moveAnimation = useRef(new Animated.Value(-200)).current;
 
-  
+  useEffect(() => {
+    const animate = () => {
+      Animated.spring(moveAnimation, {
+        toValue: Dimensions.get('window').width - 412,
+        duration: 1000,
+        useNativeDriver: false,
+      }).start();
+    };
+
+    animate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function CerrarMenu() {
+    setMenuHamburguesa(false);
+  }
 
   return (
-    <View
-      style={{
-        elevation: 100,
-        zIndex: 100,
-        backgroundColor: 'white',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '90%',
-        paddingRight: 10,
-      }}>
+    <Animated.View style={[styles.container, {marginLeft: moveAnimation}]}>
       <View
         style={{
           flexDirection: 'row',
@@ -50,7 +55,7 @@ export default function MenuHamburguesa({navigation}) {
             name="close"
             color="black"
             size={30}
-            onPress={() => setMenuHamburguesa(false)}
+            onPress={() => CerrarMenu()}
           />
         </View>
       </View>
@@ -256,14 +261,22 @@ export default function MenuHamburguesa({navigation}) {
           NextIdea4U
         </Text>
         <Text
-          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          style={{
+            fontFamily: 'Inter-Regular',
+            color: 'gray',
+            marginTop: 10,
+          }}
           onPress={() =>
             Linking.openURL('https://www.nextidea4u.com/pages/sobre-nosotros')
           }>
           Sobre nosotros
         </Text>
         <Text
-          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          style={{
+            fontFamily: 'Inter-Regular',
+            color: 'gray',
+            marginTop: 10,
+          }}
           onPress={() =>
             Linking.openURL(
               'https://www.nextidea4u.com/pages/terminos-y-condiciones',
@@ -272,7 +285,11 @@ export default function MenuHamburguesa({navigation}) {
           Términos y condiciones
         </Text>
         <Text
-          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          style={{
+            fontFamily: 'Inter-Regular',
+            color: 'gray',
+            marginTop: 10,
+          }}
           onPress={() =>
             Linking.openURL(
               'https://www.nextidea4u.com/pages/politica-de-privacidad',
@@ -281,13 +298,40 @@ export default function MenuHamburguesa({navigation}) {
           Polí­tica de privacidad
         </Text>
         <Text
-          style={{fontFamily: 'Inter-Regular', color: 'gray', marginTop: 10}}
+          style={{
+            fontFamily: 'Inter-Regular',
+            color: 'gray',
+            marginTop: 10,
+          }}
           onPress={() =>
             Link.openURL('https://www.nextidea4u.com/pages/politica-de-cookies')
           }>
           Polí­tica de cookies
         </Text>
       </View>
-    </View>
+    </Animated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    elevation: 100,
+    zIndex: 100,
+    backgroundColor: 'white',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '90%',
+  },
+  box: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'tomato',
+    transform: [
+      {
+        scaleX: 0.5,
+      },
+    ],
+  },
+});
