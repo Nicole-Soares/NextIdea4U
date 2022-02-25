@@ -184,7 +184,7 @@ export default function Registrarse({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Image
               source={require('../assets/icono/icono.png')}
-              style={{height: 70, width: 65}}
+              style={{height: 70, width: 65, marginBottom: 15}}
             />
           </TouchableOpacity>
 
@@ -192,7 +192,7 @@ export default function Registrarse({navigation}) {
           <Text
             style={{color: 'black'}}
             onPress={() => navigation.navigate('Ingresar')}>
-            ¿Ya tienes una cuenta? <Text style={{color: 'blue'}}>Ingresa</Text>
+            ¿Ya tienes una cuenta? <Text style={{color: '#005cff'}}>Ingresa</Text>
           </Text>
         </View>
         <View style={stylesReg.contenedorFacebook}>
@@ -203,18 +203,23 @@ export default function Registrarse({navigation}) {
               name="facebook"
               size={20}
               color="white"
-              style={{width: '5%'}}
+              style={{width: '5%', marginLeft: 190}}
             />
             <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={stylesReg.botonGoogle}
             onPress={() => googleLogin()}>
-            <Icon name="google" size={20} color="white" />
+            <Icon
+              name="google"
+              size={20}
+              color="white"
+              style={{width: '5%', marginLeft: 90}}
+            />
             <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
           </TouchableOpacity>
         </View>
-        <View style={{alignSelf: 'center'}}>
+        <View style={{alignSelf: 'center', marginTop:10}}>
           <Text style={stylesReg.textoRegistrarEmail}>
             Ó regístrate con tu email
           </Text>

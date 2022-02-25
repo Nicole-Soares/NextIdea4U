@@ -189,7 +189,7 @@ export default function Ingresar({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <Image
               source={require('../assets/icono/icono.png')}
-              style={{height: 70, width: 65}}
+              style={{height: 70, width: 65, marginBottom: 15}}
             />
           </TouchableOpacity>
 
@@ -200,7 +200,7 @@ export default function Ingresar({navigation}) {
             style={{color: 'black'}}
             onPress={() => navigation.navigate('Registrarse')}>
             ¿Aun no eres miembro?{' '}
-            <Text style={{color: 'blue'}}>Registrate</Text>
+            <Text style={{color: '#005cff'}}>Registrate</Text>
           </Text>
         </View>
         <View style={stylesIng.contenedorBotonesRedesSociales}>
@@ -209,14 +209,19 @@ export default function Ingresar({navigation}) {
               name="facebook"
               size={20}
               color="white"
-              style={{width: '5%'}}
+              style={{width: '5%', marginLeft: 100}}
             />
             <Text style={stylesIng.textoGoFa}>Continúa con Facebook</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={stylesIng.botonGoogle}
             onPress={() => googleLogin()}>
-            <Icon name="google" size={20} color="white" />
+            <Icon
+              name="google"
+              size={20}
+              color="white"
+              style={{marginLeft: 100, width: '5%'}}
+            />
             <Text style={stylesIng.textoGoFa}>Continúa con Google</Text>
           </TouchableOpacity>
         </View>
@@ -253,7 +258,7 @@ export default function Ingresar({navigation}) {
 
           <View style={{margin: 5}}>
             <TouchableOpacity onPress={() => navigation.navigate('Recuperar')}>
-              <Text style={{color: 'blue'}}>Olvidé mi contraseña</Text>
+              <Text style={{color: '#005cff'}}>Olvidé mi contraseña</Text>
             </TouchableOpacity>
           </View>
         </View>

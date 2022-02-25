@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 //estilos de la hoja de ingresar
 export const stylesIng = StyleSheet.create({
   contenedorPadre: {
-    backgroundColor: '#f5f4f8',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
@@ -28,35 +28,33 @@ export const stylesIng = StyleSheet.create({
   contenedorBotonesRedesSociales: {
     alignItems: 'center',
     width: '100%',
-    margin: 10,
   },
   botonFace: {
     backgroundColor: '#3b5999',
-    width: '70%',
+    width: '100%',
     borderRadius: 2,
     height: 30,
-    margin: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
     alignItems: 'center',
   },
   botonGoogle: {
     backgroundColor: '#fb5252',
-    width: '70%',
+    width: '100%',
     borderRadius: 2,
     height: 30,
     margin: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
     alignItems: 'center',
   },
   textoGoFa: {
     color: 'white',
     fontWeight: 'bold',
     width: '60%',
+    marginLeft: 10,
   },
   contenedorIngresarMail: {
     alignSelf: 'center',
+    marginTop: 10,
   },
   textoIngresa: {
     color: 'black',
@@ -73,17 +71,18 @@ export const stylesIng = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#8898aa',
     margin: 5,
+    paddingLeft: 10,
   },
   contenedorBotones: {
     width: '90%',
     alignSelf: 'center',
-    margin: 10,
   },
   botonIniciar: {
     borderRadius: 2,
-    backgroundColor: '#3368ce',
+    backgroundColor: '#005cff',
     height: 30,
     justifyContent: 'center',
+    margin: 10,
   },
   textoIniciar: {
     color: 'white',

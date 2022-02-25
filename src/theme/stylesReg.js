@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 
 export const stylesReg = StyleSheet.create({
   contenedorPadre: {
-    backgroundColor: '#f5f4f8',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
@@ -29,37 +29,36 @@ export const stylesReg = StyleSheet.create({
   contenedorFacebook: {
     alignItems: 'center',
     width: '100%',
-    margin: 10,
   },
   botonFace: {
     backgroundColor: '#3b5999',
-    width: '70%',
+    width: '100%',
     borderRadius: 2,
     height: 30,
-    margin: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   textoFace: {
     color: 'white',
     fontWeight: 'bold',
-    width: '60%',
+    width: '95%',
   },
   botonGoogle: {
     backgroundColor: '#fb5252',
-    width: '70%',
+    width: '100%',
     borderRadius: 2,
     height: 30,
     margin: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+
     alignItems: 'center',
   },
   textoGoogle: {
     color: 'white',
     fontWeight: 'bold',
-    width: '60%',
+    width: '95%',
+    marginLeft: 10,
   },
   textoRegistrarEmail: {
     color: 'black',
@@ -76,23 +75,25 @@ export const stylesReg = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#8898aa',
     margin: 5,
+    paddingLeft: 10,
   },
   inputPassword: {
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
     margin: 5,
+    paddingLeft: 10,
   },
   contenedorRegistrarse: {
     width: '90%',
     alignSelf: 'center',
-    margin: 10,
   },
   botonReg: {
     borderRadius: 2,
-    backgroundColor: '#3368ce',
+    backgroundColor: '#005cff',
     height: 30,
     justifyContent: 'center',
+    margin: 10,
   },
   textoReg: {
     color: 'white',

@@ -7,6 +7,8 @@ import Registrarse from '../screens/Registrarse';
 import Recuperar from '../screens/Recuper';
 import NoticiaScreen from '../screens/NoticiaScreen';
 import PodcastsDetallado from '../screens/PodcastsDetallado';
+import MenuHamburguesa from '../componentes/MenuHamburguesa';
+
 
 //screnn de  la navegacion
 const Stack = createNativeStackNavigator();
@@ -16,6 +18,7 @@ export default function StackNavigation() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        animation: 'slide_from_right',
       }}
       initialRouteName={'Home'}
       options={{animation: 'none'}}>
@@ -26,6 +29,8 @@ export default function StackNavigation() {
       <Stack.Screen name="Recuperar" component={Recuperar} />
       <Stack.Screen name="NoticiaScreen" component={NoticiaScreen} />
       <Stack.Screen name="PodcastsDetallado" component={PodcastsDetallado} />
+      <Stack.Screen name="MenuHamburguesa" component={MenuHamburguesa} />
+  
     </Stack.Navigator>
   );
 }

@@ -38,6 +38,7 @@ export default function Recuperar({navigation}) {
           alignSelf: 'center',
           alignItems: 'center',
           marginBottom: 10,
+          borderRadius: 10,
         }}>
         <Icon name="envelope-o" size={20} style={{marginLeft: 10}} />
         <TextInput
@@ -51,16 +52,18 @@ export default function Recuperar({navigation}) {
         style={{
           flexDirection: 'row',
           justifyContent: 'space-around',
-          width: '40%',
+          width: '60%',
+        
         }}>
         <TouchableOpacity
           style={{
-            backgroundColor: 'blue',
+            backgroundColor: '005cff',
             borderRadius: 3,
             width: '70%',
             height: 30,
             justifyContent: 'center',
             alignItems: 'center',
+            marginLeft:20
           }}
           onPress={() => RecuperarContraseña()}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>Recuperar</Text>

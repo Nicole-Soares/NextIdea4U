@@ -28,21 +28,45 @@ export default function Navbar({navigation}) {
             style={{flexDirection: 'row'}}
             onPress={() => navigation.navigate('Home')}>
             <Text style={stylesNav.textoNombreApp}>nextidea</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => MostrarMenu()}>
             <Image
-              source={require('../assets/icono/icono.png')}
-              style={stylesNav.imagenLogo}
+              source={require('../assets/icono/menu.png')}
+              style={{height: 25, width: 30, marginLeft: -5}}
             />
           </TouchableOpacity>
         </View>
       </View>
+      <View style={stylesNav.contenedorTextoLogo}>
+        <TouchableOpacity
+          style={{flexDirection: 'row'}}
+          onPress={() => navigation.navigate('Home')}>
+          <Text style={stylesNav.textoNombreApp}>nextidea</Text>
+          <Image
+            source={require('../assets/icono/icono.png')}
+            style={stylesNav.imagenLogo}
+          />
+        </TouchableOpacity>
+      </View>
       <View style={stylesNav.ContenedorPadreIconoLogin}>
-        <Icon
-          name="user-circle"
-          size={20}
-          color="black"
-          style={{marginRight: 10}}
-          onPress={() => navigation.navigate('Registrarse')}
-        />
+        <View
+          style={{
+            borderWidth: 2,
+            borderColor: 'black',
+            borderRadius: 15,
+            width: 30,
+            height: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Icon
+            name="user-o"
+            size={20}
+            color="black"
+            style={{marginTop: 7}}
+            onPress={() => navigation.navigate('Registrarse')}
+          />
+        </View>
       </View>
     </View>
   );

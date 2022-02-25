@@ -46,7 +46,6 @@ export const stylesNot = StyleSheet.create({
   },
   contenedorTextoNot: {
     width: '100%',
-    margin: 15,
   },
   subtituloNot: {
     color: 'black',
@@ -69,13 +68,10 @@ export const stylesNot = StyleSheet.create({
     borderRadius: 5,
   },
   textoContNot: {
-    fontWeight: 'bold',
+    fontFamily: 'Inter-Bold',
     color: 'black',
-    fontSize: 18,
-    borderBottomWidth: 1,
-    borderBottomColor: 'gray',
-    width: '90%',
-    alignSelf: 'center',
+    fontSize: 23,
+    marginBottom: 10,
   },
   imgContacNot: {
     height: 70,
@@ -119,10 +115,10 @@ export const stylesNot = StyleSheet.create({
     alignSelf: 'center',
   },
   textoOtrasNoticias: {
-    fontWeight: 'bold',
+    fontFamily: 'Inter-Bold',
     color: 'black',
-    fontSize: 20,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    fontSize: 23,
+    marginBottom: 15,
+    marginTop:15
   },
 });
