@@ -256,7 +256,7 @@ export default function Ingresar({navigation}) {
             <Text style={stylesIng.textoIniciar}>Iniciar sesión</Text>
           </TouchableOpacity>
 
-          <View style={{margin: 5}}>
+          <View style={{marginTop: 15, marginLeft: 5}}>
             <TouchableOpacity onPress={() => navigation.navigate('Recuperar')}>
               <Text style={{color: '#005cff'}}>Olvidé mi contraseña</Text>
             </TouchableOpacity>

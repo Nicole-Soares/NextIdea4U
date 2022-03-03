@@ -25,26 +25,64 @@ export default function Noticias({navigation}) {
                     source={{uri: noticia.img}}
                     style={stylesNot.imagenNot}
                   />
+                  {index !== 0 ? (
+                    <View style={{width: '40%'}}>
+                      <Text
+                        style={{
+                          color: 'white',
+                          backgroundColor: 'black',
+                          textAlign: 'center',
+                          fontSize: 12,
+                          fontFamily: 'Inter-SemiBold',
+                          position: 'relative',
+                          top: -30,
+                          marginLeft: 10,
+                          borderRadius: 5,
+                          borderWidth: 1,
+                        }}>
+                        {noticia.categoria.toUpperCase()}
+                      </Text>
+                    </View>
+                  ) : null}
                   <View style={stylesNot.contenedorDatosNot}>
                     {index === 0 ? (
                       <Text
                         style={{
-                          color: 'blue',
+                          width: '100%',
+                          color: 'black',
+                          fontSize: 21,
                           fontFamily: 'Inter-Bold',
-                          fontSize: 22,
+                          marginTop: 15,
                         }}>
-                        {noticia.subtitulo}.
-                        <Text style={{color: 'black'}}>{noticia.title}</Text>
+                        <Text
+                          style={{
+                            color: 'blue',
+                            fontFamily: 'Inter-Bold',
+                            fontSize: 21,
+                          }}>
+                          {noticia.subtitulo}.
+                        </Text>
+                        <Text> </Text>
+                        {noticia.title}
                       </Text>
                     ) : (
                       <Text
                         style={{
-                          color: 'blue',
+                          width: '100%',
+                          color: 'black',
+                          fontSize: 21,
                           fontFamily: 'Inter-Regular',
-                          fontSize: 22,
                         }}>
-                        {noticia.subtitulo}.
-                        <Text style={{color: 'black'}}>{noticia.title}</Text>
+                        <Text
+                          style={{
+                            color: 'blue',
+                            fontFamily: 'Inter-Regular',
+                            fontSize: 21,
+                          }}>
+                          {noticia.subtitulo}.
+                        </Text>
+                        <Text> </Text>
+                        {noticia.title}
                       </Text>
                     )}
                   </View>

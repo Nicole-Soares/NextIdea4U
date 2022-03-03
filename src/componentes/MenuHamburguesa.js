@@ -61,12 +61,24 @@ export default function MenuHamburguesa({navigation}) {
       </View>
       <View style={{marginLeft: 20, marginTop: 20}}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 15,
+              fontWeight: 'bold',
+              marginBottom: 10,
+            }}>
             Inicio
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 15,
+              fontWeight: 'bold',
+              marginBottom: 10,
+            }}>
             Noticias
           </Text>
         </TouchableOpacity>
@@ -79,9 +91,8 @@ export default function MenuHamburguesa({navigation}) {
       <View
         style={{
           alignItems: 'center',
-          marginTop: 20,
-          justifyContent: 'space-between',
-          height: 70,
+          marginTop: 15,
+          width: '100%',
         }}>
         <TouchableOpacity
           style={{
@@ -90,16 +101,18 @@ export default function MenuHamburguesa({navigation}) {
             width: '90%',
             borderRadius: 5,
             height: 30,
+            marginBottom: 15,
           }}
           onPress={() => navigation.navigate('Ingresar')}>
           <Text
             style={{
               fontWeight: 'bold',
               color: 'blue',
-              textAlign: 'center',
+              marginTop: 3,
               fontSize: 15,
+              alignSelf: 'center',
             }}>
-            Iniciar sesion
+            Iniciar sesión
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -110,19 +123,29 @@ export default function MenuHamburguesa({navigation}) {
             borderRadius: 5,
             height: 30,
             backgroundColor: 'blue',
+            marginBottom: 15,
           }}
           onPress={() => navigation.navigate('Registrarse')}>
           <Text
             style={{
               fontWeight: 'bold',
               color: 'white',
-              textAlign: 'center',
+              marginTop: 3,
+              alignSelf: 'center',
               fontSize: 15,
             }}>
             Registrarse
           </Text>
         </TouchableOpacity>
       </View>
+      <View
+        style={{
+          borderTopColor: '#f5f4f8',
+          borderTopWidth: 1,
+          marginTop: 13,
+          width: '90%',
+          alignSelf: 'center',
+        }}></View>
       <View style={{marginTop: 20}}>
         <View style={{alignItems: 'center', width: '30%', marginBottom: 20}}>
           <Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
@@ -190,7 +213,7 @@ export default function MenuHamburguesa({navigation}) {
       <View
         style={{
           marginTop: 20,
-          borderBottomColor: 'gray',
+          borderBottomColor: '#f5f4f8',
           borderBottomWidth: 1,
           width: '95%',
           alignSelf: 'center',
@@ -212,7 +235,7 @@ export default function MenuHamburguesa({navigation}) {
             justifyContent: 'space-around',
             width: '90%',
             alignSelf: 'center',
-            marginBottom: 10,
+            marginBottom: 15,
           }}>
           <Icon
             name="spotify"

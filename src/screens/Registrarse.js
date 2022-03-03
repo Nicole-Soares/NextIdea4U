@@ -192,7 +192,8 @@ export default function Registrarse({navigation}) {
           <Text
             style={{color: 'black'}}
             onPress={() => navigation.navigate('Ingresar')}>
-            ¿Ya tienes una cuenta? <Text style={{color: '#005cff'}}>Ingresa</Text>
+            ¿Ya tienes una cuenta?{' '}
+            <Text style={{color: '#005cff'}}>Ingresa</Text>
           </Text>
         </View>
         <View style={stylesReg.contenedorFacebook}>
@@ -219,7 +220,7 @@ export default function Registrarse({navigation}) {
             <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
           </TouchableOpacity>
         </View>
-        <View style={{alignSelf: 'center', marginTop:10}}>
+        <View style={{alignSelf: 'center', marginTop: 15, marginBottom: 15}}>
           <Text style={stylesReg.textoRegistrarEmail}>
             Ó regístrate con tu email
           </Text>

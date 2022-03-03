@@ -25,16 +25,18 @@ export const stylesReg = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
+    marginBottom: 10,
   },
   contenedorFacebook: {
     alignItems: 'center',
     width: '100%',
+    marginTop: 15,
   },
   botonFace: {
     backgroundColor: '#3b5999',
     width: '100%',
-    borderRadius: 2,
-    height: 30,
+    borderRadius: 5,
+    height: 40,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,8 +49,8 @@ export const stylesReg = StyleSheet.create({
   botonGoogle: {
     backgroundColor: '#fb5252',
     width: '100%',
-    borderRadius: 2,
-    height: 30,
+    borderRadius: 5,
+    height: 40,
     margin: 10,
     flexDirection: 'row',
 
@@ -66,7 +68,7 @@ export const stylesReg = StyleSheet.create({
     fontSize: 15,
   },
   contenedorInputs: {
-    width: '90%',
+    width: '100%',
     alignSelf: 'center',
     margin: 10,
   },
@@ -85,15 +87,14 @@ export const stylesReg = StyleSheet.create({
     paddingLeft: 10,
   },
   contenedorRegistrarse: {
-    width: '90%',
+    width: '100%',
     alignSelf: 'center',
   },
   botonReg: {
-    borderRadius: 2,
+    borderRadius: 5,
     backgroundColor: '#005cff',
-    height: 30,
+    height: 45,
     justifyContent: 'center',
-    margin: 10,
   },
   textoReg: {
     color: 'white',

@@ -13,14 +13,12 @@ export default function Navbar({navigation}) {
   return (
     <View style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
-        <View>
-          <TouchableOpacity onPress={() => setMenuHamburguesa(true)}>
-            <Image
-              source={require('../assets/icono/menu.png')}
-              style={{height: 30, width: 25}}
-            />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => setMenuHamburguesa(true)}>
+          <Image
+            source={require('../assets/icono/menu.png')}
+            style={{height: 26, width: 25, marginTop: 5}}
+          />
+        </TouchableOpacity>
       </View>
       <View style={stylesNav.contenedorTextoLogo}>
         <TouchableOpacity

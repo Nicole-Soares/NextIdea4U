@@ -21,22 +21,8 @@ import AutoHeightWebView from 'react-native-autoheight-webview';
 
 export default function NoticiaScreen(props) {
   const {noticia, setNoticia, menuHamburguesa} = useContext(AppContext);
-  const [webViewHeight, setWebViewHeight] = useState(null);
+
   const scrollRef = useRef();
-
-  //inyecto js para los estilos del webview
-  const INJECTED_JAVASCRIPT = `(function() {
-    let body = document.getElementsByTagName("BODY")[0];
-   body.style.fontSize = "55px"; body.style.width = "1500px"; body.style.width = "1500px"; body.img.style.width = "400px"; 
- 
-
- 
-
- })();`;
-
-  const onWebViewMessage = event => {
-    setWebViewHeight(Number(event.nativeEvent.data));
-  };
 
   // funcion para compartir
   const shareCustom = async () => {
@@ -105,18 +91,27 @@ export default function NoticiaScreen(props) {
         <Navbar navigation={props.navigation} />
         <ScrollView ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
-            <View style={{width: '100%', alignItems: 'center', marginLeft: 10}}>
+            <View style={{width: '95%', alignSelf: 'center', marginTop: 15}}>
               <Text
                 style={{
                   color: 'blue',
+                  fontFamily: 'Inter-SemiBold',
+                  fontSize: 13,
+                  marginBottom: 15,
+                }}>
+                {noticia.news.subtitulo.toUpperCase()}
+              </Text>
+              <Text
+                style={{
+                  color: 'black',
                   fontFamily: 'Inter-Bold',
                   fontSize: 22,
                 }}>
-                {noticia.news.subtitulo}.
-                <Text style={{color: 'black'}}>{noticia.news.titulo}</Text>
+                {noticia.news.titulo}
               </Text>
             </View>
-            <View style={{alignItems: 'center'}}>
+            <View
+              style={{alignItems: 'center', marginTop: 15, marginBottom: 15}}>
               <Text style={stylesNot.textoDesDesNot}>
                 {noticia.news.descripcion_corta}
               </Text>
@@ -127,7 +122,7 @@ export default function NoticiaScreen(props) {
                 name="calendar"
                 siez={30}
                 color="gray"
-                style={{marginLeft: 20}}
+                style={{marginLeft: 20, marginTop: 3}}
               />
               <Text style={{marginLeft: 10}}>{reversa}</Text>
             </View>
@@ -166,8 +161,9 @@ export default function NoticiaScreen(props) {
               }}>
               <AutoHeightWebView
                 style={{
-                  width: Dimensions.get('window').width - 10,
+                  width: Dimensions.get('window').width - 50,
                   marginTop: 15,
+                  marginLeft: 15,
                 }}
                 scalesPageToFit={false}
                 customStyle={
@@ -240,7 +236,13 @@ export default function NoticiaScreen(props) {
                       colors={['#212529', '#1d4da2']}
                       start={{x: 0.1, y: 0.9}}
                       end={{x: 0.7, y: 0.6}}
-                      style={{margin: 5, borderRadius: 5}}>
+                      style={{
+                        margin: 5,
+                        borderRadius: 5,
+                        width: '90%',
+                        alignSelf: 'center',
+                        padding: 24,
+                      }}>
                       <Image
                         source={{uri: participante.imagen}}
                         style={stylesNot.imgContacNot}
@@ -270,7 +272,7 @@ export default function NoticiaScreen(props) {
                 <Text style={{display: 'none'}}></Text>
               )}
             </View>
-            <Text style={{marginLeft: 10, marginTop: 10}}>
+            <Text style={{marginLeft: 24, marginTop: 10}}>
               {noticia.news.etiquetas}
             </Text>
           </View>
@@ -305,6 +307,7 @@ export default function NoticiaScreen(props) {
                               borderRadius: 10,
                               alignSelf: 'center',
                               margin: 5,
+                              marginBottom: 15,
                             }}
                           />
                           <Text
@@ -313,6 +316,7 @@ export default function NoticiaScreen(props) {
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
                               marginLeft: 15,
+                              marginBottom: 15,
                             }}>
                             {noticiaRe.subtitulo}.
                             <Text style={{color: 'black'}}>

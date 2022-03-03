@@ -53,12 +53,13 @@ export default function Recuperar({navigation}) {
           flexDirection: 'row',
           justifyContent: 'space-around',
           width: '60%',
+          paddingTop: 10,
         }}>
         <TouchableOpacity
           style={{
             backgroundColor: '#005cff',
             borderRadius: 3,
-            width: '70%',
+            width: '50%',
             height: 30,
             justifyContent: 'center',
             alignItems: 'center',

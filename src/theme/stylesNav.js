@@ -13,19 +13,19 @@ export const stylesNav = StyleSheet.create({
   contenedorPadreMenuLogo: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '5%',
+
     alignItems: 'center',
   },
   contenedorTextoLogo: {
     flexDirection: 'row',
-    width: '40%',
-    justifyContent: 'center',
+    width: '54%',
     alignItems: 'center',
   },
   textoNombreApp: {
     fontSize: 35,
     color: 'black',
     fontFamily: 'Inter-Bold',
+    marginLeft: -25,
   },
   imagenLogo: {
     borderWidth: 1,
