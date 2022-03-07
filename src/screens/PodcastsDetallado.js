@@ -116,7 +116,7 @@ export default function PodcastsDetallado(props) {
                     fontWeight: 'bold',
                     fontSize: 25,
                     width: '100%',
-                    marginBottom: 15,
+                    marginBottom: 10,
                   }}>
                   {podcasts.podcast.titulo}
                 </Text>

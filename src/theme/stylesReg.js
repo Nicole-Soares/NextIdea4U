@@ -8,12 +8,9 @@ export const stylesReg = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    width: '100%',
   },
-  contenedorGris: {
-    backgroundColor: 'white',
-    width: '90%',
-    elevation: 5,
-  },
+
   contenedorSuperior: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -29,7 +26,7 @@ export const stylesReg = StyleSheet.create({
   },
   contenedorFacebook: {
     alignItems: 'center',
-    width: '100%',
+    width: '90%',
     marginTop: 15,
   },
   botonFace: {
@@ -68,7 +65,7 @@ export const stylesReg = StyleSheet.create({
     fontSize: 15,
   },
   contenedorInputs: {
-    width: '100%',
+    width: '90%',
     alignSelf: 'center',
     margin: 10,
   },
@@ -76,18 +73,19 @@ export const stylesReg = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
-    margin: 5,
-    paddingLeft: 10,
+    marginBottom: 15,
+
+    width: '100%',
   },
   inputPassword: {
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
-    margin: 5,
-    paddingLeft: 10,
+    marginBottom: 5,
+    width: '100%',
   },
   contenedorRegistrarse: {
-    width: '100%',
+    width: '90%',
     alignSelf: 'center',
   },
   botonReg: {

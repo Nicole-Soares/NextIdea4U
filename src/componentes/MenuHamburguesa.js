@@ -56,6 +56,7 @@ export default function MenuHamburguesa({navigation}) {
             color="black"
             size={30}
             onPress={() => CerrarMenu()}
+            style={{marginRight: -15}}
           />
         </View>
       </View>
@@ -66,7 +67,7 @@ export default function MenuHamburguesa({navigation}) {
               color: 'black',
               fontSize: 15,
               fontWeight: 'bold',
-              marginBottom: 10,
+              marginBottom: 5,
             }}>
             Inicio
           </Text>
@@ -77,7 +78,7 @@ export default function MenuHamburguesa({navigation}) {
               color: 'black',
               fontSize: 15,
               fontWeight: 'bold',
-              marginBottom: 10,
+              marginBottom: 5,
             }}>
             Noticias
           </Text>
@@ -101,7 +102,7 @@ export default function MenuHamburguesa({navigation}) {
             width: '90%',
             borderRadius: 5,
             height: 30,
-            marginBottom: 15,
+            marginBottom: 10,
           }}
           onPress={() => navigation.navigate('Ingresar')}>
           <Text

@@ -56,8 +56,8 @@ export const stylesIng = StyleSheet.create({
   },
   contenedorIngresarMail: {
     alignSelf: 'center',
-    marginTop: 15,
-    marginBottom: 15,
+    marginTop: 7,
+    marginBottom: 7,
   },
   textoIngresa: {
     color: 'black',
@@ -72,7 +72,7 @@ export const stylesIng = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
-    margin: 10,
+    marginBottom: 15,
     width: '100%',
   },
   contenedorBotones: {

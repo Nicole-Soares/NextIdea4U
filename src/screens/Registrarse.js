@@ -179,82 +179,77 @@ export default function Registrarse({navigation}) {
   }, [dataGoogle]);
   return (
     <View style={stylesReg.contenedorPadre}>
-      <View style={stylesReg.contenedorGris}>
-        <View style={stylesReg.contenedorSuperior}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Image
-              source={require('../assets/icono/icono.png')}
-              style={{height: 70, width: 65, marginBottom: 15}}
-            />
-          </TouchableOpacity>
+      <View style={stylesReg.contenedorSuperior}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image
+            source={require('../assets/icono/icono.png')}
+            style={{height: 70, width: 65, marginBottom: 15}}
+          />
+        </TouchableOpacity>
 
-          <Text style={stylesReg.textoCrearCuenta}>Crea una cuenta</Text>
-          <Text
-            style={{color: 'black'}}
-            onPress={() => navigation.navigate('Ingresar')}>
-            ¿Ya tienes una cuenta?{' '}
-            <Text style={{color: '#005cff'}}>Ingresa</Text>
-          </Text>
-        </View>
-        <View style={stylesReg.contenedorFacebook}>
-          <TouchableOpacity
-            style={stylesReg.botonFace}
-            onPress={() => onFbLogin()}>
-            <Icon
-              name="facebook"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 190}}
-            />
-            <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={stylesReg.botonGoogle}
-            onPress={() => googleLogin()}>
-            <Icon
-              name="google"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 90}}
-            />
-            <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{alignSelf: 'center', marginTop: 15, marginBottom: 15}}>
-          <Text style={stylesReg.textoRegistrarEmail}>
-            Ó regístrate con tu email
-          </Text>
-        </View>
-        <View style={stylesReg.contenedorInputs}>
-          <TextInput
-            placeholder="Tu cuenta de email"
-            style={stylesReg.inputEmail}
-            value={userEmailRegistrar}
-            onChangeText={e => setUserEmailRegistrar(e)}
+        <Text style={stylesReg.textoCrearCuenta}>Crea una cuenta</Text>
+        <Text
+          style={{color: 'black'}}
+          onPress={() => navigation.navigate('Ingresar')}>
+          ¿Ya tienes una cuenta? <Text style={{color: '#005cff'}}>Ingresa</Text>
+        </Text>
+      </View>
+      <View style={stylesReg.contenedorFacebook}>
+        <TouchableOpacity
+          style={stylesReg.botonFace}
+          onPress={() => onFbLogin()}>
+          <Icon
+            name="facebook"
+            size={20}
+            color="white"
+            style={{width: '5%', marginLeft: 190}}
           />
-          {errorRegistrar ? (
-            <Text style={{color: 'red'}}>
-              Por favor ingrese un email válido
-            </Text>
-          ) : null}
-          <TextInput
-            placeholder="Crea una contraseña de ingreso"
-            secureTextEntry={true}
-            style={stylesReg.inputPassword}
-            value={userPasswordRegistrar}
-            onChangeText={e => setUserPasswordRegistrar(e)}
+          <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={stylesReg.botonGoogle}
+          onPress={() => googleLogin()}>
+          <Icon
+            name="google"
+            size={20}
+            color="white"
+            style={{width: '5%', marginLeft: 90}}
           />
-          {errorRegistrar ? (
-            <Text style={{color: 'red'}}>Campo requerido</Text>
-          ) : null}
-        </View>
-        <View style={stylesReg.contenedorRegistrarse}>
-          <TouchableOpacity
-            style={stylesReg.botonReg}
-            onPress={() => Registrar()}>
-            <Text style={stylesReg.textoReg}>Registrarse</Text>
-          </TouchableOpacity>
-        </View>
+          <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{alignSelf: 'center', marginTop: 7, marginBottom: 7}}>
+        <Text style={stylesReg.textoRegistrarEmail}>
+          Ó regístrate con tu email
+        </Text>
+      </View>
+      <View style={stylesReg.contenedorInputs}>
+        <TextInput
+          placeholder="Tu cuenta de email"
+          style={stylesReg.inputEmail}
+          value={userEmailRegistrar}
+          onChangeText={e => setUserEmailRegistrar(e)}
+        />
+        {errorRegistrar ? (
+          <Text style={{color: 'red'}}>Por favor ingrese un email válido</Text>
+        ) : null}
+        <TextInput
+          placeholder="Crea una contraseña de ingreso"
+          secureTextEntry={true}
+          style={stylesReg.inputPassword}
+          value={userPasswordRegistrar}
+          onChangeText={e => setUserPasswordRegistrar(e)}
+        />
+        {errorRegistrar ? (
+          <Text style={{color: 'red'}}>Campo requerido</Text>
+        ) : null}
+      </View>
+      <View style={stylesReg.contenedorRegistrarse}>
+        <TouchableOpacity
+          style={stylesReg.botonReg}
+          onPress={() => Registrar()}>
+          <Text style={stylesReg.textoReg}>Registrarse</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

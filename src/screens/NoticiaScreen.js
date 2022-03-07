@@ -91,7 +91,7 @@ export default function NoticiaScreen(props) {
         <Navbar navigation={props.navigation} />
         <ScrollView ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
-            <View style={{width: '95%', alignSelf: 'center', marginTop: 15}}>
+            <View style={{width: '90%', alignSelf: 'center', marginTop: 15}}>
               <Text
                 style={{
                   color: 'blue',
@@ -111,7 +111,12 @@ export default function NoticiaScreen(props) {
               </Text>
             </View>
             <View
-              style={{alignItems: 'center', marginTop: 15, marginBottom: 15}}>
+              style={{
+                alignSelf: 'center',
+                marginTop: 15,
+                marginBottom: 15,
+                width: '90%',
+              }}>
               <Text style={stylesNot.textoDesDesNot}>
                 {noticia.news.descripcion_corta}
               </Text>
@@ -293,8 +298,7 @@ export default function NoticiaScreen(props) {
               {noticia
                 ? noticia.related.map(noticiaRe => {
                     return (
-                      <View
-                        style={{alignSelf: 'center', width: '100%', margin: 5}}>
+                      <View style={{alignSelf: 'center', width: '100%'}}>
                         <TouchableOpacity
                           onPress={() =>
                             llamadoNoticiasRelacionadas(noticiaRe.noticia_id)
@@ -306,7 +310,7 @@ export default function NoticiaScreen(props) {
                               height: 200,
                               borderRadius: 10,
                               alignSelf: 'center',
-                              margin: 5,
+
                               marginBottom: 15,
                             }}
                           />
@@ -315,8 +319,8 @@ export default function NoticiaScreen(props) {
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
-                              marginLeft: 15,
-                              marginBottom: 15,
+                              marginLeft: 7,
+                              marginBottom: 20,
                             }}>
                             {noticiaRe.subtitulo}.
                             <Text style={{color: 'black'}}>

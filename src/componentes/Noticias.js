@@ -26,23 +26,22 @@ export default function Noticias({navigation}) {
                     style={stylesNot.imagenNot}
                   />
                   {index !== 0 ? (
-                    <View style={{width: '40%'}}>
-                      <Text
-                        style={{
-                          color: 'white',
-                          backgroundColor: 'black',
-                          textAlign: 'center',
-                          fontSize: 12,
-                          fontFamily: 'Inter-SemiBold',
-                          position: 'relative',
-                          top: -30,
-                          marginLeft: 10,
-                          borderRadius: 5,
-                          borderWidth: 1,
-                        }}>
-                        {noticia.categoria.toUpperCase()}
-                      </Text>
-                    </View>
+                    <Text
+                      style={{
+                        color: 'white',
+                        backgroundColor: 'black',
+                        textAlign: 'center',
+                        fontSize: 12,
+                        fontFamily: 'Inter-SemiBold',
+                        position: 'relative',
+                        top: -30,
+                        marginLeft: 10,
+                        borderRadius: 5,
+                        borderWidth: 1,
+                        alignSelf: 'flex-start',
+                      }}>
+                      {noticia.categoria.toUpperCase()}
+                    </Text>
                   ) : null}
                   <View style={stylesNot.contenedorDatosNot}>
                     {index === 0 ? (

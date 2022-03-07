@@ -63,7 +63,7 @@ export default function Recuperar({navigation}) {
             height: 30,
             justifyContent: 'center',
             alignItems: 'center',
-            marginLeft: 20,
+            marginLeft: 5,
           }}
           onPress={() => RecuperarContraseña()}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>Recuperar</Text>

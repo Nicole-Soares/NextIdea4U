@@ -37,14 +37,14 @@ export default function Navbar({navigation}) {
             borderWidth: 2,
             borderColor: 'black',
             borderRadius: 15,
-            width: 30,
-            height: 30,
+            width: 25,
+            height: 25,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
           <Icon
             name="user-o"
-            size={20}
+            size={15}
             color="black"
             style={{marginTop: 7}}
             onPress={() => navigation.navigate('Registrarse')}
