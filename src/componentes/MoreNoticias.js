@@ -41,7 +41,7 @@ export default function MoreNoticias({navigation}) {
                     source={{uri: noticia.img}}
                     style={{width: '100%', height: 220, borderRadius: 10}}
                   />
-                  <View style={{width: '40%'}}>
+                  <View style={{width: '40%', marginLeft: 10}}>
                     <Text
                       style={{
                         color: 'white',
@@ -51,9 +51,11 @@ export default function MoreNoticias({navigation}) {
                         fontFamily: 'Inter-SemiBold',
                         position: 'relative',
                         top: -30,
-                        marginLeft: 10,
+                        alignSelf: 'flex-start',
                         borderRadius: 5,
                         borderWidth: 1,
+                        paddingLeft: 10,
+                        paddingRight: 10,
                       }}>
                       {noticia.categoria.toUpperCase()}
                     </Text>

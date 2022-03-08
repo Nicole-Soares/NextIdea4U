@@ -204,6 +204,7 @@ export default function PodcastsDetallado(props) {
                     borderBottomWidth: 1,
                     width: '90%',
                     alignSelf: 'center',
+                    marginRight: 5,
                   }}>
                   <Text
                     style={{
@@ -309,6 +310,7 @@ export default function PodcastsDetallado(props) {
                   width: '90%',
                   alignSelf: 'center',
                   marginTop: 15,
+                  marginRight: 10,
                 }}>
                 <Text
                   style={{
@@ -333,6 +335,7 @@ export default function PodcastsDetallado(props) {
                       alignSelf: 'center',
                       padding: 24,
                       marginTop: 15,
+                      marginRight: 10,
                     }}
                     key={participante.id}>
                     <Image
@@ -394,6 +397,7 @@ export default function PodcastsDetallado(props) {
                     width: '90%',
                     alignSelf: 'center',
                     marginTop: 15,
+                    marginRight: 15,
                   }}>
                   <Text
                     style={{
@@ -424,26 +428,51 @@ export default function PodcastsDetallado(props) {
                         <View
                           style={{
                             alignSelf: 'center',
-                            width: '100%',
+                            width: '90%',
                             margin: 5,
+                            marginRight: 15,
+                            marginBottom: 15,
                           }}>
                           <Image
                             source={{uri: noticiaRePod.imagen}}
                             style={{
-                              width: '90%',
+                              width: '100%',
                               height: 200,
                               borderRadius: 10,
                               alignSelf: 'center',
                             }}
                           />
+                          <View
+                            style={{
+                              marginLeft: 10,
+                              position: 'relative',
+                              top: -30,
+                            }}>
+                            <Text
+                              style={{
+                                color: 'white',
+                                backgroundColor: 'black',
+                                textAlign: 'center',
+                                fontSize: 12,
+                                fontFamily: 'Inter-SemiBold',
+
+                                borderRadius: 5,
+                                borderWidth: 1,
+                                alignSelf: 'flex-start',
+                                paddingLeft: 10,
+                                paddingRight: 10,
+                              }}>
+                              {noticiaRePod.categoria.toUpperCase()}
+                            </Text>
+                          </View>
                           <Text
                             style={{
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
                               alignSelf: 'center',
-                              width: '95%',
-                              marginLeft: 20,
+                              width: '100%',
+                              marginLeft: 10,
                             }}>
                             {noticiaRePod.subtitulo}.<Text> </Text>
                             <Text style={{color: 'black'}}>
@@ -462,6 +491,7 @@ export default function PodcastsDetallado(props) {
                       borderBottomWidth: 1,
                       width: '90%',
                       alignSelf: 'center',
+                      marginRight: 15,
                     }}>
                     <Text
                       style={{

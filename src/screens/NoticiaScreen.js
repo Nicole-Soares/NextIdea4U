@@ -277,9 +277,41 @@ export default function NoticiaScreen(props) {
                 <Text style={{display: 'none'}}></Text>
               )}
             </View>
-            <Text style={{marginLeft: 24, marginTop: 10}}>
-              {noticia.news.etiquetas}
-            </Text>
+            <View
+              style={{
+                width: '95%',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                marginLeft: 25,
+              }}>
+              {noticia.news.etiquetas.map(item => {
+                return (
+                  <View
+                    style={{
+                      marginBottom: 10,
+                      borderWidth: 1,
+                      borderColor: '#e9ecef',
+                      borderRadius: 3,
+                      marginRight: 10,
+                      height: 25,
+                    }}>
+                    <Text
+                      style={{
+                        fontFamily: 'Inter-Bold',
+                        textAlign: 'center',
+                        fontSize: 12,
+                        marginLeft: 5,
+                        marginRight: 5,
+                        marginTop: 3,
+                        color: '#5c5776',
+                      }}>
+                      {item}
+                    </Text>
+                  </View>
+                );
+              })}
+            </View>
           </View>
 
           <View style={stylesNot.contenedorOtrasNoticiasNot}>

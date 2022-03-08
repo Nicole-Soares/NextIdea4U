@@ -101,7 +101,7 @@ export default function MenuHamburguesa({navigation}) {
             borderColor: 'blue',
             width: '90%',
             borderRadius: 5,
-            height: 30,
+            height: 35,
             marginBottom: 10,
           }}
           onPress={() => navigation.navigate('Ingresar')}>
@@ -109,7 +109,7 @@ export default function MenuHamburguesa({navigation}) {
             style={{
               fontWeight: 'bold',
               color: 'blue',
-              marginTop: 3,
+              marginTop: 5,
               fontSize: 15,
               alignSelf: 'center',
             }}>
@@ -122,7 +122,7 @@ export default function MenuHamburguesa({navigation}) {
             borderColor: 'blue',
             width: '90%',
             borderRadius: 5,
-            height: 30,
+            height: 35,
             backgroundColor: 'blue',
             marginBottom: 15,
           }}
@@ -131,7 +131,7 @@ export default function MenuHamburguesa({navigation}) {
             style={{
               fontWeight: 'bold',
               color: 'white',
-              marginTop: 3,
+              marginTop: 5,
               alignSelf: 'center',
               fontSize: 15,
             }}>
