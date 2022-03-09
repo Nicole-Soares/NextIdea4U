@@ -40,4 +40,19 @@ export const stylesNav = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  contenedorIconoSinLog: {
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 15,
+    width: 25,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  contenedorIconoConLog: {
+    width: 25,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

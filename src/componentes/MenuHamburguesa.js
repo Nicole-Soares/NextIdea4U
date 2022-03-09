@@ -15,7 +15,8 @@ import {AppContext} from '../AppContext/AppContext';
 
 //menu Hamburguesa
 export default function MenuHamburguesa({navigation}) {
-  const {setMenuHamburguesa} = useContext(AppContext);
+  const {setMenuHamburguesa, dataIngreso, desloguearse} =
+    useContext(AppContext);
   const moveAnimation = useRef(new Animated.Value(-200)).current;
 
   useEffect(() => {
@@ -89,56 +90,59 @@ export default function MenuHamburguesa({navigation}) {
           </Text>
         </TouchableOpacity>
       </View>
-      <View
-        style={{
-          alignItems: 'center',
-          marginTop: 15,
-          width: '100%',
-        }}>
-        <TouchableOpacity
+      {dataIngreso.error === false || dataIngreso.error === {} ? null : (
+        <View
           style={{
-            borderWidth: 1,
-            borderColor: 'blue',
-            width: '90%',
-            borderRadius: 5,
-            height: 35,
-            marginBottom: 10,
-          }}
-          onPress={() => navigation.navigate('Ingresar')}>
-          <Text
+            alignItems: 'center',
+            marginTop: 15,
+            width: '100%',
+          }}>
+          <TouchableOpacity
             style={{
-              fontWeight: 'bold',
-              color: 'blue',
-              marginTop: 5,
-              fontSize: 15,
-              alignSelf: 'center',
-            }}>
-            Iniciar sesión
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            borderColor: 'blue',
-            width: '90%',
-            borderRadius: 5,
-            height: 35,
-            backgroundColor: 'blue',
-            marginBottom: 15,
-          }}
-          onPress={() => navigation.navigate('Registrarse')}>
-          <Text
+              borderWidth: 1,
+              borderColor: 'blue',
+              width: '90%',
+              borderRadius: 5,
+              height: 35,
+              marginBottom: 10,
+            }}
+            onPress={() => navigation.navigate('Ingresar')}>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                color: 'blue',
+                marginTop: 5,
+                fontSize: 15,
+                alignSelf: 'center',
+              }}>
+              Iniciar sesión
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             style={{
-              fontWeight: 'bold',
-              color: 'white',
-              marginTop: 5,
-              alignSelf: 'center',
-              fontSize: 15,
-            }}>
-            Registrarse
-          </Text>
-        </TouchableOpacity>
-      </View>
+              borderWidth: 1,
+              borderColor: 'blue',
+              width: '90%',
+              borderRadius: 5,
+              height: 35,
+              backgroundColor: 'blue',
+              marginBottom: 15,
+            }}
+            onPress={() => navigation.navigate('Registrarse')}>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                color: 'white',
+                marginTop: 5,
+                alignSelf: 'center',
+                fontSize: 15,
+              }}>
+              Registrarse
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
       <View
         style={{
           borderTopColor: '#f5f4f8',

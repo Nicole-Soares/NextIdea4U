@@ -33,6 +33,7 @@ export default function Registrarse({navigation}) {
     setGoogleId,
     googleEmail,
     setGoogleEmail,
+    setDataIngreso,
   } = useContext(AppContext);
   const [errorRegistrar, setErrorRegistrar] = useState(false);
   const [userPasswordRegistrar, setUserPasswordRegistrar] = useState('');
@@ -42,7 +43,7 @@ export default function Registrarse({navigation}) {
 
   let deviceId = DeviceInfo.getUniqueId();
 
-  //registro del usuario
+  //registro del usuario con email y contraseña
   const Registrar = async () => {
     if (userPasswordRegistrar === '' || userEmailRegistrar === '') {
       setErrorRegistrar(true);
@@ -56,6 +57,8 @@ export default function Registrarse({navigation}) {
           },
         );
         let data = await llamada.json();
+        setDataIngreso(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -139,9 +142,11 @@ export default function Registrarse({navigation}) {
   //ingreso con google
 
   const googleLogin = async () => {
+    GoogleSignin.configure();
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
+
       setDataGoogle(userInfo);
     } catch (error) {
       if (error.code === statusCodes.SING_IN_CANCELLED) {
@@ -156,7 +161,7 @@ export default function Registrarse({navigation}) {
       }
     }
   };
-  // llamo a la api para google
+  // llamo a la api del back  para mandarle la data de google
   useEffect(() => {
     if (dataGoogle) {
       setGoogleEmail(dataGoogle.user.email);
@@ -169,6 +174,7 @@ export default function Registrarse({navigation}) {
             `https://nextidea4u.com/api/login/login-google.php?device=${deviceId}&email=${googleEmail}&name=${googleNombre}&external=${googleId}&player_id=${global.playerId}`,
           );
           let data = await llamado.json();
+          setDataIngreso(data);
         } catch (error) {
           console.log(error);
         }

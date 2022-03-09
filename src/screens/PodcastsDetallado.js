@@ -397,7 +397,7 @@ export default function PodcastsDetallado(props) {
                     width: '90%',
                     alignSelf: 'center',
                     marginTop: 15,
-                    marginRight: 15,
+                    marginRight: 10,
                   }}>
                   <Text
                     style={{
@@ -472,7 +472,7 @@ export default function PodcastsDetallado(props) {
                               fontSize: 20,
                               alignSelf: 'center',
                               width: '100%',
-                              marginLeft: 10,
+                              marginLeft: 5,
                             }}>
                             {noticiaRePod.subtitulo}.<Text> </Text>
                             <Text style={{color: 'black'}}>

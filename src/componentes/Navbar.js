@@ -1,14 +1,35 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesNav} from '../theme/stylesNav';
+import DeviceInfo from 'react-native-device-info';
 
 // navbar
 
 export default function Navbar({navigation}) {
-  const {setMenuHamburguesa} = useContext(AppContext);
+  const {setMenuHamburguesa, dataIngreso, setDataIngreso} =
+    useContext(AppContext);
+  const [desloguearse, setDesloguearse] = useState({});
+  let deviceId = DeviceInfo.getUniqueId();
+  let sessionUsuario = dataIngreso.session;
+
+  const Desloguearse = async () => {
+    try {
+      let llamado = await fetch(
+        `https://nextidea4u.com/api/login/logout.php?device=${deviceId}&sessionId=${sessionUsuario}`,
+        {
+          method: 'POST',
+        },
+      );
+      let data = await llamado.json();
+      setDesloguearse(data);
+      setDataIngreso({});
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <View style={stylesNav.contenedorPadre}>
@@ -33,22 +54,27 @@ export default function Navbar({navigation}) {
       </View>
       <View style={stylesNav.ContenedorPadreIconoLogin}>
         <View
-          style={{
-            borderWidth: 2,
-            borderColor: 'black',
-            borderRadius: 15,
-            width: 25,
-            height: 25,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Icon
-            name="user-o"
-            size={15}
-            color="black"
-            style={{marginTop: 7}}
-            onPress={() => navigation.navigate('Registrarse')}
-          />
+          style={[
+            dataIngreso.error === false
+              ? stylesNav.contenedorIconoConLog
+              : stylesNav.contenedorIconoSinLog,
+          ]}>
+          {dataIngreso.error === false || dataIngreso.error === {} ? (
+            <TouchableOpacity onPress={() => Desloguearse()}>
+              <Image
+                source={require('../assets/icono/close.png')}
+                style={{height: 30, width: 30}}
+              />
+            </TouchableOpacity>
+          ) : (
+            <Icon
+              name="user-o"
+              size={15}
+              color="black"
+              style={{marginTop: 7}}
+              onPress={() => navigation.navigate('Registrarse')}
+            />
+          )}
         </View>
       </View>
     </View>
