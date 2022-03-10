@@ -21,6 +21,7 @@ import AutoHeightWebView from 'react-native-autoheight-webview';
 
 export default function NoticiaScreen(props) {
   const {noticia, setNoticia, menuHamburguesa} = useContext(AppContext);
+<<<<<<< HEAD
   const [webViewHeight, setWebViewHeight] = useState(null);
   const scrollRef = useRef();
 
@@ -29,10 +30,10 @@ export default function NoticiaScreen(props) {
     let body = document.getElementsByTagName("BODY")[0];
    body.style.fontSize = "55px"; body.style.width = "1500px"; body.style.width = "1500px"; body.img.style.width = "400px"; 
  })();`;
+=======
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
 
-  const onWebViewMessage = event => {
-    setWebViewHeight(Number(event.nativeEvent.data));
-  };
+  const scrollRef = useRef();
 
   // funcion para compartir
   const shareCustom = async () => {
@@ -101,18 +102,36 @@ export default function NoticiaScreen(props) {
         <Navbar navigation={props.navigation} />
         <ScrollView ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
+<<<<<<< HEAD
             <View style={{width: '100%', alignItems: 'center', marginLeft: Platform.OS === "ios" ? 0 : 10}}>
+=======
+            <View style={{width: '90%', alignSelf: 'center', marginTop: 15}}>
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
               <Text
                 style={{
                   color: 'blue',
+                  fontFamily: 'Inter-SemiBold',
+                  fontSize: 13,
+                  marginBottom: 15,
+                }}>
+                {noticia.news.subtitulo.toUpperCase()}
+              </Text>
+              <Text
+                style={{
+                  color: 'black',
                   fontFamily: 'Inter-Bold',
                   fontSize: 22,
                 }}>
-                {noticia.news.subtitulo}.
-                <Text style={{color: 'black'}}>{noticia.news.titulo}</Text>
+                {noticia.news.titulo}
               </Text>
             </View>
-            <View style={{alignItems: 'center'}}>
+            <View
+              style={{
+                alignSelf: 'center',
+                marginTop: 15,
+                marginBottom: 15,
+                width: '90%',
+              }}>
               <Text style={stylesNot.textoDesDesNot}>
                 {noticia.news.descripcion_corta}
               </Text>
@@ -123,7 +142,11 @@ export default function NoticiaScreen(props) {
                 name="calendar"
                 siez={30}
                 color="gray"
+<<<<<<< HEAD
                 style={{marginLeft: 25, marginTop:10}}
+=======
+                style={{marginLeft: 20, marginTop: 3}}
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
               />
               <Text style={{marginLeft: 10, marginTop:10}}>{reversa}</Text>
             </View>
@@ -162,8 +185,9 @@ export default function NoticiaScreen(props) {
               }}>
               <AutoHeightWebView
                 style={{
-                  width: Dimensions.get('window').width - 10,
+                  width: Dimensions.get('window').width - 50,
                   marginTop: 15,
+                  marginLeft: 15,
                 }}
                 scalesPageToFit={false}
                 customStyle={
@@ -236,7 +260,13 @@ export default function NoticiaScreen(props) {
                       colors={['#212529', '#1d4da2']}
                       start={{x: 0.1, y: 0.9}}
                       end={{x: 0.7, y: 0.6}}
-                      style={{margin: 5, borderRadius: 5}}>
+                      style={{
+                        margin: 5,
+                        borderRadius: 5,
+                        width: '90%',
+                        alignSelf: 'center',
+                        padding: 24,
+                      }}>
                       <Image
                         source={{uri: participante.imagen}}
                         style={stylesNot.imgContacNot}
@@ -266,9 +296,41 @@ export default function NoticiaScreen(props) {
                 <Text style={{display: 'none'}}></Text>
               )}
             </View>
-            <Text style={{marginLeft: 10, marginTop: 10}}>
-              {noticia.news.etiquetas}
-            </Text>
+            <View
+              style={{
+                width: '95%',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                marginLeft: 25,
+              }}>
+              {noticia.news.etiquetas.map(item => {
+                return (
+                  <View
+                    style={{
+                      marginBottom: 10,
+                      borderWidth: 1,
+                      borderColor: '#e9ecef',
+                      borderRadius: 3,
+                      marginRight: 10,
+                      height: 25,
+                    }}>
+                    <Text
+                      style={{
+                        fontFamily: 'Inter-Bold',
+                        textAlign: 'center',
+                        fontSize: 12,
+                        marginLeft: 5,
+                        marginRight: 5,
+                        marginTop: 3,
+                        color: '#5c5776',
+                      }}>
+                      {item}
+                    </Text>
+                  </View>
+                );
+              })}
+            </View>
           </View>
 
           <View style={stylesNot.contenedorOtrasNoticiasNot}>
@@ -287,8 +349,7 @@ export default function NoticiaScreen(props) {
               {noticia
                 ? noticia.related.map(noticiaRe => {
                     return (
-                      <View
-                        style={{alignSelf: 'center', width: '100%', margin: 5}}>
+                      <View style={{alignSelf: 'center', width: '100%'}}>
                         <TouchableOpacity
                           onPress={() =>
                             llamadoNoticiasRelacionadas(noticiaRe.noticia_id)
@@ -300,7 +361,8 @@ export default function NoticiaScreen(props) {
                               height: 200,
                               borderRadius: 10,
                               alignSelf: 'center',
-                              margin: 5,
+
+                              marginBottom: 15,
                             }}
                           />
                           <Text
@@ -308,7 +370,8 @@ export default function NoticiaScreen(props) {
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
-                              marginLeft: 15,
+                              marginLeft: 7,
+                              marginBottom: 20,
                             }}>
                             {noticiaRe.subtitulo}.
                             <Text style={{color: 'black'}}>

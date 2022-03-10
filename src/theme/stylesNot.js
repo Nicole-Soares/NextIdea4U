@@ -15,8 +15,11 @@ export const stylesNot = StyleSheet.create({
   contenedorDatosNot: {
     flexDirection: 'row',
     width: '100%',
+<<<<<<< HEAD
     justifyContent: 'space-between',
     marginTop:10
+=======
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
   },
   textoTituloNot: {
     fontSize: 19,
@@ -55,9 +58,15 @@ export const stylesNot = StyleSheet.create({
   },
   textoDesDesNot: {
     color: 'black',
+<<<<<<< HEAD
     fontSize: 15,
     width: '90%',
     marginLeft: Platform.OS === "ios" ? 10 : null
+=======
+    fontSize: 17,
+    width: '95%',
+    marginLeft: 3,
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
   },
   contenedorNotIconFecha: {
     flexDirection: 'row',
@@ -77,8 +86,8 @@ export const stylesNot = StyleSheet.create({
     marginBottom: 10,
   },
   imgContacNot: {
-    height: 70,
-    width: 70,
+    height: 90,
+    width: 90,
     borderRadius: 40,
     borderColor: 'white',
     borderWidth: 3,
@@ -108,8 +117,10 @@ export const stylesNot = StyleSheet.create({
   },
   biografiaNotDes: {
     color: 'white',
-    margin: 5,
+    width: '90%',
     fontSize: 15,
+    marginLeft: 5,
+    marginBottom: 15,
   },
   contenedorOtrasNoticiasNot: {
     borderBottomColor: 'gray',

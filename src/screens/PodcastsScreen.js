@@ -104,6 +104,7 @@ export default function PodcastsScreen({navigation}) {
                 color: 'white',
                 fontSize: 17,
                 fontFamily: 'Inter-Regular',
+                marginLeft: 10,
               }}>
               Disfrute de todo el contenido de nuestra plataforma en formato
               audio con nuestros podcasts.
@@ -194,7 +195,7 @@ export default function PodcastsScreen({navigation}) {
             ? listadoPodcasts.featured.map(podcast => {
                 return (
                   <View
-                    style={{width: '50%', marginBottom: 25, marginTop: 15}}
+                    style={{width: '50%', marginBottom: 25, marginTop: 25}}
                     key={podcast.id}>
                     <TouchableOpacity
                       onPress={() =>

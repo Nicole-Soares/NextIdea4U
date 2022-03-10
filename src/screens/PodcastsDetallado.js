@@ -27,14 +27,6 @@ export default function PodcastsDetallado(props) {
   const [webViewHeight, setWebViewHeight] = useState(null);
   const scrollRef = useRef();
 
-  const INJECTED_JAVASCRIPT = `(function() {
-      let body = document.getElementsByTagName("BODY")[0];
-     body.style.fontSize = "38px";
-     window.ReactNativeWebView.postMessage(
-      Math.max(document.body.offsetHeight, document.body.scrollHeight)
-    );
-   })();`;
-
   //funcion para compartir
 
   const shareCustom = async () => {
@@ -99,7 +91,7 @@ export default function PodcastsDetallado(props) {
     let reversa = reemplazo.split('/').reverse().join('/');
 
     return (
-      <View style={{backgroundColor: 'white'}}>
+      <View style={{backgroundColor: 'white', height: '100%'}}>
         {menuHamburguesa ? (
           <MenuHamburguesa navigation={props.navigation} />
         ) : null}
@@ -118,21 +110,34 @@ export default function PodcastsDetallado(props) {
                 size={30}
                 style={{marginLeft: 10, marginTop: 10}}
               />
-              <View style={{margin: 10, width: '100%'}}>
+              <View style={{margin: 10, width: '100%', alignItems: 'center'}}>
                 <Text
                   style={{
                     color: 'black',
                     fontWeight: 'bold',
                     fontSize: 25,
-                    width: '70%',
+                    width: '100%',
+                    marginBottom: 10,
                   }}>
                   {podcasts.podcast.titulo}
                 </Text>
 
-                <Text style={{color: 'black', fontSize: 17, width: '90%'}}>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 17,
+                    width: '95%',
+                    marginLeft: -18,
+                  }}>
                   {podcasts.podcast.descripcion_corta}
                 </Text>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    width: '98%',
+                    marginTop: 15,
+                  }}>
                   <Icon
                     name="calendar"
                     siez={30}
@@ -142,7 +147,13 @@ export default function PodcastsDetallado(props) {
                   <Text>{reversa}</Text>
                 </View>
               </View>
-              <View style={{height: 200, alignSelf: 'center', width: '90%'}}>
+              <View
+                style={{
+                  height: 200,
+                  alignSelf: 'center',
+                  width: '95%',
+                  marginLeft: -5,
+                }}>
                 <WebView
                   scrollEnabled={false}
                   source={{
@@ -152,7 +163,7 @@ export default function PodcastsDetallado(props) {
                   style={{height: 300, marginTop: 15}}
                 />
               </View>
-              <View style={{margin: 5}}>
+              <View style={{alignSelf: 'center', marginBottom: 10}}>
                 <TouchableOpacity
                   onPress={() => shareCustom()}
                   style={{
@@ -174,12 +185,12 @@ export default function PodcastsDetallado(props) {
 
               <AutoHeightWebView
                 style={{
-                  width: Dimensions.get('window').width - 10,
-                  height: Dimensions.get('window').height - 10,
-                  marginTop: 35,
+                  width: Dimensions.get('window').width - 50,
+                  marginLeft: 15,
+                  marginTop: 15,
                 }}
                 scalesPageToFit={false}
-                customStyle={`* {font-size: 15px;}`}
+                customStyle={`* {font-size: 17px;}`}
                 source={{
                   html: data,
                 }}
@@ -187,13 +198,14 @@ export default function PodcastsDetallado(props) {
                 onSizeUpdated={size => console.log(size.height)}
               />
 
-              <View style={{width: '100%'}}>
+              <View style={{width: '100%', marginTop: 30}}>
                 <View
                   style={{
                     borderBottomColor: 'gray',
                     borderBottomWidth: 1,
                     width: '90%',
                     alignSelf: 'center',
+                    marginRight: 5,
                   }}>
                   <Text
                     style={{
@@ -201,7 +213,7 @@ export default function PodcastsDetallado(props) {
                       fontWeight: 'bold',
                       fontSize: 20,
                       width: '100%',
-                      marginBottom: 15,
+                      marginBottom: 10,
                     }}>
                     Tambien disponible en las plataformas:
                   </Text>
@@ -298,7 +310,8 @@ export default function PodcastsDetallado(props) {
                   borderBottomWidth: 1,
                   width: '90%',
                   alignSelf: 'center',
-                  marginTop: 10,
+                  marginTop: 15,
+                  marginRight: 10,
                 }}>
                 <Text
                   style={{
@@ -306,7 +319,11 @@ export default function PodcastsDetallado(props) {
                     fontWeight:Platform.OS === "ios" ? "bold" : null,
                     color: 'black',
                     fontSize: 20,
+<<<<<<< HEAD
                     marginTop:15
+=======
+                    marginBottom: 10,
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
                   }}>
                   Contactos de esta nota
                 </Text>
@@ -317,13 +334,21 @@ export default function PodcastsDetallado(props) {
                     colors={['#212529', '#1d4da2']}
                     start={{x: 0.1, y: 0.9}}
                     end={{x: 0.7, y: 0.6}}
-                    style={{margin: 10, padding: 20}}
+                    style={{
+                      margin: 5,
+                      borderRadius: 5,
+                      width: '90%',
+                      alignSelf: 'center',
+                      padding: 24,
+                      marginTop: 15,
+                      marginRight: 10,
+                    }}
                     key={participante.id}>
                     <Image
                       source={{uri: participante.imagen}}
                       style={{
-                        height: 70,
-                        width: 70,
+                        height: 90,
+                        width: 90,
                         borderRadius: 40,
                         borderColor: 'white',
                         borderWidth: 3,
@@ -361,7 +386,9 @@ export default function PodcastsDetallado(props) {
                       }}>
                       {participante.profesion}
                     </Text>
-                    <Text style={{color: 'white', margin: 5, fontSize: 15}}>
+                    <Text
+                      style={{color: 'white', margin: 5, fontSize: 15}}
+                      numberOfLines={4}>
                       {participante.biografia}
                     </Text>
                   </LinearGradient>
@@ -376,6 +403,7 @@ export default function PodcastsDetallado(props) {
                     width: '90%',
                     alignSelf: 'center',
                     marginTop: 15,
+                    marginRight: 10,
                   }}>
                   <Text
                     style={{
@@ -390,7 +418,11 @@ export default function PodcastsDetallado(props) {
                   </Text>
                 </View>
 
-                <View style={{width: '100%', marginTop: 10}}>
+                <View
+                  style={{
+                    width: '100%',
+                    marginTop: 10,
+                  }}>
                   {podcasts.news.map(noticiaRePod => {
                     return (
                       <TouchableOpacity
@@ -403,28 +435,58 @@ export default function PodcastsDetallado(props) {
                         <View
                           style={{
                             alignSelf: 'center',
-                            width: '100%',
+                            width: '90%',
                             margin: 5,
+                            marginRight: 15,
+                            marginBottom: 15,
                           }}>
                           <Image
                             source={{uri: noticiaRePod.imagen}}
                             style={{
-                              width: '95%',
+                              width: '100%',
                               height: 200,
                               borderRadius: 10,
                               alignSelf: 'center',
-                              margin: 5,
                             }}
                           />
+                          <View
+                            style={{
+                              marginLeft: 10,
+                              position: 'relative',
+                              top: -30,
+                            }}>
+                            <Text
+                              style={{
+                                color: 'white',
+                                backgroundColor: 'black',
+                                textAlign: 'center',
+                                fontSize: 12,
+                                fontFamily: 'Inter-SemiBold',
+
+                                borderRadius: 5,
+                                borderWidth: 1,
+                                alignSelf: 'flex-start',
+                                paddingLeft: 10,
+                                paddingRight: 10,
+                              }}>
+                              {noticiaRePod.categoria.toUpperCase()}
+                            </Text>
+                          </View>
                           <Text
                             style={{
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
+<<<<<<< HEAD
                               marginLeft:15,
                               width:"95%"
+=======
+                              alignSelf: 'center',
+                              width: '100%',
+                              marginLeft: 5,
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
                             }}>
-                            {noticiaRePod.subtitulo}.
+                            {noticiaRePod.subtitulo}.<Text> </Text>
                             <Text style={{color: 'black'}}>
                               {noticiaRePod.titulo}
                             </Text>
@@ -441,6 +503,7 @@ export default function PodcastsDetallado(props) {
                       borderBottomWidth: 1,
                       width: '90%',
                       alignSelf: 'center',
+                      marginRight: 15,
                     }}>
                     <Text
                       style={{
@@ -471,34 +534,36 @@ export default function PodcastsDetallado(props) {
                                   width: '50%',
                                 }}
                                 key={podcastsRe.id}>
-                                <TouchableOpacity
-                                  onPress={() =>
-                                    llamadoPodcastsRelacionados(
-                                      podcastsRe.podcast_id,
-                                    )
-                                  }
-                                  style={{width: '100%'}}>
-                                  <Image
-                                    source={{uri: podcastsRe.imagen}}
-                                    style={{
-                                      width: '90%',
-                                      height: 170,
-                                      borderRadius: 10,
-                                    }}
-                                  />
-                                  <Text
-                                    style={{
-                                      color: 'black',
-                                      fontSize: 15,
-                                      marginLeft: 5,
-                                      width: '90%',
-                                      marginTop: 5,
-                                      fontFamily: 'Inter-Bold',
-                                      marginBottom: 10,
-                                    }}>
-                                    {podcastsRe.titulo}
-                                  </Text>
-                                </TouchableOpacity>
+                                <ScrollView>
+                                  <TouchableOpacity
+                                    onPress={() =>
+                                      llamadoPodcastsRelacionados(
+                                        podcastsRe.podcast_id,
+                                      )
+                                    }
+                                    style={{width: '100%'}}>
+                                    <Image
+                                      source={{uri: podcastsRe.imagen}}
+                                      style={{
+                                        width: '90%',
+                                        height: 170,
+                                        borderRadius: 10,
+                                      }}
+                                    />
+                                    <Text
+                                      style={{
+                                        color: 'black',
+                                        fontSize: 15,
+                                        marginLeft: 5,
+                                        width: '90%',
+                                        marginTop: 5,
+                                        fontFamily: 'Inter-Bold',
+                                        marginBottom: 10,
+                                      }}>
+                                      {podcastsRe.titulo}
+                                    </Text>
+                                  </TouchableOpacity>
+                                </ScrollView>
                               </View>
                             );
                           })

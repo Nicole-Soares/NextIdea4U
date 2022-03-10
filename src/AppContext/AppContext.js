@@ -21,6 +21,8 @@ export default function AppProvider({children}) {
   const [googleNombre, setGoogleNombre] = useState(null);
   const [googleId, setGoogleId] = useState(null);
   const [googleEmail, setGoogleEmail] = useState(null);
+  const [dataIngreso, setDataIngreso] = useState({});
+
   return (
     <AppContext.Provider
       value={{
@@ -56,6 +58,8 @@ export default function AppProvider({children}) {
         setGoogleId,
         googleEmail,
         setGoogleEmail,
+        dataIngreso,
+        setDataIngreso,
       }}>
       {children}
     </AppContext.Provider>

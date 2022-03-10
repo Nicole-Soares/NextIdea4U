@@ -13,20 +13,23 @@ export const stylesNav = StyleSheet.create({
   contenedorPadreMenuLogo: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '5%',
+
     alignItems: 'center',
   },
   contenedorTextoLogo: {
     flexDirection: 'row',
-    width: '40%',
-    justifyContent: 'center',
+    width: '54%',
     alignItems: 'center',
   },
   textoNombreApp: {
     fontSize: 35,
     color: 'black',
     fontFamily: 'Inter-Bold',
+<<<<<<< HEAD
     fontWeight:Platform.OS === "ios" ? "bold" : null
+=======
+    marginLeft: -25,
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
   },
   imagenLogo: {
    width: 45,
@@ -38,5 +41,20 @@ export const stylesNav = StyleSheet.create({
     justifyContent: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  contenedorIconoSinLog: {
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 15,
+    width: 25,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  contenedorIconoConLog: {
+    width: 25,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

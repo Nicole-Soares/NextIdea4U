@@ -24,25 +24,30 @@ export const stylesIng = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
+    marginBottom: 10,
   },
   contenedorBotonesRedesSociales: {
     alignItems: 'center',
     width: '100%',
+<<<<<<< HEAD
     marginTop:10
+=======
+    marginTop: 15,
+>>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
   },
   botonFace: {
     backgroundColor: '#3b5999',
     width: '100%',
-    borderRadius: 2,
-    height: 30,
+    borderRadius: 5,
+    height: 40,
     flexDirection: 'row',
     alignItems: 'center',
   },
   botonGoogle: {
     backgroundColor: '#fb5252',
     width: '100%',
-    borderRadius: 2,
-    height: 30,
+    borderRadius: 5,
+    height: 45,
     margin: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -55,7 +60,8 @@ export const stylesIng = StyleSheet.create({
   },
   contenedorIngresarMail: {
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 7,
+    marginBottom: 7,
   },
   textoIngresa: {
     color: 'black',
@@ -63,27 +69,26 @@ export const stylesIng = StyleSheet.create({
     fontSize: 15,
   },
   contenedorInputs: {
-    width: '90%',
-    alignSelf: 'center',
-    margin: 10,
+    width: '100%',
+    alignItems: 'center',
   },
   estilosInputs: {
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#8898aa',
-    margin: 5,
-    paddingLeft: 10,
+    marginBottom: 15,
+    width: '100%',
   },
   contenedorBotones: {
-    width: '90%',
+    width: '100%',
     alignSelf: 'center',
   },
   botonIniciar: {
-    borderRadius: 2,
+    borderRadius: 5,
     backgroundColor: '#005cff',
-    height: 30,
+    height: 45,
+    marginTop: 5,
     justifyContent: 'center',
-    margin: 10,
   },
   textoIniciar: {
     color: 'white',

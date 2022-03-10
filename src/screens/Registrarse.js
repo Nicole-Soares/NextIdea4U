@@ -33,6 +33,7 @@ export default function Registrarse({navigation}) {
     setGoogleId,
     googleEmail,
     setGoogleEmail,
+    setDataIngreso,
   } = useContext(AppContext);
   const [errorRegistrar, setErrorRegistrar] = useState(false);
   const [userPasswordRegistrar, setUserPasswordRegistrar] = useState('');
@@ -42,7 +43,7 @@ export default function Registrarse({navigation}) {
 
   let deviceId = DeviceInfo.getUniqueId();
 
-  //registro del usuario
+  //registro del usuario con email y contraseña
   const Registrar = async () => {
     if (userPasswordRegistrar === '' || userEmailRegistrar === '') {
       setErrorRegistrar(true);
@@ -56,6 +57,8 @@ export default function Registrarse({navigation}) {
           },
         );
         let data = await llamada.json();
+        setDataIngreso(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -139,9 +142,11 @@ console.log(dataFacebook, "dataFace")
   //ingreso con google
 
   const googleLogin = async () => {
+    GoogleSignin.configure();
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
+
       setDataGoogle(userInfo);
     } catch (error) {
       if (error.code === statusCodes.SING_IN_CANCELLED) {
@@ -156,7 +161,7 @@ console.log(dataFacebook, "dataFace")
       }
     }
   };
-  // llamo a la api para google
+  // llamo a la api del back  para mandarle la data de google
   useEffect(() => {
     if (dataGoogle) {
       setGoogleEmail(dataGoogle.user.email);
@@ -169,6 +174,7 @@ console.log(dataFacebook, "dataFace")
             `https://nextidea4u.com/api/login/login-google.php?device=${deviceId}&email=${googleEmail}&name=${googleNombre}&external=${googleId}&player_id=${global.playerId}`,
           );
           let data = await llamado.json();
+          setDataIngreso(data);
         } catch (error) {
           console.log(error);
         }
@@ -179,81 +185,77 @@ console.log(dataFacebook, "dataFace")
   }, [dataGoogle]);
   return (
     <View style={stylesReg.contenedorPadre}>
-      <View style={stylesReg.contenedorGris}>
-        <View style={stylesReg.contenedorSuperior}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Image
-              source={require('../assets/icono/icono.png')}
-              style={{height: 70, width: 65, marginBottom: 15}}
-            />
-          </TouchableOpacity>
+      <View style={stylesReg.contenedorSuperior}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image
+            source={require('../assets/icono/icono.png')}
+            style={{height: 70, width: 65, marginBottom: 15}}
+          />
+        </TouchableOpacity>
 
-          <Text style={stylesReg.textoCrearCuenta}>Crea una cuenta</Text>
-          <Text
-            style={{color: 'black'}}
-            onPress={() => navigation.navigate('Ingresar')}>
-            ¿Ya tienes una cuenta? <Text style={{color: '#005cff'}}>Ingresa</Text>
-          </Text>
-        </View>
-        <View style={stylesReg.contenedorFacebook}>
-          <TouchableOpacity
-            style={stylesReg.botonFace}
-            onPress={() => onFbLogin()}>
-            <Icon
-              name="facebook"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 190}}
-            />
-            <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={stylesReg.botonGoogle}
-            onPress={() => googleLogin()}>
-            <Icon
-              name="google"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 90}}
-            />
-            <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{alignSelf: 'center', marginTop:10}}>
-          <Text style={stylesReg.textoRegistrarEmail}>
-            Ó regístrate con tu email
-          </Text>
-        </View>
-        <View style={stylesReg.contenedorInputs}>
-          <TextInput
-            placeholder="Tu cuenta de email"
-            style={stylesReg.inputEmail}
-            value={userEmailRegistrar}
-            onChangeText={e => setUserEmailRegistrar(e)}
+        <Text style={stylesReg.textoCrearCuenta}>Crea una cuenta</Text>
+        <Text
+          style={{color: 'black'}}
+          onPress={() => navigation.navigate('Ingresar')}>
+          ¿Ya tienes una cuenta? <Text style={{color: '#005cff'}}>Ingresa</Text>
+        </Text>
+      </View>
+      <View style={stylesReg.contenedorFacebook}>
+        <TouchableOpacity
+          style={stylesReg.botonFace}
+          onPress={() => onFbLogin()}>
+          <Icon
+            name="facebook"
+            size={20}
+            color="white"
+            style={{width: '5%', marginLeft: 190}}
           />
-          {errorRegistrar ? (
-            <Text style={{color: 'red'}}>
-              Por favor ingrese un email válido
-            </Text>
-          ) : null}
-          <TextInput
-            placeholder="Crea una contraseña de ingreso"
-            secureTextEntry={true}
-            style={stylesReg.inputPassword}
-            value={userPasswordRegistrar}
-            onChangeText={e => setUserPasswordRegistrar(e)}
+          <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={stylesReg.botonGoogle}
+          onPress={() => googleLogin()}>
+          <Icon
+            name="google"
+            size={20}
+            color="white"
+            style={{width: '5%', marginLeft: 90}}
           />
-          {errorRegistrar ? (
-            <Text style={{color: 'red'}}>Campo requerido</Text>
-          ) : null}
-        </View>
-        <View style={stylesReg.contenedorRegistrarse}>
-          <TouchableOpacity
-            style={stylesReg.botonReg}
-            onPress={() => Registrar()}>
-            <Text style={stylesReg.textoReg}>Registrarse</Text>
-          </TouchableOpacity>
-        </View>
+          <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{alignSelf: 'center', marginTop: 7, marginBottom: 7}}>
+        <Text style={stylesReg.textoRegistrarEmail}>
+          Ó regístrate con tu email
+        </Text>
+      </View>
+      <View style={stylesReg.contenedorInputs}>
+        <TextInput
+          placeholder="Tu cuenta de email"
+          style={stylesReg.inputEmail}
+          value={userEmailRegistrar}
+          onChangeText={e => setUserEmailRegistrar(e)}
+        />
+        {errorRegistrar ? (
+          <Text style={{color: 'red'}}>Por favor ingrese un email válido</Text>
+        ) : null}
+        <TextInput
+          placeholder="Crea una contraseña de ingreso"
+          secureTextEntry={true}
+          style={stylesReg.inputPassword}
+          value={userPasswordRegistrar}
+          onChangeText={e => setUserPasswordRegistrar(e)}
+        />
+        {errorRegistrar ? (
+          <Text style={{color: 'red'}}>Campo requerido</Text>
+        ) : null}
+      </View>
+      <View style={stylesReg.contenedorRegistrarse}>
+        <TouchableOpacity
+          style={stylesReg.botonReg}
+          onPress={() => Registrar()}>
+          <Text style={stylesReg.textoReg}>Registrarse</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -1,5 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, Image, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  Alert,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
 import {AppContext} from '../AppContext/AppContext';
@@ -36,7 +43,8 @@ export default function Ingresar({navigation}) {
     googleEmail,
     setGoogleEmail,
   } = useContext(AppContext);
-  const {userEmail, setUserEmail} = useContext(AppContext);
+  const {userEmail, setUserEmail, dataIngreso, setDataIngreso} =
+    useContext(AppContext);
   const [error, setError] = useState(false);
   const [dataFacebook, setDataFacebook] = useState(null);
   const [dataGoogle, setDataGoogle] = useState(null);
@@ -47,7 +55,6 @@ export default function Ingresar({navigation}) {
     if (userEmail === '' || userPassword === '') {
       setError(true);
     } else {
-      setError(false);
       try {
         let llamado = await fetch(
           `https://nextidea4u.com/api/login/login.php?email=${userEmail}&device=${deviceId}&password=${userPassword}&player_id=${global.playerId}`,
@@ -56,11 +63,23 @@ export default function Ingresar({navigation}) {
           },
         );
         let data = await llamado.json();
+        setDataIngreso(data);
+        console.log(data, 'ingreso');
       } catch (error) {
         console.log(error);
       }
     }
   };
+
+  useEffect(() => {
+    if (dataIngreso.error === true) {
+      Alert.alert('Email / clave incorrectos o usuario no registrado');
+    } else if (dataIngreso.error === false) {
+      navigation.navigate('Home');
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataIngreso]);
 
   //ingreso con facebook
   const fbLogin = ressCallBack => {
@@ -129,7 +148,7 @@ export default function Ingresar({navigation}) {
             `https://nextidea4u.com/api/login/login-facebook.php?device=${deviceId}&email=${facebookEmail}&name=${facebookNombre}&last=${facebookApellido}&external=${facebookId}&birthday=${facebookCupleanos}&player_id=${global.playerId}`,
           );
           let data = await llamado.json();
-          console.log(data, 'data');
+          setDataIngreso(data);
         } catch (error) {
           console.log(error);
         }
@@ -142,6 +161,7 @@ export default function Ingresar({navigation}) {
   //ingreso con google
 
   const googleLogin = async () => {
+    GoogleSignin.configure();
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
@@ -172,7 +192,7 @@ export default function Ingresar({navigation}) {
             `https://nextidea4u.com/api/login/login-google.php?device=${deviceId}&email=${googleEmail}&name=${googleNombre}&external=${googleId}&player_id=${global.playerId}`,
           );
           let data = await llamado.json();
-          console.log(data, 'data');
+          setDataIngreso(data);
         } catch (error) {
           console.log(error);
         }
@@ -256,7 +276,7 @@ export default function Ingresar({navigation}) {
             <Text style={stylesIng.textoIniciar}>Iniciar sesión</Text>
           </TouchableOpacity>
 
-          <View style={{margin: 5}}>
+          <View style={{marginTop: 15, marginLeft: 5}}>
             <TouchableOpacity onPress={() => navigation.navigate('Recuperar')}>
               <Text style={{color: '#005cff'}}>Olvidé mi contraseña</Text>
             </TouchableOpacity>
