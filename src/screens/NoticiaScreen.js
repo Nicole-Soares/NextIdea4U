@@ -28,10 +28,6 @@ export default function NoticiaScreen(props) {
   const INJECTED_JAVASCRIPT = `(function() {
     let body = document.getElementsByTagName("BODY")[0];
    body.style.fontSize = "55px"; body.style.width = "1500px"; body.style.width = "1500px"; body.img.style.width = "400px"; 
- 
-
- 
-
  })();`;
 
   const onWebViewMessage = event => {
@@ -105,7 +101,7 @@ export default function NoticiaScreen(props) {
         <Navbar navigation={props.navigation} />
         <ScrollView ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
-            <View style={{width: '100%', alignItems: 'center', marginLeft: 10}}>
+            <View style={{width: '100%', alignItems: 'center', marginLeft: Platform.OS === "ios" ? 0 : 10}}>
               <Text
                 style={{
                   color: 'blue',
@@ -127,9 +123,9 @@ export default function NoticiaScreen(props) {
                 name="calendar"
                 siez={30}
                 color="gray"
-                style={{marginLeft: 20}}
+                style={{marginLeft: 25, marginTop:10}}
               />
-              <Text style={{marginLeft: 10}}>{reversa}</Text>
+              <Text style={{marginLeft: 10, marginTop:10}}>{reversa}</Text>
             </View>
 
             <View style={{width: '100%', alignItems: 'center'}}>

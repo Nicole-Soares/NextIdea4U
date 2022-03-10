@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 // hoja de estilos del navbar
 export const stylesNav = StyleSheet.create({
@@ -26,11 +26,10 @@ export const stylesNav = StyleSheet.create({
     fontSize: 35,
     color: 'black',
     fontFamily: 'Inter-Bold',
+    fontWeight:Platform.OS === "ios" ? "bold" : null
   },
   imagenLogo: {
-    borderWidth: 1,
-    borderRadius: 10,
-    width: 45,
+   width: 45,
     height: 50,
     marginLeft: 10,
   },

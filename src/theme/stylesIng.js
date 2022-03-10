@@ -28,6 +28,7 @@ export const stylesIng = StyleSheet.create({
   contenedorBotonesRedesSociales: {
     alignItems: 'center',
     width: '100%',
+    marginTop:10
   },
   botonFace: {
     backgroundColor: '#3b5999',

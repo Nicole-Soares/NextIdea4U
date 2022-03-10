@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 //estilos de las noticias
 export const stylesNot = StyleSheet.create({
@@ -16,6 +16,7 @@ export const stylesNot = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
+    marginTop:10
   },
   textoTituloNot: {
     fontSize: 19,
@@ -56,6 +57,7 @@ export const stylesNot = StyleSheet.create({
     color: 'black',
     fontSize: 15,
     width: '90%',
+    marginLeft: Platform.OS === "ios" ? 10 : null
   },
   contenedorNotIconFecha: {
     flexDirection: 'row',
@@ -69,6 +71,7 @@ export const stylesNot = StyleSheet.create({
   },
   textoContNot: {
     fontFamily: 'Inter-Bold',
+    fontWeight:Platform.OS === "ios" ? "bold" : null, 
     color: 'black',
     fontSize: 23,
     marginBottom: 10,
@@ -116,6 +119,7 @@ export const stylesNot = StyleSheet.create({
   },
   textoOtrasNoticias: {
     fontFamily: 'Inter-Bold',
+    fontWeight:Platform.OS === "ios" ? "bold" : null,
     color: 'black',
     fontSize: 23,
     marginBottom: 15,

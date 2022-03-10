@@ -112,7 +112,7 @@ export default function Registrarse({navigation}) {
       setDataFacebook(result);
     }
   };
-
+console.log(dataFacebook, "dataFace")
   useEffect(() => {
     if (dataFacebook) {
       setFacebookEmail(dataFacebook.email);

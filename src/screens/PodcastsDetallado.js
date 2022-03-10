@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   Linking,
   Dimensions,
+  Platform,
 } from 'react-native';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -302,8 +303,10 @@ export default function PodcastsDetallado(props) {
                 <Text
                   style={{
                     fontFamily: 'Inter-Bold',
+                    fontWeight:Platform.OS === "ios" ? "bold" : null,
                     color: 'black',
-                    fontSize: 18,
+                    fontSize: 20,
+                    marginTop:15
                   }}>
                   Contactos de esta nota
                 </Text>
@@ -378,6 +381,7 @@ export default function PodcastsDetallado(props) {
                     style={{
                       color: 'black',
                       fontFamily: 'Inter-Bold',
+                      fontWeight:Platform.OS === "ios" ? "bold" : null, 
                       fontSize: 20,
                       marginBottom: 15,
                       width: '100%',
@@ -417,6 +421,8 @@ export default function PodcastsDetallado(props) {
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
+                              marginLeft:15,
+                              width:"95%"
                             }}>
                             {noticiaRePod.subtitulo}.
                             <Text style={{color: 'black'}}>

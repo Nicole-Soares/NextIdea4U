@@ -98,6 +98,7 @@ export default function MenuHamburguesa({navigation}) {
               color: 'blue',
               textAlign: 'center',
               fontSize: 15,
+              marginTop:5
             }}>
             Iniciar sesion
           </Text>
@@ -118,6 +119,7 @@ export default function MenuHamburguesa({navigation}) {
               color: 'white',
               textAlign: 'center',
               fontSize: 15,
+              marginTop:5
             }}>
             Registrarse
           </Text>
