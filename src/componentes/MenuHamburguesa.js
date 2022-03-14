@@ -7,11 +7,11 @@ import {
   TouchableOpacity,
   Linking,
   Animated,
-  StyleSheet,
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
+import {stylesMenu} from '../theme/stylesMenu';
 
 //menu Hamburguesa
 export default function MenuHamburguesa({navigation}) {
@@ -37,167 +37,55 @@ export default function MenuHamburguesa({navigation}) {
   }
 
   return (
-    <Animated.View style={[styles.container, {marginLeft: moveAnimation}]}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: '90%',
-          marginTop: 20,
-        }}>
+    <Animated.View style={[stylesMenu.container, {marginLeft: moveAnimation}]}>
+      <View style={stylesMenu.segundoContenedor}>
         <View>
           <Image
             source={require('../assets/icono/icono.png')}
-            style={{height: 65, width: 60, marginLeft: 20}}
+            style={stylesMenu.logo}
           />
         </View>
-        <View style={{justifyContent: 'center'}}>
+        <View style={stylesMenu.contenedorCerrar}>
           <Icon
             name="close"
             color="black"
             size={30}
             onPress={() => CerrarMenu()}
-            style={{marginRight: -15}}
+            style={stylesMenu.iconoCerrar}
           />
         </View>
       </View>
-      <View style={{marginLeft: 20, marginTop: 20}}>
+      <View style={stylesMenu.contenedorRedi}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 15,
-              fontWeight: 'bold',
-              marginBottom: 5,
-            }}>
-            Inicio
-          </Text>
+          <Text style={stylesMenu.texto}>Inicio</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 15,
-              fontWeight: 'bold',
-              marginBottom: 5,
-            }}>
-            Noticias
-          </Text>
+          <Text style={stylesMenu.texto}>Noticias</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('PodcastsScreen')}>
-          <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>
-            Podcasts
-          </Text>
+          <Text style={stylesMenu.texto}>Podcasts</Text>
         </TouchableOpacity>
       </View>
       {dataIngreso.error === false || dataIngreso.error === {} ? null : (
-        <View
-          style={{
-            alignItems: 'center',
-            marginTop: 15,
-            width: '100%',
-          }}>
+        <View style={stylesMenu.contenedorIniciar}>
           <TouchableOpacity
-            style={{
-<<<<<<< HEAD
-              fontWeight: 'bold',
-              color: 'blue',
-              textAlign: 'center',
-              fontSize: 15,
-              marginTop:5
-            }}>
-            Iniciar sesion
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            borderColor: 'blue',
-            width: '90%',
-            borderRadius: 5,
-            height: 30,
-            backgroundColor: 'blue',
-          }}
-          onPress={() => navigation.navigate('Registrarse')}>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              fontSize: 15,
-              marginTop:5
-            }}>
-            Registrarse
-          </Text>
-        </TouchableOpacity>
-      </View>
-=======
-              borderWidth: 1,
-              borderColor: 'blue',
-              width: '90%',
-              borderRadius: 5,
-              height: 35,
-              marginBottom: 10,
-            }}
+            style={stylesMenu.botonIniciar}
             onPress={() => navigation.navigate('Ingresar')}>
-            <Text
-              style={{
-                fontWeight: 'bold',
-                color: 'blue',
-                marginTop: 5,
-                fontSize: 15,
-                alignSelf: 'center',
-              }}>
-              Iniciar sesión
-            </Text>
+            <Text style={stylesMenu.textoBotonIniciar}>Iniciar sesión</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              borderWidth: 1,
-              borderColor: 'blue',
-              width: '90%',
-              borderRadius: 5,
-              height: 35,
-              backgroundColor: 'blue',
-              marginBottom: 15,
-            }}
+            style={stylesMenu.botonRegistrar}
             onPress={() => navigation.navigate('Registrarse')}>
-            <Text
-              style={{
-                fontWeight: 'bold',
-                color: 'white',
-                marginTop: 5,
-                alignSelf: 'center',
-                fontSize: 15,
-              }}>
-              Registrarse
-            </Text>
+            <Text style={stylesMenu.textoRegistrar}>Registrarse</Text>
           </TouchableOpacity>
         </View>
       )}
-
-      <View
-        style={{
-          borderTopColor: '#f5f4f8',
-          borderTopWidth: 1,
-          marginTop: 13,
-          width: '90%',
-          alignSelf: 'center',
-        }}></View>
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
-      <View style={{marginTop: 20}}>
-        <View style={{alignItems: 'center', width: '30%', marginBottom: 20}}>
-          <Text style={{color: 'black', fontWeight: 'bold', fontSize: 15}}>
-            Seguinos
-          </Text>
+      <View style={stylesMenu.linea}></View>
+      <View style={stylesMenu.contenedorRedes}>
+        <View style={stylesMenu.contenedorSeguinos}>
+          <Text style={stylesMenu.textoSeguinos}>Seguinos</Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            width: '90%',
-            alignSelf: 'center',
-          }}>
+        <View style={stylesMenu.contenedorIconos}>
           <Icon
             name="instagram"
             size={25}
@@ -249,33 +137,11 @@ export default function MenuHamburguesa({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-      <View
-        style={{
-          marginTop: 20,
-          borderBottomColor: '#f5f4f8',
-          borderBottomWidth: 1,
-          width: '95%',
-          alignSelf: 'center',
-        }}>
-        <View style={{alignItems: 'center', width: '30%', marginBottom: 20}}>
-          <Text
-            style={{
-              color: 'black',
-              fontWeight: 'bold',
-              fontSize: 15,
-              marginLeft: 10,
-            }}>
-            Escuchanos
-          </Text>
+      <View style={stylesMenu.contenedorEscuchanosIconos}>
+        <View style={stylesMenu.contenedorEscuchanos}>
+          <Text style={stylesMenu.escuchanos}>Escuchanos</Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            width: '90%',
-            alignSelf: 'center',
-            marginBottom: 15,
-          }}>
+        <View style={stylesMenu.contenedorIconosEscuchanos}>
           <Icon
             name="spotify"
             size={25}
@@ -318,27 +184,17 @@ export default function MenuHamburguesa({navigation}) {
           />
         </View>
       </View>
-      <View style={{alignSelf: 'center', width: '88%', marginTop: 20}}>
-        <Text style={{fontFamily: 'Inter-Bold', color: 'black'}}>
-          NextIdea4U
-        </Text>
+      <View style={stylesMenu.contenedorParteInferior}>
+        <Text style={stylesMenu.textoNext}>NextIdea4U</Text>
         <Text
-          style={{
-            fontFamily: 'Inter-Regular',
-            color: 'gray',
-            marginTop: 10,
-          }}
+          style={stylesMenu.textoData}
           onPress={() =>
             Linking.openURL('https://www.nextidea4u.com/pages/sobre-nosotros')
           }>
           Sobre nosotros
         </Text>
         <Text
-          style={{
-            fontFamily: 'Inter-Regular',
-            color: 'gray',
-            marginTop: 10,
-          }}
+          style={stylesMenu.textoData}
           onPress={() =>
             Linking.openURL(
               'https://www.nextidea4u.com/pages/terminos-y-condiciones',
@@ -347,11 +203,7 @@ export default function MenuHamburguesa({navigation}) {
           Términos y condiciones
         </Text>
         <Text
-          style={{
-            fontFamily: 'Inter-Regular',
-            color: 'gray',
-            marginTop: 10,
-          }}
+          style={stylesMenu.textoData}
           onPress={() =>
             Linking.openURL(
               'https://www.nextidea4u.com/pages/politica-de-privacidad',
@@ -360,11 +212,7 @@ export default function MenuHamburguesa({navigation}) {
           Polí­tica de privacidad
         </Text>
         <Text
-          style={{
-            fontFamily: 'Inter-Regular',
-            color: 'gray',
-            marginTop: 10,
-          }}
+          style={stylesMenu.textoData}
           onPress={() =>
             Link.openURL('https://www.nextidea4u.com/pages/politica-de-cookies')
           }>
@@ -374,26 +222,3 @@ export default function MenuHamburguesa({navigation}) {
     </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    elevation: 100,
-    zIndex: 100,
-    backgroundColor: 'white',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: '90%',
-  },
-  box: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'tomato',
-    transform: [
-      {
-        scaleX: 0.5,
-      },
-    ],
-  },
-});

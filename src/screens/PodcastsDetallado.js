@@ -8,7 +8,6 @@ import {
   ActivityIndicator,
   Linking,
   Dimensions,
-  Platform,
 } from 'react-native';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -185,7 +184,7 @@ export default function PodcastsDetallado(props) {
 
               <AutoHeightWebView
                 style={{
-                  width: Dimensions.get('window').width - 50,
+                  width: Dimensions.get('window').width - 0,
                   marginLeft: 15,
                   marginTop: 15,
                 }}
@@ -316,14 +315,9 @@ export default function PodcastsDetallado(props) {
                 <Text
                   style={{
                     fontFamily: 'Inter-Bold',
-                    fontWeight:Platform.OS === "ios" ? "bold" : null,
                     color: 'black',
                     fontSize: 20,
-<<<<<<< HEAD
-                    marginTop:15
-=======
                     marginBottom: 10,
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
                   }}>
                   Contactos de esta nota
                 </Text>
@@ -409,7 +403,6 @@ export default function PodcastsDetallado(props) {
                     style={{
                       color: 'black',
                       fontFamily: 'Inter-Bold',
-                      fontWeight:Platform.OS === "ios" ? "bold" : null, 
                       fontSize: 20,
                       marginBottom: 15,
                       width: '100%',
@@ -477,14 +470,9 @@ export default function PodcastsDetallado(props) {
                               color: 'blue',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
-<<<<<<< HEAD
-                              marginLeft:15,
-                              width:"95%"
-=======
                               alignSelf: 'center',
                               width: '100%',
                               marginLeft: 5,
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
                             }}>
                             {noticiaRePod.subtitulo}.<Text> </Text>
                             <Text style={{color: 'black'}}>

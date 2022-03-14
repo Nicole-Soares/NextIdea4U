@@ -34,6 +34,7 @@ export default function Registrarse({navigation}) {
     googleEmail,
     setGoogleEmail,
     setDataIngreso,
+    dataIngreso,
   } = useContext(AppContext);
   const [errorRegistrar, setErrorRegistrar] = useState(false);
   const [userPasswordRegistrar, setUserPasswordRegistrar] = useState('');
@@ -42,6 +43,7 @@ export default function Registrarse({navigation}) {
   const [dataGoogle, setDataGoogle] = useState(null);
 
   let deviceId = DeviceInfo.getUniqueId();
+  console.log(dataFacebook);
 
   //registro del usuario con email y contraseña
   const Registrar = async () => {
@@ -64,6 +66,14 @@ export default function Registrarse({navigation}) {
       }
     }
   };
+
+  useEffect(() => {
+    if (dataIngreso.error === false) {
+      navigation.navigate('Home');
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataIngreso]);
 
   //ingreso con face
   const fbLogin = ressCallBack => {
@@ -115,7 +125,8 @@ export default function Registrarse({navigation}) {
       setDataFacebook(result);
     }
   };
-console.log(dataFacebook, "dataFace")
+
+  //llami api de face
   useEffect(() => {
     if (dataFacebook) {
       setFacebookEmail(dataFacebook.email);
@@ -129,7 +140,7 @@ console.log(dataFacebook, "dataFace")
             `https://nextidea4u.com/api/login/login-facebook.php?device=${deviceId}&email=${facebookEmail}&name=${facebookNombre}&last=${facebookApellido}&external=${facebookId}&birthday=${facebookCupleanos}&player_id=${global.playerId}`,
           );
           let data = await llamado.json();
-          console.log(data, 'data');
+          setDataIngreso(data);
         } catch (error) {
           console.log(error);
         }
@@ -175,6 +186,7 @@ console.log(dataFacebook, "dataFace")
           );
           let data = await llamado.json();
           setDataIngreso(data);
+          console.log(dataIngreso, 'data');
         } catch (error) {
           console.log(error);
         }

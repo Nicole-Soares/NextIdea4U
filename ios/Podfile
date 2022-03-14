@@ -1,7 +1,6 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
-pod "GoogleSignIn"
-pod "FirebaseAuth"
+
 platform :ios, '11.0'
 
 target 'NextIdea4U' do
@@ -12,8 +11,6 @@ target 'NextIdea4U' do
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => false
   )
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'NextIdea4UTests' do
     inherit! :complete

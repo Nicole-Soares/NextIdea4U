@@ -50,6 +50,7 @@ export default function Ingresar({navigation}) {
   const [dataGoogle, setDataGoogle] = useState(null);
   let deviceId = DeviceInfo.getUniqueId();
 
+  console.log(dataFacebook, 'dataFace');
   //conectar con la api de ingreso
   const Login = async () => {
     if (userEmail === '' || userPassword === '') {
@@ -64,7 +65,6 @@ export default function Ingresar({navigation}) {
         );
         let data = await llamado.json();
         setDataIngreso(data);
-        console.log(data, 'ingreso');
       } catch (error) {
         console.log(error);
       }
@@ -137,6 +137,7 @@ export default function Ingresar({navigation}) {
   //conectar con la api de facebook
   useEffect(() => {
     if (dataFacebook) {
+      console.log('hola');
       setFacebookEmail(dataFacebook.email);
       setFacebookId(dataFacebook.id);
       setFacebookCumpleanos(dataFacebook.birthday);

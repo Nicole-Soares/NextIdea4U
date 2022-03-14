@@ -1,4 +1,4 @@
-import {Platform, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 //estilos de la screen de registrarse
 
@@ -18,25 +18,16 @@ export const stylesReg = StyleSheet.create({
     margin: 10,
   },
   textoCrearCuenta: {
-    width:  Platform.OS === "ios" ? "46%" :'40%',
+    width: '40%',
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
-<<<<<<< HEAD
-    
-  },
-  contenedorFacebook: {
-    alignItems: 'center',
-    width: '100%',
-    marginTop:10
-=======
     marginBottom: 10,
   },
   contenedorFacebook: {
     alignItems: 'center',
     width: '90%',
     marginTop: 15,
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
   },
   botonFace: {
     backgroundColor: '#3b5999',

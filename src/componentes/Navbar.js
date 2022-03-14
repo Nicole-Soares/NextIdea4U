@@ -63,7 +63,10 @@ export default function Navbar({navigation}) {
             <TouchableOpacity onPress={() => Desloguearse()}>
               <Image
                 source={require('../assets/icono/close.png')}
-                style={{height: 30, width: 30}}
+                style={{
+                  height: 30,
+                  width: 30,
+                }}
               />
             </TouchableOpacity>
           ) : (

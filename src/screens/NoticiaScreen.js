@@ -21,17 +21,6 @@ import AutoHeightWebView from 'react-native-autoheight-webview';
 
 export default function NoticiaScreen(props) {
   const {noticia, setNoticia, menuHamburguesa} = useContext(AppContext);
-<<<<<<< HEAD
-  const [webViewHeight, setWebViewHeight] = useState(null);
-  const scrollRef = useRef();
-
-  //inyecto js para los estilos del webview
-  const INJECTED_JAVASCRIPT = `(function() {
-    let body = document.getElementsByTagName("BODY")[0];
-   body.style.fontSize = "55px"; body.style.width = "1500px"; body.style.width = "1500px"; body.img.style.width = "400px"; 
- })();`;
-=======
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
 
   const scrollRef = useRef();
 
@@ -102,11 +91,7 @@ export default function NoticiaScreen(props) {
         <Navbar navigation={props.navigation} />
         <ScrollView ref={scrollRef}>
           <View style={stylesNot.contenedorTextoNot}>
-<<<<<<< HEAD
-            <View style={{width: '100%', alignItems: 'center', marginLeft: Platform.OS === "ios" ? 0 : 10}}>
-=======
             <View style={{width: '90%', alignSelf: 'center', marginTop: 15}}>
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
               <Text
                 style={{
                   color: 'blue',
@@ -142,13 +127,9 @@ export default function NoticiaScreen(props) {
                 name="calendar"
                 siez={30}
                 color="gray"
-<<<<<<< HEAD
-                style={{marginLeft: 25, marginTop:10}}
-=======
                 style={{marginLeft: 20, marginTop: 3}}
->>>>>>> 868f7a66d57acf91721c55911cc4b87152c21686
               />
-              <Text style={{marginLeft: 10, marginTop:10}}>{reversa}</Text>
+              <Text style={{marginLeft: 10}}>{reversa}</Text>
             </View>
 
             <View style={{width: '100%', alignItems: 'center'}}>
@@ -233,6 +214,12 @@ export default function NoticiaScreen(props) {
                     scrollEnabled={false}
                     source={{
                       uri: podcasts.podcast,
+                    }}
+                    style={{
+                      height: 300,
+                      marginTop: 15,
+                      width: '90%',
+                      alignSelf: 'center',
                     }}
                   />
                 </View>
