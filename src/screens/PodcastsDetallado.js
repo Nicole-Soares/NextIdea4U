@@ -184,7 +184,7 @@ export default function PodcastsDetallado(props) {
 
               <AutoHeightWebView
                 style={{
-                  width: Dimensions.get('window').width - 0,
+                  width: Dimensions.get('window').width - 50,
                   marginLeft: 15,
                   marginTop: 15,
                 }}
