@@ -9,12 +9,14 @@ import {
   ImageBackground,
   TouchableOpacity,
   Linking,
+  SafeAreaView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {AppContext} from '../AppContext/AppContext';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MenuHamburguesa from '../componentes/MenuHamburguesa';
+
 //screen de los podcasts
 
 export default function PodcastsScreen({navigation}) {
@@ -52,7 +54,7 @@ export default function PodcastsScreen({navigation}) {
   }, [navigation]);
 
   return (
-    <View style={{width: '100%', height: '100%'}}>
+    <SafeAreaView style={{width: '100%', height: '100%'}}>
       {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <View style={{backgroundColor: 'white'}}>
         <Navbar navigation={navigation} />
@@ -230,6 +232,6 @@ export default function PodcastsScreen({navigation}) {
             : null}
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

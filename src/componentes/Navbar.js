@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useContext, useState} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesNav} from '../theme/stylesNav';
@@ -32,7 +32,7 @@ export default function Navbar({navigation}) {
   };
 
   return (
-    <View style={stylesNav.contenedorPadre}>
+    <SafeAreaView style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
         <TouchableOpacity onPress={() => setMenuHamburguesa(true)}>
           <Image
@@ -80,6 +80,6 @@ export default function Navbar({navigation}) {
           )}
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

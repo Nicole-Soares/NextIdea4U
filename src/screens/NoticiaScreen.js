@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Dimensions,
+  SafeAreaView,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
 import Navbar from '../componentes/Navbar';
@@ -17,6 +18,7 @@ import MenuHamburguesa from '../componentes/MenuHamburguesa';
 import {stylesNot} from '../theme/stylesNot';
 import Share from 'react-native-share';
 import AutoHeightWebView from 'react-native-autoheight-webview';
+
 // screen noticia abierta
 
 export default function NoticiaScreen(props) {
@@ -84,7 +86,7 @@ export default function NoticiaScreen(props) {
     let reversa = reemplazo.split('/').reverse().join('/');
 
     return (
-      <View style={stylesNot.contenedorNoticiaScreen}>
+      <SafeAreaView style={stylesNot.contenedorNoticiaScreen}>
         {menuHamburguesa ? (
           <MenuHamburguesa navigation={props.navigation} />
         ) : null}
@@ -373,7 +375,7 @@ export default function NoticiaScreen(props) {
             </View>
           </View>
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   } else {
     return (

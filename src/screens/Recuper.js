@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 //screen recuperar contraseña
@@ -30,7 +36,7 @@ export default function Recuperar({navigation}) {
   };
 
   return (
-    <View
+    <SafeAreaView
       style={{
         height: '100%',
         width: '100%',
@@ -107,6 +113,6 @@ export default function Recuperar({navigation}) {
           <Text style={{color: '#005cff'}}>Volver</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

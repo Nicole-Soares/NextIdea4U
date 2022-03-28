@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   Linking,
   Dimensions,
+  SafeAreaView,
 } from 'react-native';
 import Navbar from '../componentes/Navbar';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -90,7 +91,7 @@ export default function PodcastsDetallado(props) {
     let reversa = reemplazo.split('/').reverse().join('/');
 
     return (
-      <View style={{backgroundColor: 'white', height: '100%'}}>
+      <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
         {menuHamburguesa ? (
           <MenuHamburguesa navigation={props.navigation} />
         ) : null}
@@ -565,7 +566,7 @@ export default function PodcastsDetallado(props) {
             <ActivityIndicator size="large" color="pink" />
           )}
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   } else {
     return <ActivityIndicator size="large" color="blue" />;

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
 
 //el resto de noticias del home

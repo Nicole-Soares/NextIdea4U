@@ -6,6 +6,8 @@ import {
   Image,
   TextInput,
   Alert,
+  Platform,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
@@ -204,7 +206,7 @@ export default function Ingresar({navigation}) {
   }, [dataGoogle]);
 
   return (
-    <View style={stylesIng.contenedorPadre}>
+    <SafeAreaView style={stylesIng.contenedorPadre}>
       <View style={stylesIng.contenedorHermano}>
         <View style={stylesIng.contenedorArriba}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -224,28 +226,31 @@ export default function Ingresar({navigation}) {
             <Text style={{color: '#005cff'}}>Registrate</Text>
           </Text>
         </View>
-        <View style={stylesIng.contenedorBotonesRedesSociales}>
-          <TouchableOpacity style={stylesIng.botonFace} onPress={onFbLogin}>
-            <Icon
-              name="facebook"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 100}}
-            />
-            <Text style={stylesIng.textoGoFa}>Continúa con Facebook</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={stylesIng.botonGoogle}
-            onPress={() => googleLogin()}>
-            <Icon
-              name="google"
-              size={20}
-              color="white"
-              style={{marginLeft: 100, width: '5%'}}
-            />
-            <Text style={stylesIng.textoGoFa}>Continúa con Google</Text>
-          </TouchableOpacity>
-        </View>
+        {Platform.OS === 'android' ? (
+          <View style={stylesIng.contenedorBotonesRedesSociales}>
+            <TouchableOpacity style={stylesIng.botonFace} onPress={onFbLogin}>
+              <Icon
+                name="facebook"
+                size={20}
+                color="white"
+                style={{width: '5%', marginLeft: 100}}
+              />
+              <Text style={stylesIng.textoGoFa}>Continúa con Facebook</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={stylesIng.botonGoogle}
+              onPress={() => googleLogin()}>
+              <Icon
+                name="google"
+                size={20}
+                color="white"
+                style={{marginLeft: 100, width: '5%'}}
+              />
+              <Text style={stylesIng.textoGoFa}>Continúa con Google</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
+
         <View style={stylesIng.contenedorIngresarMail}>
           <Text style={stylesIng.textoIngresa}>Ó ingresa con tu email</Text>
         </View>
@@ -284,6 +289,6 @@ export default function Ingresar({navigation}) {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

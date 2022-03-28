@@ -1,5 +1,12 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  SafeAreaView,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
 import {stylesReg} from '../theme/stylesReg';
@@ -196,7 +203,7 @@ export default function Registrarse({navigation}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataGoogle]);
   return (
-    <View style={stylesReg.contenedorPadre}>
+    <SafeAreaView style={stylesReg.contenedorPadre}>
       <View style={stylesReg.contenedorSuperior}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image
@@ -269,6 +276,6 @@ export default function Registrarse({navigation}) {
           <Text style={stylesReg.textoReg}>Registrarse</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
