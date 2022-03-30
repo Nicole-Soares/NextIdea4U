@@ -4,14 +4,17 @@ import {StyleSheet} from 'react-native';
 
 export const stylesReg = StyleSheet.create({
   contenedorPadre: {
-    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     height: '90%',
     width: '90%',
     borderRadius: 3,
-
-    elevation: 100,
+    shadowOffset: {width: 10, height: 10},
+    shadowColor: 'black',
+    shadowOpacity: 1,
+    elevation: 3,
+    // background color must be set
+    backgroundColor: 'white',
   },
 
   contenedorSuperior: {

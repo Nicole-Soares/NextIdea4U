@@ -123,7 +123,7 @@ export const stylesNot = StyleSheet.create({
   textoOtrasNoticias: {
     fontFamily: 'Inter-Bold',
     color: 'black',
-    fontSize: 23,
+    fontSize: 18,
     marginBottom: 5,
     marginTop: 15,
   },

@@ -142,7 +142,8 @@ export default function NoticiaScreen(props) {
                 alignSelf: 'center',
                 marginTop: 15,
                 marginBottom: 15,
-                width: '90%',
+                marginLeft: 15,
+                width: '95%',
               }}>
               <Text style={stylesNot.textoDesDesNot}>
                 {noticia.news.descripcion_corta}
@@ -200,7 +201,9 @@ export default function NoticiaScreen(props) {
                   marginLeft: 15,
                 }}
                 scalesPageToFit={false}
-                customStyle={`img { width: 400px !important; height: 250px !important;}`}
+                customStyle={`img { width: 400px !important; height: 250px !important;}
+                p {line-height:1.5}
+                `}
                 source={{
                   html: data,
                 }}

@@ -212,7 +212,7 @@ export default function PodcastsDetallado(props) {
                   marginTop: 15,
                 }}
                 scalesPageToFit={false}
-                customStyle={`* {font-size: 17px;}`}
+                customStyle={`* {font-size: 17px;}  p {line-height:1.5} h2{font-size:25px}`}
                 source={{
                   html: data,
                 }}
