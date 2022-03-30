@@ -263,7 +263,6 @@ export default function Registrarse({navigation}) {
             style={stylesReg.inputEmail}
             value={userEmailRegistrar}
             onChangeText={e => setUserEmailRegistrar(e)}
-            
           />
           {errorRegistrar ? (
             <Text style={{color: 'red'}}>

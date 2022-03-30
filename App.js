@@ -45,9 +45,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppProvider>
-      
-          {splashScreenOn ? <SplashScreen /> : <StackNavigation />}
-       
+        {splashScreenOn ? <SplashScreen /> : <StackNavigation />}
       </AppProvider>
     </NavigationContainer>
   );
