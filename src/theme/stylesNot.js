@@ -10,11 +10,12 @@ export const stylesNot = StyleSheet.create({
   imagenNot: {
     width: '100%',
     height: 220,
-    borderRadius: 10,
+    borderRadius: 6,
   },
   contenedorDatosNot: {
     flexDirection: 'row',
     width: '100%',
+    marginTop: 10,
   },
   textoTituloNot: {
     fontSize: 19,
@@ -30,7 +31,8 @@ export const stylesNot = StyleSheet.create({
   },
   textoDesNot: {
     color: 'black',
-    fontSize: 15,
+    fontSize: 18,
+    lineHeight: 25,
   },
   contenedorNoticiaScreen: {
     height: '100%',
@@ -53,8 +55,8 @@ export const stylesNot = StyleSheet.create({
   },
   textoDesDesNot: {
     color: 'black',
-    fontSize: 17,
-    width: '95%',
+    fontSize: 20,
+    width: '85%',
     marginLeft: 3,
   },
   contenedorNotIconFecha: {
@@ -63,20 +65,20 @@ export const stylesNot = StyleSheet.create({
   },
   imagenNotAbierta: {
     height: 220,
-    width: '90%',
+    width: '100%',
     marginTop: 15,
     borderRadius: 5,
   },
   textoContNot: {
     fontFamily: 'Inter-Bold',
     color: 'black',
-    fontSize: 23,
-    marginBottom: 10,
+    fontSize: 18,
+    marginBottom: 5,
   },
   imgContacNot: {
-    height: 90,
-    width: 90,
-    borderRadius: 40,
+    height: 110,
+    width: 110,
+    borderRadius: 120,
     borderColor: 'white',
     borderWidth: 3,
     margin: 5,
@@ -99,16 +101,18 @@ export const stylesNot = StyleSheet.create({
   },
   profesionContactoNot: {
     color: 'white',
-    fontWeight: 'bold',
+    fontFamily: 'Inter-SemiBold',
     margin: 5,
-    fontSize: 15,
+    fontSize: 14,
   },
   biografiaNotDes: {
     color: 'white',
     width: '90%',
-    fontSize: 15,
+    fontSize: 14,
     marginLeft: 5,
     marginBottom: 15,
+    fontFamily: 'Inter-Regular',
+    lineHeight: 20,
   },
   contenedorOtrasNoticiasNot: {
     borderBottomColor: 'gray',
@@ -120,7 +124,7 @@ export const stylesNot = StyleSheet.create({
     fontFamily: 'Inter-Bold',
     color: 'black',
     fontSize: 23,
-    marginBottom: 15,
+    marginBottom: 5,
     marginTop: 15,
   },
 });

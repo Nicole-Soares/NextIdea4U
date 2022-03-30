@@ -80,10 +80,32 @@ export default function NoticiaScreen(props) {
 
   if (noticia) {
     const data = noticia.news.descripcion;
+    let fecha = noticia.news.fecha_hora;
+    console.log(fecha);
     let indice = noticia.news.fecha_hora.indexOf(' ');
+
     let extraida = noticia.news.fecha_hora.substring(0, indice);
-    let reemplazo = extraida.replace(/-/g, '/');
-    let reversa = reemplazo.split('/').reverse().join('/');
+
+    const monthNames = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ];
+    const m = new Date(extraida);
+    const d = new Date(extraida);
+    const a = new Date(extraida);
+    let mes = monthNames[m.getMonth()];
+    let dia = d.getDate();
+    let ano = a.getFullYear();
 
     return (
       <SafeAreaView style={stylesNot.contenedorNoticiaScreen}>
@@ -96,10 +118,12 @@ export default function NoticiaScreen(props) {
             <View style={{width: '90%', alignSelf: 'center', marginTop: 15}}>
               <Text
                 style={{
-                  color: 'blue',
+                  color: '#005cff',
                   fontFamily: 'Inter-SemiBold',
-                  fontSize: 13,
+                  fontSize: 15,
                   marginBottom: 15,
+                  letterSpacing: 1,
+                  marginTop: 15,
                 }}>
                 {noticia.news.subtitulo.toUpperCase()}
               </Text>
@@ -107,7 +131,8 @@ export default function NoticiaScreen(props) {
                 style={{
                   color: 'black',
                   fontFamily: 'Inter-Bold',
-                  fontSize: 22,
+                  fontSize: 35,
+                  width: '95%',
                 }}>
                 {noticia.news.titulo}
               </Text>
@@ -131,7 +156,9 @@ export default function NoticiaScreen(props) {
                 color="gray"
                 style={{marginLeft: 20, marginTop: 3}}
               />
-              <Text style={{marginLeft: 10}}>{reversa}</Text>
+              <Text style={{marginLeft: 10}}>
+                {dia} de {mes} del {ano}
+              </Text>
             </View>
 
             <View style={{width: '100%', alignItems: 'center'}}>
@@ -173,10 +200,7 @@ export default function NoticiaScreen(props) {
                   marginLeft: 15,
                 }}
                 scalesPageToFit={false}
-                customStyle={
-                  (`* {font-size: 15px;}`,
-                  `img { width: 350px !important; height: 250px !important; margin-left: 20}`)
-                }
+                customStyle={`img { width: 400px !important; height: 250px !important;}`}
                 source={{
                   html: data,
                 }}
@@ -232,11 +256,10 @@ export default function NoticiaScreen(props) {
             <View
               style={{
                 borderBottomWidth: 1,
-                borderBottomColor: 'gray',
+                borderBottomColor: '#f5f4f8',
                 width: '90%',
                 alignSelf: 'center',
-                marginBottom: 10,
-                marginTop: -10,
+                marginBottom: 15,
               }}>
               <Text style={stylesNot.textoContNot}>Contactos de esta nota</Text>
             </View>
@@ -326,8 +349,8 @@ export default function NoticiaScreen(props) {
             <View
               style={{
                 borderBottomWidth: 1,
-                borderBottomColor: 'gray',
-                marginBottom: 15,
+                borderBottomColor: '#f5f4f8',
+                marginBottom: 20,
               }}>
               <Text style={stylesNot.textoOtrasNoticias}>
                 Te puede interesar
@@ -348,7 +371,7 @@ export default function NoticiaScreen(props) {
                             style={{
                               width: '95%',
                               height: 200,
-                              borderRadius: 10,
+                              borderRadius: 5,
                               alignSelf: 'center',
 
                               marginBottom: 15,
@@ -356,13 +379,13 @@ export default function NoticiaScreen(props) {
                           />
                           <Text
                             style={{
-                              color: 'blue',
+                              color: '#005cff',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
                               marginLeft: 7,
                               marginBottom: 20,
                             }}>
-                            {noticiaRe.subtitulo}.
+                            {noticiaRe.subtitulo}.<Text> </Text>
                             <Text style={{color: 'black'}}>
                               {noticiaRe.titulo}
                             </Text>

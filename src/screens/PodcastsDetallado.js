@@ -87,8 +87,27 @@ export default function PodcastsDetallado(props) {
     const data = podcasts.podcast.texto;
     let indice = podcasts.podcast.fecha_alta.indexOf(' ');
     let extraida = podcasts.podcast.fecha_alta.substring(0, indice);
-    let reemplazo = extraida.replace(/-/g, '/');
-    let reversa = reemplazo.split('/').reverse().join('/');
+
+    const monthNames = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ];
+    const m = new Date(extraida);
+    const d = new Date(extraida);
+    const a = new Date(extraida);
+    let mes = monthNames[m.getMonth()];
+    let dia = d.getDate();
+    let ano = a.getFullYear();
 
     return (
       <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
@@ -107,15 +126,15 @@ export default function PodcastsDetallado(props) {
               <Icon
                 name="podcast"
                 color="grey"
-                size={30}
-                style={{marginLeft: 10, marginTop: 10}}
+                size={45}
+                style={{marginLeft: 10, marginTop: 30}}
               />
               <View style={{margin: 10, width: '100%', alignItems: 'center'}}>
                 <Text
                   style={{
                     color: 'black',
                     fontWeight: 'bold',
-                    fontSize: 25,
+                    fontSize: 40,
                     width: '100%',
                     marginBottom: 10,
                   }}>
@@ -128,6 +147,7 @@ export default function PodcastsDetallado(props) {
                     fontSize: 17,
                     width: '95%',
                     marginLeft: -18,
+                    lineHeight: 25,
                   }}>
                   {podcasts.podcast.descripcion_corta}
                 </Text>
@@ -144,7 +164,9 @@ export default function PodcastsDetallado(props) {
                     color="gray"
                     style={{marginRight: 10}}
                   />
-                  <Text>{reversa}</Text>
+                  <Text>
+                    {dia} de {mes} del {ano}
+                  </Text>
                 </View>
               </View>
               <View
@@ -201,7 +223,7 @@ export default function PodcastsDetallado(props) {
               <View style={{width: '100%', marginTop: 30}}>
                 <View
                   style={{
-                    borderBottomColor: 'gray',
+                    borderBottomColor: '#f5f4f8',
                     borderBottomWidth: 1,
                     width: '90%',
                     alignSelf: 'center',
@@ -215,7 +237,7 @@ export default function PodcastsDetallado(props) {
                       width: '100%',
                       marginBottom: 10,
                     }}>
-                    Tambien disponible en las plataformas:
+                    También disponible en las plataformas:
                   </Text>
                 </View>
                 <View
@@ -306,11 +328,11 @@ export default function PodcastsDetallado(props) {
               </View>
               <View
                 style={{
-                  borderBottomColor: 'gray',
+                  borderBottomColor: '#f5f4f8',
                   borderBottomWidth: 1,
                   width: '90%',
                   alignSelf: 'center',
-                  marginTop: 15,
+                  marginTop: 35,
                   marginRight: 10,
                 }}>
                 <Text
@@ -318,7 +340,7 @@ export default function PodcastsDetallado(props) {
                     fontFamily: 'Inter-Bold',
                     color: 'black',
                     fontSize: 20,
-                    marginBottom: 10,
+                    marginBottom: 5,
                   }}>
                   Contactos de esta nota
                 </Text>
@@ -335,7 +357,7 @@ export default function PodcastsDetallado(props) {
                       width: '90%',
                       alignSelf: 'center',
                       padding: 24,
-                      marginTop: 15,
+                      marginTop: 25,
                       marginRight: 10,
                     }}
                     key={participante.id}>
@@ -393,11 +415,11 @@ export default function PodcastsDetallado(props) {
               <View>
                 <View
                   style={{
-                    borderBottomColor: 'gray',
+                    borderBottomColor: '#f5f4f8',
                     borderBottomWidth: 1,
                     width: '90%',
                     alignSelf: 'center',
-                    marginTop: 15,
+                    marginTop: 35,
                     marginRight: 10,
                   }}>
                   <Text
@@ -405,7 +427,7 @@ export default function PodcastsDetallado(props) {
                       color: 'black',
                       fontFamily: 'Inter-Bold',
                       fontSize: 20,
-                      marginBottom: 15,
+                      marginBottom: 5,
                       width: '100%',
                     }}>
                     Noticias relacionadas al podcast
@@ -415,7 +437,7 @@ export default function PodcastsDetallado(props) {
                 <View
                   style={{
                     width: '100%',
-                    marginTop: 10,
+                    marginTop: 25,
                   }}>
                   {podcasts.news.map(noticiaRePod => {
                     return (
@@ -443,37 +465,16 @@ export default function PodcastsDetallado(props) {
                               alignSelf: 'center',
                             }}
                           />
-                          <View
-                            style={{
-                              marginLeft: 10,
-                              position: 'relative',
-                              top: -30,
-                            }}>
-                            <Text
-                              style={{
-                                color: 'white',
-                                backgroundColor: 'black',
-                                textAlign: 'center',
-                                fontSize: 12,
-                                fontFamily: 'Inter-SemiBold',
 
-                                borderRadius: 5,
-                                borderWidth: 1,
-                                alignSelf: 'flex-start',
-                                paddingLeft: 10,
-                                paddingRight: 10,
-                              }}>
-                              {noticiaRePod.categoria.toUpperCase()}
-                            </Text>
-                          </View>
                           <Text
                             style={{
-                              color: 'blue',
+                              color: '#005cff',
                               fontFamily: 'Inter-Regular',
                               fontSize: 20,
                               alignSelf: 'center',
                               width: '100%',
                               marginLeft: 5,
+                              marginTop: 15,
                             }}>
                             {noticiaRePod.subtitulo}.<Text> </Text>
                             <Text style={{color: 'black'}}>
@@ -488,7 +489,7 @@ export default function PodcastsDetallado(props) {
                 <View style={{width: '100%'}}>
                   <View
                     style={{
-                      borderBottomColor: 'gray',
+                      borderBottomColor: '#f5f4f8',
                       borderBottomWidth: 1,
                       width: '90%',
                       alignSelf: 'center',

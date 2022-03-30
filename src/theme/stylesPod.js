@@ -6,7 +6,7 @@ export const stylesPod = StyleSheet.create({
     width: '95%',
     borderRadius: 5,
     alignSelf: 'center',
-    marginTop: 15,
+    marginTop: 35,
     backgroundColor: '#f5f4f8',
     marginLeft: -5,
   },

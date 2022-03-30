@@ -10,7 +10,7 @@ export const stylesMenu = StyleSheet.create({
     top: 0,
     left: 0,
     height: '100%',
-    width: '90%',
+    width: '100%',
   },
   box: {
     width: 100,
@@ -51,7 +51,7 @@ export const stylesMenu = StyleSheet.create({
   },
   botonIniciar: {
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: '#005cff',
     width: '90%',
     borderRadius: 5,
     height: 35,
@@ -59,18 +59,18 @@ export const stylesMenu = StyleSheet.create({
   },
   textoBotonIniciar: {
     fontWeight: 'bold',
-    color: 'blue',
+    color: '#005cff',
     marginTop: 5,
     fontSize: 15,
     alignSelf: 'center',
   },
   botonRegistrar: {
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: '#005cff',
     width: '90%',
     borderRadius: 5,
     height: 35,
-    backgroundColor: 'blue',
+    backgroundColor: '#005cff',
     marginBottom: 15,
   },
   textoRegistrar: {

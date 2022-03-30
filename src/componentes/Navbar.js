@@ -45,9 +45,8 @@ export default function Navbar({navigation}) {
         <TouchableOpacity
           style={{flexDirection: 'row'}}
           onPress={() => navigation.navigate('Home')}>
-          <Text style={stylesNav.textoNombreApp}>nextidea</Text>
           <Image
-            source={require('../assets/icono/icono.png')}
+            source={require('../assets/icono/ni.png')}
             style={stylesNav.imagenLogo}
           />
         </TouchableOpacity>
@@ -70,13 +69,14 @@ export default function Navbar({navigation}) {
               />
             </TouchableOpacity>
           ) : (
-            <Icon
-              name="user-o"
-              size={15}
-              color="black"
+            <TouchableOpacity
               style={{marginTop: 7}}
-              onPress={() => navigation.navigate('Registrarse')}
-            />
+              onPress={() => navigation.navigate('Registrarse')}>
+              <Image
+                source={require('../assets/icono/user.png')}
+                style={{width: 20, height: 20, resizeMode: 'contain'}}
+              />
+            </TouchableOpacity>
           )}
         </View>
       </View>
