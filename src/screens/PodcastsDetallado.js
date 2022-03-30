@@ -564,12 +564,12 @@ export default function PodcastsDetallado(props) {
               </View>
             </View>
           ) : (
-            <ActivityIndicator size="large" color="pink" />
+            <ActivityIndicator size="large" color="#005cff" />
           )}
         </ScrollView>
       </SafeAreaView>
     );
   } else {
-    return <ActivityIndicator size="large" color="blue" />;
+    return <ActivityIndicator size="large" color="#005cff" />;
   }
 }

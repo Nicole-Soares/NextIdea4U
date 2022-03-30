@@ -406,7 +406,7 @@ export default function NoticiaScreen(props) {
   } else {
     return (
       <View>
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color="#005cff" />
       </View>
     );
   }
