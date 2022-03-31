@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
@@ -228,30 +229,33 @@ export default function Registrarse({navigation}) {
             <Text style={{color: '#005cff'}}>Ingresa</Text>
           </Text>
         </View>
-        <View style={stylesReg.contenedorFacebook}>
-          <TouchableOpacity
-            style={stylesReg.botonFace}
-            onPress={() => onFbLogin()}>
-            <Icon
-              name="facebook"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 150}}
-            />
-            <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={stylesReg.botonGoogle}
-            onPress={() => googleLogin()}>
-            <Icon
-              name="google"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 70}}
-            />
-            <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
-          </TouchableOpacity>
-        </View>
+        {Platform.OS === 'android' ? (
+          <View style={stylesReg.contenedorFacebook}>
+            <TouchableOpacity
+              style={stylesReg.botonFace}
+              onPress={() => onFbLogin()}>
+              <Icon
+                name="facebook"
+                size={20}
+                color="white"
+                style={{width: '5%', marginLeft: 150}}
+              />
+              <Text style={stylesReg.textoFace}> Continúa con Facebook </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={stylesReg.botonGoogle}
+              onPress={() => googleLogin()}>
+              <Icon
+                name="google"
+                size={20}
+                color="white"
+                style={{width: '5%', marginLeft: 70}}
+              />
+              <Text style={stylesReg.textoGoogle}>Continúa con Google</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
+
         <View style={{alignSelf: 'center', marginTop: 25, marginBottom: 15}}>
           <Text style={stylesReg.textoRegistrarEmail}>
             Ó regístrate con tu email
