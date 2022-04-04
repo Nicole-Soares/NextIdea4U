@@ -72,7 +72,7 @@ export default function Podcasts({navigation}) {
           </View>
         </View>
       ) : (
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color="#005cff" />
       )}
     </View>
   );

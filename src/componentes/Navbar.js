@@ -1,6 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useContext, useState} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesNav} from '../theme/stylesNav';
@@ -32,9 +32,9 @@ export default function Navbar({navigation}) {
   };
 
   return (
-    <View style={stylesNav.contenedorPadre}>
+    <SafeAreaView style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
-        <TouchableOpacity onPress={() => setMenuHamburguesa(true)}>
+        <TouchableOpacity onPress={() => setMenuHamburguesa(true)} >
           <Image
             source={require('../assets/icono/menu.png')}
             style={{height: 26, width: 25, marginTop: 5}}
@@ -45,9 +45,8 @@ export default function Navbar({navigation}) {
         <TouchableOpacity
           style={{flexDirection: 'row'}}
           onPress={() => navigation.navigate('Home')}>
-          <Text style={stylesNav.textoNombreApp}>nextidea</Text>
           <Image
-            source={require('../assets/icono/icono.png')}
+            source={require('../assets/icono/ni.png')}
             style={stylesNav.imagenLogo}
           />
         </TouchableOpacity>
@@ -70,16 +69,17 @@ export default function Navbar({navigation}) {
               />
             </TouchableOpacity>
           ) : (
-            <Icon
-              name="user-o"
-              size={15}
-              color="black"
+            <TouchableOpacity
               style={{marginTop: 7}}
-              onPress={() => navigation.navigate('Registrarse')}
-            />
+              onPress={() => navigation.navigate('Registrarse')}>
+              <Image
+                source={require('../assets/icono/user.png')}
+                style={{width: 20, height: 20, resizeMode: 'contain'}}
+              />
+            </TouchableOpacity>
           )}
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

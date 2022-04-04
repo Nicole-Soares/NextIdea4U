@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect} from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, SafeAreaView} from 'react-native';
 import {AppContext} from '../AppContext/AppContext';
 import Navbar from '../componentes/Navbar';
 import Noticias from '../componentes/Noticias';
@@ -38,12 +38,12 @@ export default function Home({navigation}) {
   }, [navigation]);
 
   return (
-    <View style={{width: '100%', height: '100%'}}>
+    <SafeAreaView style={{width: '100%', height: '100%'}}>
       <Navbar navigation={navigation} />
       <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
         <Noticias navigation={navigation} />
       </ScrollView>
       {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
-    </View>
+    </SafeAreaView>
   );
 }

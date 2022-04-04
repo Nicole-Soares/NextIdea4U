@@ -6,6 +6,8 @@ import {
   Image,
   TextInput,
   Alert,
+  Platform,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
@@ -20,6 +22,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {stylesIng} from '../theme/stylesIng';
+import {stylesReg} from '../theme/stylesReg';
 
 //screen del ingreso
 export default function Ingresar({navigation}) {
@@ -204,86 +207,99 @@ export default function Ingresar({navigation}) {
   }, [dataGoogle]);
 
   return (
-    <View style={stylesIng.contenedorPadre}>
-      <View style={stylesIng.contenedorHermano}>
-        <View style={stylesIng.contenedorArriba}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Image
-              source={require('../assets/icono/icono.png')}
-              style={{height: 70, width: 65, marginBottom: 15}}
-            />
-          </TouchableOpacity>
-
-          <Text style={stylesIng.estilosTextoRegistrate}>
-            Ingresa a tu cuenta
-          </Text>
-          <Text
-            style={{color: 'black'}}
-            onPress={() => navigation.navigate('Registrarse')}>
-            ¿Aun no eres miembro?{' '}
-            <Text style={{color: '#005cff'}}>Registrate</Text>
-          </Text>
-        </View>
-        <View style={stylesIng.contenedorBotonesRedesSociales}>
-          <TouchableOpacity style={stylesIng.botonFace} onPress={onFbLogin}>
-            <Icon
-              name="facebook"
-              size={20}
-              color="white"
-              style={{width: '5%', marginLeft: 100}}
-            />
-            <Text style={stylesIng.textoGoFa}>Continúa con Facebook</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={stylesIng.botonGoogle}
-            onPress={() => googleLogin()}>
-            <Icon
-              name="google"
-              size={20}
-              color="white"
-              style={{marginLeft: 100, width: '5%'}}
-            />
-            <Text style={stylesIng.textoGoFa}>Continúa con Google</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={stylesIng.contenedorIngresarMail}>
-          <Text style={stylesIng.textoIngresa}>Ó ingresa con tu email</Text>
-        </View>
-        <View style={stylesIng.contenedorInputs}>
-          <TextInput
-            placeholder="Email"
-            style={stylesIng.estilosInputs}
-            value={userEmail}
-            onChangeText={e => setUserEmail(e)}
-          />
-          {error ? (
-            <Text style={{color: 'red'}}>
-              Por favor ingrese un email válido
-            </Text>
-          ) : null}
-          <TextInput
-            placeholder="Contraseña"
-            secureTextEntry={true}
-            style={stylesIng.estilosInputs}
-            value={userPassword}
-            onChangeText={e => setUserPassword(e)}
-          />
-          {error ? <Text style={{color: 'red'}}>Campo requerido</Text> : null}
-        </View>
-        <View style={stylesIng.contenedorBotones}>
-          <TouchableOpacity
-            style={stylesIng.botonIniciar}
-            onPress={() => Login()}>
-            <Text style={stylesIng.textoIniciar}>Iniciar sesión</Text>
-          </TouchableOpacity>
-
-          <View style={{marginTop: 15, marginLeft: 5}}>
-            <TouchableOpacity onPress={() => navigation.navigate('Recuperar')}>
-              <Text style={{color: '#005cff'}}>Olvidé mi contraseña</Text>
+    <SafeAreaView
+      style={{
+        backgroundColor: '#f5f4f8',
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <View style={stylesReg.contenedorPadre}>
+        <View style={stylesIng.contenedorHermano}>
+          <View style={stylesIng.contenedorArriba}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+              <Image
+                source={require('../assets/icono/icono.png')}
+                style={{height: 70, width: 65, marginBottom: 15}}
+              />
             </TouchableOpacity>
+
+            <Text style={stylesIng.estilosTextoRegistrate}>
+              Ingresa a tu cuenta
+            </Text>
+            <Text
+              style={{color: 'black'}}
+              onPress={() => navigation.navigate('Registrarse')}>
+              ¿Aun no eres miembro?{' '}
+              <Text style={{color: '#005cff'}}>Registrate</Text>
+            </Text>
+          </View>
+          {Platform.OS === 'android' ? (
+            <View style={stylesIng.contenedorBotonesRedesSociales}>
+              <TouchableOpacity style={stylesIng.botonFace} onPress={onFbLogin}>
+                <Icon
+                  name="facebook"
+                  size={20}
+                  color="white"
+                  style={{width: '5%', marginLeft: 80}}
+                />
+                <Text style={stylesIng.textoGoFa}>Continúa con Facebook</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={stylesIng.botonGoogle}
+                onPress={() => googleLogin()}>
+                <Icon
+                  name="google"
+                  size={20}
+                  color="white"
+                  style={{marginLeft: 80, width: '5%'}}
+                />
+                <Text style={stylesIng.textoGoFa}>Continúa con Google</Text>
+              </TouchableOpacity>
+            </View>
+          ) : null}
+
+          <View style={stylesIng.contenedorIngresarMail}>
+            <Text style={stylesIng.textoIngresa}>Ó ingresa con tu email</Text>
+          </View>
+          <View style={stylesIng.contenedorInputs}>
+            <TextInput
+              placeholder="Email"
+              style={stylesIng.estilosInputs}
+              value={userEmail}
+              onChangeText={e => setUserEmail(e)}
+            />
+            {error ? (
+              <Text style={{color: 'red'}}>
+                Por favor ingrese un email válido
+              </Text>
+            ) : null}
+            <TextInput
+              placeholder="Contraseña"
+              secureTextEntry={true}
+              style={stylesIng.estilosInputs}
+              value={userPassword}
+              onChangeText={e => setUserPassword(e)}
+            />
+            {error ? <Text style={{color: 'red'}}>Campo requerido</Text> : null}
+          </View>
+          <View style={stylesIng.contenedorBotones}>
+            <TouchableOpacity
+              style={stylesIng.botonIniciar}
+              onPress={() => Login()}>
+              <Text style={stylesIng.textoIniciar}>Iniciar sesión</Text>
+            </TouchableOpacity>
+
+            <View style={{marginTop: 15, marginLeft: 5}}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Recuperar')}>
+                <Text style={{color: '#005cff'}}>Olvidé mi contraseña</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

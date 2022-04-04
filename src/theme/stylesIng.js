@@ -20,7 +20,6 @@ export const stylesIng = StyleSheet.create({
     margin: 10,
   },
   estilosTextoRegistrate: {
-    width: '50%',
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
@@ -56,8 +55,8 @@ export const stylesIng = StyleSheet.create({
   },
   contenedorIngresarMail: {
     alignSelf: 'center',
-    marginTop: 7,
-    marginBottom: 7,
+    marginTop: 25,
+    marginBottom: 15,
   },
   textoIngresa: {
     color: 'black',
@@ -74,11 +73,12 @@ export const stylesIng = StyleSheet.create({
     borderColor: '#8898aa',
     marginBottom: 15,
     width: '100%',
+    padding: 12,
   },
   contenedorBotones: {
     width: '100%',
-    alignSelf: 'center',
   },
+
   botonIniciar: {
     borderRadius: 5,
     backgroundColor: '#005cff',

@@ -8,7 +8,7 @@ export const stylesNav = StyleSheet.create({
     height: 65,
     justifyContent: 'space-around',
     borderBottomWidth: 1,
-    borderBottomColor: '#DCDCDC',
+    borderBottomColor: '#f5f4f8',
   },
   contenedorPadreMenuLogo: {
     flexDirection: 'row',
@@ -18,7 +18,7 @@ export const stylesNav = StyleSheet.create({
   },
   contenedorTextoLogo: {
     flexDirection: 'row',
-    width: '54%',
+    width: '60%',
     alignItems: 'center',
   },
   textoNombreApp: {
@@ -28,11 +28,10 @@ export const stylesNav = StyleSheet.create({
     marginLeft: -25,
   },
   imagenLogo: {
-    borderWidth: 1,
-    borderRadius: 10,
-    width: 45,
-    height: 50,
-    marginLeft: 10,
+    width: 200,
+    height: 100,
+    resizeMode: 'contain',
+    marginLeft: -15,
   },
   ContenedorPadreIconoLogin: {
     width: '10%',
@@ -41,9 +40,6 @@ export const stylesNav = StyleSheet.create({
     alignItems: 'center',
   },
   contenedorIconoSinLog: {
-    borderWidth: 2,
-    borderColor: 'black',
-    borderRadius: 15,
     width: 25,
     height: 25,
     alignItems: 'center',

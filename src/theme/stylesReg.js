@@ -4,11 +4,17 @@ import {StyleSheet} from 'react-native';
 
 export const stylesReg = StyleSheet.create({
   contenedorPadre: {
-    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
-    width: '100%',
+    height: '90%',
+    width: '90%',
+    borderRadius: 3,
+    shadowOffset: {width: 10, height: 10},
+    shadowColor: 'black',
+    shadowOpacity: 1,
+    elevation: 3,
+    // background color must be set
+    backgroundColor: 'white',
   },
 
   contenedorSuperior: {
@@ -74,7 +80,7 @@ export const stylesReg = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#8898aa',
     marginBottom: 15,
-
+    padding: 12,
     width: '100%',
   },
   inputPassword: {
@@ -83,6 +89,7 @@ export const stylesReg = StyleSheet.create({
     borderColor: '#8898aa',
     marginBottom: 5,
     width: '100%',
+    padding: 12,
   },
   contenedorRegistrarse: {
     width: '90%',

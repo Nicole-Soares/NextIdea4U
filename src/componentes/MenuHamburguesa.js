@@ -8,7 +8,9 @@ import {
   Linking,
   Animated,
   Dimensions,
+  Platform
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesMenu} from '../theme/stylesMenu';
@@ -18,11 +20,12 @@ export default function MenuHamburguesa({navigation}) {
   const {setMenuHamburguesa, dataIngreso, desloguearse} =
     useContext(AppContext);
   const moveAnimation = useRef(new Animated.Value(-200)).current;
+  const platform = Platform.OS === "ios" ? 330 : 412
 
   useEffect(() => {
     const animate = () => {
       Animated.spring(moveAnimation, {
-        toValue: Dimensions.get('window').width - 412,
+        toValue: Dimensions.get('window').width -  platform ,
         duration: 1000,
         useNativeDriver: false,
       }).start();
@@ -38,7 +41,9 @@ export default function MenuHamburguesa({navigation}) {
 
   return (
     <Animated.View style={[stylesMenu.container, {marginLeft: moveAnimation}]}>
+    <ScrollView>
       <View style={stylesMenu.segundoContenedor}>
+      
         <View>
           <Image
             source={require('../assets/icono/icono.png')}
@@ -218,7 +223,9 @@ export default function MenuHamburguesa({navigation}) {
           }>
           Polí­tica de cookies
         </Text>
+       
       </View>
+      </ScrollView>
     </Animated.View>
   );
 }

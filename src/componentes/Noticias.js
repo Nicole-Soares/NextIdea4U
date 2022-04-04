@@ -25,43 +25,22 @@ export default function Noticias({navigation}) {
                     source={{uri: noticia.img}}
                     style={stylesNot.imagenNot}
                   />
-                  {index !== 0 ? (
-                    <View style={{marginLeft: 10}}>
-                      <Text
-                        style={{
-                          color: 'white',
-                          backgroundColor: 'black',
-                          textAlign: 'center',
-                          fontSize: 12,
-                          fontFamily: 'Inter-SemiBold',
-                          position: 'relative',
-                          top: -30,
 
-                          borderRadius: 5,
-                          borderWidth: 1,
-                          alignSelf: 'flex-start',
-                          paddingLeft: 10,
-                          paddingRight: 10,
-                        }}>
-                        {noticia.categoria.toUpperCase()}
-                      </Text>
-                    </View>
-                  ) : null}
                   <View style={stylesNot.contenedorDatosNot}>
                     {index === 0 ? (
                       <Text
                         style={{
                           width: '100%',
                           color: 'black',
-                          fontSize: 21,
+                          fontSize: 25,
                           fontFamily: 'Inter-Bold',
                           marginTop: 15,
                         }}>
                         <Text
                           style={{
-                            color: 'blue',
+                            color: '#005cff',
                             fontFamily: 'Inter-Bold',
-                            fontSize: 21,
+                            fontSize: 25,
                           }}>
                           {noticia.subtitulo}.
                         </Text>
@@ -73,14 +52,14 @@ export default function Noticias({navigation}) {
                         style={{
                           width: '100%',
                           color: 'black',
-                          fontSize: 21,
-                          fontFamily: 'Inter-Regular',
+                          fontSize: 20,
+                          fontFamily: 'Inter-SemiBold',
                         }}>
                         <Text
                           style={{
-                            color: 'blue',
-                            fontFamily: 'Inter-Regular',
-                            fontSize: 21,
+                            color: '#005cff',
+                            fontFamily: 'Inter-SemiBold',
+                            fontSize: 20,
                           }}>
                           {noticia.subtitulo}.
                         </Text>
