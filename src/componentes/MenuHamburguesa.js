@@ -11,6 +11,7 @@ import {
   Platform
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../AppContext/AppContext';
 import {stylesMenu} from '../theme/stylesMenu';
@@ -20,7 +21,7 @@ export default function MenuHamburguesa({navigation}) {
   const {setMenuHamburguesa, dataIngreso, desloguearse} =
     useContext(AppContext);
   const moveAnimation = useRef(new Animated.Value(-200)).current;
-  const platform = Platform.OS === "ios" ? 330 : 412
+  const platform = Platform.OS === "ios" ? 385 : 412
 
   useEffect(() => {
     const animate = () => {
@@ -42,6 +43,7 @@ export default function MenuHamburguesa({navigation}) {
   return (
     <Animated.View style={[stylesMenu.container, {marginLeft: moveAnimation}]}>
     <ScrollView>
+    <SafeAreaView>
       <View style={stylesMenu.segundoContenedor}>
       
         <View>
@@ -225,6 +227,7 @@ export default function MenuHamburguesa({navigation}) {
         </Text>
        
       </View>
+      </SafeAreaView>
       </ScrollView>
     </Animated.View>
   );
