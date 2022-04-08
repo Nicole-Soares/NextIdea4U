@@ -12,7 +12,6 @@ export default function AppProvider({children}) {
   const [userEmail, setUserEmail] = useState('');
   const [noticia, setNoticia] = useState(null);
   const [podcasts, setPodcasts] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [facebookEmail, setFacebookEmail] = useState(null);
   const [facebookId, setFacebookId] = useState(null);
   const [facebookCupleanos, setFacebookCumpleanos] = useState(null);
@@ -22,6 +21,10 @@ export default function AppProvider({children}) {
   const [googleId, setGoogleId] = useState(null);
   const [googleEmail, setGoogleEmail] = useState(null);
   const [dataIngreso, setDataIngreso] = useState({});
+  const [pagina, setPagina] = useState(2);
+  const [datos, setDatos] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [maxPaginas, setMaxPaginas] = useState(null);
 
   return (
     <AppContext.Provider
@@ -60,6 +63,12 @@ export default function AppProvider({children}) {
         setGoogleEmail,
         dataIngreso,
         setDataIngreso,
+        pagina,
+        setPagina,
+        datos,
+        setDatos,
+        maxPaginas,
+        setMaxPaginas,
       }}>
       {children}
     </AppContext.Provider>

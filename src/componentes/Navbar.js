@@ -34,7 +34,7 @@ export default function Navbar({navigation}) {
   return (
     <SafeAreaView style={stylesNav.contenedorPadre}>
       <View style={stylesNav.contenedorPadreMenuLogo}>
-        <TouchableOpacity onPress={() => setMenuHamburguesa(true)} >
+        <TouchableOpacity onPress={() => setMenuHamburguesa(true)}>
           <Image
             source={require('../assets/icono/menu.png')}
             style={{height: 26, width: 25, marginTop: 5}}

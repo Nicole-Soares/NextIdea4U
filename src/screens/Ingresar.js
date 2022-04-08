@@ -140,7 +140,6 @@ export default function Ingresar({navigation}) {
   //conectar con la api de facebook
   useEffect(() => {
     if (dataFacebook) {
-      console.log('hola');
       setFacebookEmail(dataFacebook.email);
       setFacebookId(dataFacebook.id);
       setFacebookCumpleanos(dataFacebook.birthday);

@@ -55,7 +55,11 @@ export default function PodcastsScreen({navigation}) {
 
   return (
     <SafeAreaView
-      style={{width: '100%', height: '100%', backgroundColor: 'white'}}>
+      style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'white',
+      }}>
       {menuHamburguesa ? <MenuHamburguesa navigation={navigation} /> : null}
       <View style={{backgroundColor: 'white', width: '100%'}}>
         <Navbar navigation={navigation} />
@@ -65,9 +69,8 @@ export default function PodcastsScreen({navigation}) {
           style={{
             flexDirection: 'row',
             flexWrap: 'wrap',
-            marginTop: 30,
             width: '100%',
-            marginLeft: 15,
+            padding: 30,
           }}>
           {listadoPodcasts
             ? listadoPodcasts.featured.map(podcast => {

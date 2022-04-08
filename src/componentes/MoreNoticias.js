@@ -1,12 +1,21 @@
 import React, {useContext} from 'react';
-import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+  ActivityIndicator,
+} from 'react-native';
+
 import {AppContext} from '../AppContext/AppContext';
 
 //el resto de noticias del home
 export default function MoreNoticias({navigation}) {
-  const {listadoNoticiasPodcasts} = useContext(AppContext);
+  const {listadoNoticiasPodcasts, loading} = useContext(AppContext);
+
   return (
-    <View style={{height: '100%'}}>
+    <View style={{height: '100%', width: '100%'}}>
       {listadoNoticiasPodcasts ? (
         <View
           style={{
@@ -22,7 +31,7 @@ export default function MoreNoticias({navigation}) {
               fontSize: 20,
               alignSelf: 'center',
               width: '100%',
-              marginBottom: 10,
+              marginBottom: 5,
             }}>
             Más noticias
           </Text>
@@ -33,7 +42,9 @@ export default function MoreNoticias({navigation}) {
             return (
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('NoticiaScreen', {idNoticia: noticia.id})
+                  navigation.navigate('NoticiaScreen', {
+                    idNoticia: noticia.id,
+                  })
                 }
                 key={noticia.id}>
                 <View style={{width: '90%', alignSelf: 'center', margin: 20}}>
@@ -64,6 +75,8 @@ export default function MoreNoticias({navigation}) {
             );
           })
         : null}
+
+      {loading ? <ActivityIndicator size="large" color="blue" /> : null}
     </View>
   );
 }

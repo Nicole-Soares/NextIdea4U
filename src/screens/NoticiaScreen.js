@@ -201,7 +201,7 @@ export default function NoticiaScreen(props) {
                   marginLeft: 15,
                 }}
                 scalesPageToFit={false}
-                customStyle={`img { width: 400px !important; height: 250px !important;}
+                customStyle={`img { width: 350px !important; height: 250px !important;}
                 p {line-height:1.5}
                 `}
                 source={{
@@ -383,13 +383,19 @@ export default function NoticiaScreen(props) {
                           <Text
                             style={{
                               color: '#005cff',
-                              fontFamily: 'Inter-Regular',
+                              fontFamily: 'Inter-Bold',
                               fontSize: 20,
                               marginLeft: 7,
                               marginBottom: 20,
                             }}>
                             {noticiaRe.subtitulo}.<Text> </Text>
-                            <Text style={{color: 'black'}}>
+                            <Text
+                              style={{
+                                color: 'black',
+                                fontSize: 20,
+                                fontFamily: 'Inter-Bold',
+                                marginTop: 15,
+                              }}>
                               {noticiaRe.titulo}
                             </Text>
                           </Text>
