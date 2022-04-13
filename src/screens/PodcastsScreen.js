@@ -70,7 +70,8 @@ export default function PodcastsScreen({navigation}) {
             flexDirection: 'row',
             flexWrap: 'wrap',
             width: '100%',
-            padding: 30,
+            paddingLeft: 20,
+            marginTop: 30,
           }}>
           {listadoPodcasts
             ? listadoPodcasts.featured.map(podcast => {
