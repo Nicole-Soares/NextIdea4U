@@ -18,27 +18,24 @@ import {stylesMenu} from '../theme/stylesMenu';
 
 //menu Hamburguesa
 export default function MenuHamburguesa({navigation}) {
-  const {setMenuHamburguesa, dataIngreso, desloguearse} =
-    useContext(AppContext);
+  const {setMenuHamburguesa, dataIngreso} = useContext(AppContext);
   const moveAnimation = useRef(new Animated.Value(-200)).current;
-  const platform = Platform.OS === 'ios' ? 385 : 412;
+  const platform = Platform.OS === 'ios' ? 385 : 112;
+
+  //animacion
+
+  const animate = () => {
+    Animated.spring(moveAnimation, {
+      duration: 1000,
+      toValue: 0,
+      useNativeDriver: false,
+    }).start();
+  };
 
   useEffect(() => {
-    const animate = () => {
-      Animated.spring(moveAnimation, {
-        duration: 1000,
-        toValue: Dimensions.get('window').width - platform,
-        useNativeDriver: false,
-      }).start();
-    };
-
     animate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  function CerrarMenu() {
-    setMenuHamburguesa(false);
-  }
 
   return (
     <Animated.View style={[stylesMenu.container, {marginLeft: moveAnimation}]}>
@@ -56,7 +53,7 @@ export default function MenuHamburguesa({navigation}) {
                 name="close"
                 color="black"
                 size={30}
-                onPress={() => CerrarMenu()}
+                onPress={() => setMenuHamburguesa(false)}
                 style={stylesMenu.iconoCerrar}
               />
             </View>

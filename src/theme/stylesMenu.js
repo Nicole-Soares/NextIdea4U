@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 //estilos menu hamburguesa
 export const stylesMenu = StyleSheet.create({
@@ -9,8 +9,8 @@ export const stylesMenu = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    height: Platform.OS === "ios" ? 1000 : "100%",
-    width:  "100%",
+    height: Platform.OS === 'ios' ? 1000 : '100%',
+    width: '100%',
   },
   box: {
     width: 100,
