@@ -20,7 +20,6 @@ import {stylesMenu} from '../theme/stylesMenu';
 export default function MenuHamburguesa({navigation}) {
   const {setMenuHamburguesa, dataIngreso} = useContext(AppContext);
   const moveAnimation = useRef(new Animated.Value(-200)).current;
-  const platform = Platform.OS === 'ios' ? 385 : 112;
 
   //animacion
 
