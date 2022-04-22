@@ -208,7 +208,7 @@ export default function NoticiaScreen(props) {
                   html: data,
                 }}
                 viewportContent={'width=device-width, user-scalable=no'}
-                onSizeUpdated={size => console.log(size.height)}
+             
               />
             </View>
           </View>
@@ -217,10 +217,11 @@ export default function NoticiaScreen(props) {
                 <View
                   style={{
                     height: 280,
+                    width:"100%"
                   }}>
                   <View
                     style={{
-                      borderBottomColor: 'gray',
+                      borderBottomColor: '#e9ecef',
                       borderBottomWidth: 1,
                       marginBottom: 15,
                       width: '90%',
@@ -228,9 +229,9 @@ export default function NoticiaScreen(props) {
                     }}>
                     <Text
                       style={{
-                        fontSize: 20,
+                        fontSize: 18,
                         color: 'black',
-                        fontWeight: 'bold',
+                        fontFamily: 'Inter-Bold',
                         width: '100%',
 
                         marginTop: 15,
@@ -238,19 +239,21 @@ export default function NoticiaScreen(props) {
                       También puedes escuchar el podcast de la nota
                     </Text>
                   </View>
-
-                  <WebView
-                    scrollEnabled={false}
-                    source={{
-                      uri: podcasts.podcast,
-                    }}
-                    style={{
-                      height: 300,
-                      marginTop: 15,
-                      width: '90%',
-                      alignSelf: 'center',
-                    }}
-                  />
+                  <AutoHeightWebView
+                style={{
+                  width: Dimensions.get('window').width - 50,
+                  alignSelf:"center"
+                 
+                }}
+                scalesPageToFit={false}
+               
+                source={{
+                  uri: podcasts.podcast,
+                }}
+                viewportContent={'width=device-width, user-scalable=no'}
+              
+              />
+                
                 </View>
               ))
             : null}

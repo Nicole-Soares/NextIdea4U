@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
+import {Platform} from "react-native";
 import AppProvider from './src/AppContext/AppContext';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation from './src/navigation/StackNavigation';
@@ -45,7 +46,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppProvider>
-        {splashScreenOn ? <SplashScreen /> : <StackNavigation />}
+        {Platform.OS === "android" && splashScreenOn ? <SplashScreen /> : <StackNavigation />}
       </AppProvider>
     </NavigationContainer>
   );

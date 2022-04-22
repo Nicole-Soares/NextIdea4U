@@ -70,14 +70,14 @@ export default function PodcastsScreen({navigation}) {
             flexDirection: 'row',
             flexWrap: 'wrap',
             width: '100%',
-            paddingLeft: 20,
+            
             marginTop: 30,
           }}>
           {listadoPodcasts
             ? listadoPodcasts.featured.map(podcast => {
                 return (
                   <View
-                    style={{width: '50%', marginBottom: 30}}
+                    style={{width: '50%', padding:23}}
                     key={podcast.id}>
                     <TouchableOpacity
                       onPress={() =>
@@ -91,15 +91,15 @@ export default function PodcastsScreen({navigation}) {
                           height: 150,
                           width: 150,
                           borderRadius: 10,
-                          marginLeft: 10,
+                          
                         }}
                       />
                       <Text
                         style={{
                           fontSize: 18,
                           color: 'black',
-                          marginLeft: 15,
-                          width: '80%',
+                         
+                          width: '85%',
                           marginTop: 10,
                           fontFamily: 'Inter-SemiBold',
                         }}>
