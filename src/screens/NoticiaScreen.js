@@ -193,16 +193,19 @@ export default function NoticiaScreen(props) {
                 marginTop: 10,
                 marginBottom: 25,
                 marginLeft: 5,
+                marginRight : 5
               }}>
               <AutoHeightWebView
                 style={{
-                  width: Dimensions.get('window').width - 50,
+                  width: Dimensions.get('window').width - 30,
                   marginTop: 15,
                   marginLeft: 15,
+                  marginRight : 25
                 }}
                 scalesPageToFit={false}
                 customStyle={`img { width: 350px !important; height: 250px !important;}
                 p {line-height:1.5}
+                body {padding-right: 7px;}
                 `}
                 source={{
                   html: data,
