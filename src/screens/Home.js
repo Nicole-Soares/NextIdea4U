@@ -15,6 +15,8 @@ export default function Home({navigation}) {
     setMenuHamburguesa,
     setPagina,
     pagina,
+    isLoading,
+    setIsLoading,
     setDatos,
     datos,
     setLoading,
@@ -64,13 +66,15 @@ export default function Home({navigation}) {
 
   //lo que hace cuando llega al final de la screen
   const enableSomeButton = () => {
-    if (pagina < datos.maxPages) {
+    if (pagina < datos.maxPages && !isLoading) {
       setPagina(pagina + 1);
+      setIsLoading(true);
 
       TraerNoticias();
       async function TraerNoticias() {
         setLoading(true);
         try {
+          console.log(pagina);
           let data = await fetch(
             `https://nextidea4u.com/api/home/get-items.php?page=${pagina}`,
             {
@@ -81,6 +85,7 @@ export default function Home({navigation}) {
           let respuesta = await data.json();
 
           setLoading(false);
+          setIsLoading(false);
 
           setListadoNoticiasPodcasts({
             podcasts: datos.podcasts,

@@ -22,9 +22,10 @@ export default function App() {
   useEffect(() => {
     (async () => {
       OneSignal.setLogLevel(6, 0);
-      OneSignal.setAppId('71d0ccb3-9640-4fe8-a49b-a9c0157edc64');
+      OneSignal.setAppId('13e549b0-e55d-45bb-9807-1ba1bac02cbe');
       const deviceState = await OneSignal.getDeviceState();
       global.playerId = deviceState.userId;
+      //console.log(deviceState);
       if (deviceState.userId) {
         await fetch(setTokenUrl + '?token=' + deviceState.userId, {
           method: 'POST',

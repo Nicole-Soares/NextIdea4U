@@ -22,6 +22,7 @@ export default function AppProvider({children}) {
   const [googleEmail, setGoogleEmail] = useState(null);
   const [dataIngreso, setDataIngreso] = useState({});
   const [pagina, setPagina] = useState(2);
+  const [isLoading, setIsLoading] = useState(false);
   const [datos, setDatos] = useState(null);
   const [loading, setLoading] = useState(false);
   const [maxPaginas, setMaxPaginas] = useState(null);
@@ -65,6 +66,8 @@ export default function AppProvider({children}) {
         setDataIngreso,
         pagina,
         setPagina,
+        isLoading,
+        setIsLoading,
         datos,
         setDatos,
         maxPaginas,
